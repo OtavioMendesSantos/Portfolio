@@ -1,0 +1,11 @@
+:root{
+    --primary-color: #F25424;
+    --primary-light-color: #FF8463;
+    --dark-grey-color: #222222;
+    --medium-grey-color: #454545;
+    --light-grey-color: #666666;
+}
+
+h1{
+    margin: 0;
+}

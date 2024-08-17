@@ -1,0 +1,9 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-grey-color);
+  color: var(--color-text);
+  min-height: 50vh;
+  box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.5);
+}
