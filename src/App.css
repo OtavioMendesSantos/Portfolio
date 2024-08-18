@@ -9,3 +9,18 @@
 h1{
     margin: 0;
 }
+
+html::-webkit-scrollbar{
+    width: 8px;
+}
+
+html::-webkit-scrollbar-thumb{
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    border: 2px solid var(--dark-grey-color);
+    box-sizing: border-box;
+}
+
+html::-webkit-scrollbar-track{
+    background-color: var(--dark-grey-color);
+}
