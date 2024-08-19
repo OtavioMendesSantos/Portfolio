@@ -2,25 +2,28 @@ import React from 'react'
 import Header from '../../components/Header'
 import styles from './Home.module.css'
 import Footer from '../../components/Footer'
-import SendMessage from '../../components/SendMessage'
+import ExperienceAvatar from '../../components/ExperienceAvatar'
 
 const Home = () => {
   return (
     <main>
       <Header />
       <section className={styles.presentation}>
-        <h1>Otávio Mendes Santos</h1>
-        <p>Dev. Front End</p>
-        <h2>Stacks</h2>
-        
-        <h2>Contatos</h2>
-        
+        <div>
+          <ExperienceAvatar />
+        </div>
+        <div>
+          <h1>Otávio Mendes Santos</h1>
+          <p>Dev. Front End</p>
+          <h2>Stacks</h2>
+
+          <h2>Contatos</h2>
+        </div>
       </section>
       <main className={styles.container}>
         <section >
         </section>
 
-        {/* <SendMessage /> */}
       </main>
 
       <Footer />
