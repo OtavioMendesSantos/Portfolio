@@ -6,10 +6,10 @@ import ExperienceAvatar from '../../components/ExperienceAvatar'
 
 const Home = () => {
   return (
-    <main>
+    <main className={styles.main}>
       <Header />
       <section className={styles.presentation}>
-        <div>
+        <div className={styles.avatar}>
           <ExperienceAvatar />
         </div>
         <div>
@@ -20,12 +20,8 @@ const Home = () => {
           <h2>Contatos</h2>
         </div>
       </section>
-      <main className={styles.container}>
-        <section >
-        </section>
-
-      </main>
-
+      <section className={styles.container}>
+      </section>
       <Footer />
     </main>
   )
