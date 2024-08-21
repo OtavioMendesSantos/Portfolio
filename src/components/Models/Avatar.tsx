@@ -12,20 +12,20 @@ const Avatar: React.FC<{ animation?: string }> = ({ animation, ...props }) => {
     wireframe: false
   })
   const group = useRef()
-  const { nodes, materials } = useGLTF('models/avatarreadyplayer.glb')
+  const { nodes, materials } = useGLTF('models/avatar.glb')
 
-  const { animations: typingAnimation } = useFBX('animations/Typing.fbx')
-  const { animations: fallingIdle } = useFBX('animations/Falling_Idle.fbx')
-  const { animations: standingIdle } = useFBX('animations/Standing_Idle.fbx')
+  const { animations: typing } = useFBX('animations/Typing.fbx')
+  const { animations: fallingIdle } = useFBX('animations/Falling.fbx')
+  const { animations: standing } = useFBX('animations/Standing.fbx')
   const { animations: waving } = useFBX('animations/Waving.fbx')
 
-  typingAnimation[0].name = "Typing"
+  typing[0].name = "Typing"
   fallingIdle[0].name = "Falling"
-  standingIdle[0].name = "Standing"
+  standing[0].name = "Standing"
   waving[0].name = "Waving"
 
   const { actions } = useAnimations(
-    [typingAnimation[0], fallingIdle[0], standingIdle[0], waving[0]],
+    [typing[0], fallingIdle[0], standing[0], waving[0]],
     group
   )
 
@@ -40,10 +40,15 @@ const Avatar: React.FC<{ animation?: string }> = ({ animation, ...props }) => {
   })
 
   useEffect(() => {
-    actions[animation]?.reset().fadeIn(0.5).play()
+    actions[animation].reset().play()
     return () => {
-      actions[animation]?.reset().fadeOut()
+      actions[animation].reset().stop(0.5)
     }
+    // group.current.position.y = 0
+    // actions[animation].reset().fadeIn(0.5).play()
+    // return () => {
+    //   actions[animation].reset().fadeOut(0.5)
+    // }
   }, [animation])
 
   useEffect(() => {
@@ -53,9 +58,33 @@ const Avatar: React.FC<{ animation?: string }> = ({ animation, ...props }) => {
   }, [wireframe])
 
   return (
-    <group {...props} dispose={null} ref={group} >
-      <group>
+    <group {...props} ref={group} dispose={null}>
         <primitive object={nodes.Hips} />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Body.geometry}
+          material={materials.Wolf3D_Body}
+          skeleton={nodes.Wolf3D_Body.skeleton}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
+          material={materials.Wolf3D_Outfit_Bottom}
+          skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
+          material={materials.Wolf3D_Outfit_Footwear}
+          skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Outfit_Top.geometry}
+          material={materials.Wolf3D_Outfit_Top}
+          skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Hair.geometry}
+          material={materials.Wolf3D_Hair}
+          skeleton={nodes.Wolf3D_Hair.skeleton}
+        />
         <skinnedMesh
           name="EyeLeft"
           geometry={nodes.EyeLeft.geometry}
@@ -88,36 +117,10 @@ const Avatar: React.FC<{ animation?: string }> = ({ animation, ...props }) => {
           morphTargetDictionary={nodes.Wolf3D_Teeth.morphTargetDictionary}
           morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences}
         />
-        <skinnedMesh
-          geometry={nodes.Wolf3D_Hair.geometry}
-          material={materials.Wolf3D_Hair}
-          skeleton={nodes.Wolf3D_Hair.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.Wolf3D_Outfit_Top.geometry}
-          material={materials.Wolf3D_Outfit_Top}
-          skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
-          material={materials.Wolf3D_Outfit_Bottom}
-          skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
-          material={materials.Wolf3D_Outfit_Footwear}
-          skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
-        />
-        <skinnedMesh
-          geometry={nodes.Wolf3D_Body.geometry}
-          material={materials.Wolf3D_Body}
-          skeleton={nodes.Wolf3D_Body.skeleton}
-        />
-      </group>
     </group>
   )
 }
 
 export default Avatar
 
-useGLTF.preload('/models/avatarreadyplayer.glb')
+useGLTF.preload('/models/avatar.glb')
