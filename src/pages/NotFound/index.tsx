@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import Loader from './Loader'
 
 const NotFound = () => {
   const navigate = useNavigate()
@@ -10,7 +11,8 @@ const NotFound = () => {
   return (
     <div>
       <h1>NotFound</h1>
-      <button onClick={handleClick}>Navegar Para Home</button>
+      <Loader />
+        <button onClick={handleClick}>Navegar Para Home</button>
     </div>
   )
 }
