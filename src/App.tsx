@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Blog from './pages/Blog'
 import NotFound from './pages/NotFound'
 import CustomThemeProvider from './styles/CustomThemeProvider'
+import Ds from './pages/Ds/DS'
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,10 @@ function App() {
     {
       path: '/Blog',
       element: <Blog />,
+    },
+    {
+      path: '/Ds',
+      element: <Ds />,
     },
     {
       path: '/*',

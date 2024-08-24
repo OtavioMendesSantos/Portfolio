@@ -1,11 +1,18 @@
 import React from 'react'
-import style from './Header.module.css'
-import logo from '../../../public/assets/images/logo.png'
-const Header = () => {
+import Logo from '/svgs/logo_outlined.svg'
+// 
+import { AppBar, Typography } from '@mui/material'
+const Header = (
+  {position = 'static'}:
+  {position?: 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative'}
+) => {
   return (
-    <header className={style.header}>
-      <img className='img' src={logo} alt="" onDragStart={(e)=>e.preventDefault()}/>
-    </header>
+    <AppBar position={position} sx={{
+      height: '60px',
+    }}>
+      {/* <Logo/> */}
+      <img src={Logo} alt="" onDragStart={(e)=>e.preventDefault()} style={{height: '100%'}}/>
+    </AppBar>
   )
 }
 
