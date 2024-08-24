@@ -3,13 +3,14 @@ import './App.css'
 import Home from './pages/Home'
 import Blog from './pages/Blog'
 import NotFound from './pages/NotFound'
+import CustomThemeProvider from './styles/CustomThemeProvider'
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
       element: <Home />,
-    }, 
+    },
     {
       path: '/Blog',
       element: <Blog />,
@@ -21,8 +22,9 @@ function App() {
   ])
 
   return (
-    <RouterProvider router={router}>
-    </RouterProvider>
+    <CustomThemeProvider>
+      <RouterProvider router={router} />
+    </CustomThemeProvider>
   )
 }
 

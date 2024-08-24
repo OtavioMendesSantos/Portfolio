@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const useResponsive = (): { isMobile: boolean; isDesktop: boolean } => {
     const [isMobile, setIsMobile] = useState(false)
