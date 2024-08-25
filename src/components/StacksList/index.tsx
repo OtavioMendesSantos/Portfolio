@@ -1,8 +1,11 @@
 import { Box, Container, Tooltip, Typography } from '@mui/material'
 import React from 'react'
+import useResponsive from '../../hooks/useResponsive'
 
-const StacksList = ({ title, itens, indicate }: { title: string, itens: string[], indicate?: boolean }) => {
-  console.log(itens);
+const StacksList = (
+  { title, itens, indicate }: { title: string, itens: string[], indicate?: boolean }
+) => {
+  const { isMobile } = useResponsive()
 
   return (
     <Box>
@@ -23,14 +26,14 @@ const StacksList = ({ title, itens, indicate }: { title: string, itens: string[]
             <Tooltip title={item} arrow>
               <Box
                 component="img"
-                sx={{ 
+                sx={{
                   minWidth: '60px',
-                  filter: 'grayscale(100%)',
+                  filter: isMobile ? 'grayscale(0%)' : 'grayscale(10%)',
                   '&:hover': {
                     filter: 'grayscale(0%)',
                     transition: 'filter 0.3s ease',
                   }
-                 }}
+                }}
                 src={`/svgs/${item}-original.svg`}
                 alt={item}
               />
