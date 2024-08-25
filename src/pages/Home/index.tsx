@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <main>
-      <Header />
+      <Header position='fixed' />
       
       {/* <Header /> */}
       <section>

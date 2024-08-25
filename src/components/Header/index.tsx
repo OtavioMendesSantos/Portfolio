@@ -1,18 +1,52 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Logo from '/svgs/logo_outlined.svg'
 // 
-import { AppBar, Typography } from '@mui/material'
+import { AppBar, Box } from '@mui/material'
 const Header = (
-  {position = 'static'}:
-  {position?: 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative'}
+  { position = 'static' }:
+    { position?: 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative' }
 ) => {
+  const navigate = useNavigate()
+  const handleNavigate = () => {
+    if ( window.location.pathname === '/ds' ) {
+      navigate('/')
+    }
+    else {
+      navigate('/ds')
+    }
+  }
   return (
-    <AppBar position={position} sx={{
-      height: '60px',
-    }}>
-      {/* <Logo/> */}
-      <img src={Logo} alt="" onDragStart={(e)=>e.preventDefault()} style={{height: '100%'}}/>
-    </AppBar>
+    <>
+      {position === 'fixed' && <div style={{ height: '60px' }} />}
+      <AppBar
+        position={position}
+        elevation={4}
+        sx={{
+          height: '60px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        component="header"
+      >
+        <Box
+          component="img"
+          src={Logo}
+          alt="Logo Site - Desenvolvedor Otávio"
+          onDragStart={(e: DragEvent) => e.preventDefault()}
+          onClick={handleNavigate}
+          sx={{
+            height: '100%',
+            width: 'fit-content',
+            cursor: 'pointer',
+            '&:hover': {
+              bgcolor: 'rgba(0, 0, 0, 0.1)',
+              borderRadius: '5px',
+            },
+          }}
+        />
+      </AppBar>
+    </>
   )
 }
 
