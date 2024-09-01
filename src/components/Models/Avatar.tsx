@@ -40,9 +40,9 @@ const Avatar: React.FC<{ animation?: string }> = ({ animation, ...props }) => {
   })
 
   useEffect(() => {
-    actions[animation].reset().play()
+    actions[animation]?.reset().play()
     return () => {
-      actions[animation].reset().stop(0.5)
+      actions[animation]?.reset().stop(0.5)
     }
     // group.current.position.y = 0
     // actions[animation].reset().fadeIn(0.5).play()

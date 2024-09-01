@@ -5,13 +5,14 @@ import useResponsive from '../../hooks/useResponsive'
 import { Box, Container, Grid, IconButton, Typography, useTheme } from '@mui/material'
 import StacksList from '../../components/StacksList'
 import KeyboardDoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown'
+import { StyledTypography } from '../../components/Styled/StyledComponents'
 const Home = () => {
   const theme = useTheme()
   const { isDesktop } = useResponsive()
 
   return (
     <main>
-      <Header position='fixed' />
+      <Header position='sticky' />
       <Container
         component="section"
         sx={{ height: 'calc(100vh - 60px)' }}
@@ -35,12 +36,12 @@ const Home = () => {
             display="flex"
             flexDirection="column"
           >
-            <Typography variant="h1" indicate>Otávio Mendes Santos</Typography>
+            <StyledTypography variant="h1" indicate>Otávio Mendes Santos</StyledTypography>
             <Typography variant="subtitle1">Dev. Front End</Typography>
-            <StacksList title='Stacks'
+            <StacksList indicate title='Stacks'
               itens={['react', 'javascript', 'typescript', 'materialui', 'redux']}
             />
-            <StacksList title='Contatos'
+            <StacksList indicate title='Contatos'
               itens={['linkedin', 'github', 'twitter']}
             />
 
@@ -67,11 +68,11 @@ const Home = () => {
           backgroundPosition: '-5px -5px'
         }}
       >
-        <Typography indicate variant='h1'>Sobre Mim</Typography>
-        <Typography indicate variant='h1'>Habilidades</Typography>
-        <Typography indicate variant='h1'>Experiência</Typography>
-        <Typography indicate variant='h1'>Formação</Typography>
-        <Typography indicate variant='h1'>Projetos</Typography>
+        <StyledTypography indicate variant='h1'>Sobre Mim</StyledTypography>
+        <StyledTypography indicate variant='h1'>Habilidades</StyledTypography>
+        <StyledTypography indicate variant='h1'>Experiência</StyledTypography>
+        <StyledTypography indicate variant='h1'>Formação</StyledTypography>
+        <StyledTypography indicate variant='h1'>Projetos</StyledTypography>
       </Container>
       <Footer />
     </main >

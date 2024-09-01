@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container, Link, Typography } from '@mui/material'
 
 const Footer = () => {

@@ -1,6 +1,6 @@
-import { Box, Container, Tooltip, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Container, Tooltip } from '@mui/material'
 import useResponsive from '../../hooks/useResponsive'
+import { StyledTypography } from '../Styled/StyledComponents'
 
 const StacksList = (
   { title, itens, indicate }: { title: string, itens: string[], indicate?: boolean }
@@ -9,7 +9,12 @@ const StacksList = (
 
   return (
     <Box>
-      <Typography variant="h2" indicate>{title}</Typography>
+      <StyledTypography
+        variant="h2"
+        indicate={indicate}
+      >
+        {title}
+      </StyledTypography>
       <Container
         component="ul"
         sx={{
