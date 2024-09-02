@@ -1,6 +1,6 @@
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import ExperienceAvatar from '../../components/ExperienceAvatar'
+import PresentationAvatar from '../../components/Models/PresentationAvatar'
 import useResponsive from '../../hooks/useResponsive'
 import { Box, Container, Grid, IconButton, Typography, useTheme } from '@mui/material'
 import StacksList from '../../components/StacksList'
@@ -26,8 +26,8 @@ const Home = () => {
           }}
         >
           {isDesktop &&
-            <Grid item xs={12} md={6} /* height={isDesktop ? "50%" : "100%"} */>
-              <ExperienceAvatar />
+            <Grid item xs={12} md={6} height={"100%"} /* height={isDesktop ? "50%" : "100%"} */>
+              <PresentationAvatar />
             </Grid>
           }
           <Grid
