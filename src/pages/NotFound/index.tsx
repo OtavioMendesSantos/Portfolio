@@ -1,6 +1,7 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Loader from './Loader'
+import Loader from '../../components/Utils/Loader'
+import { Button, Container } from '@mui/material'
+import { StyledTypography } from '../../components/Styled/StyledComponents'
 
 const NotFound = () => {
   const navigate = useNavigate()
@@ -9,11 +10,13 @@ const NotFound = () => {
   }
 
   return (
-    <div>
-      <h1>NotFound</h1>
+    <Container align="center" sx={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+      <StyledTypography variant="h1">
+        <StyledTypography variant="inherit" color='primary'>Error 404:</StyledTypography> NotFound
+      </StyledTypography>
       <Loader />
-        <button onClick={handleClick}>Navegar Para Home</button>
-    </div>
+      <Button onClick={handleClick}>Navegar Para Home</Button>
+    </Container>
   )
 }
 

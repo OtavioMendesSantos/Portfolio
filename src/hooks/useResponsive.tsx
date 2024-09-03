@@ -1,8 +1,10 @@
+import { useTheme } from '@mui/material';
 import { useEffect, useState } from 'react'
 
 const useResponsive = (): { isMobile: boolean; isDesktop: boolean } => {
     const [isMobile, setIsMobile] = useState(false)
     const [isDesktop, setIsDesktop] = useState(false)
+    const theme = useTheme()
 
     function match(query: string): boolean {
         return window.matchMedia(query).matches
@@ -11,8 +13,8 @@ const useResponsive = (): { isMobile: boolean; isDesktop: boolean } => {
     useEffect(() => {
         window.addEventListener('resize', handleResize)
         function handleResize() {
-            setIsMobile(match('(max-width: 600px)'))
-            setIsDesktop(match('(min-width: 600px)'))
+            setIsMobile(match(`(max-width: ${theme.breakpoints.values.md}px)`))
+            setIsDesktop(match('(min-width: ${theme.breakpoints.values.md}px)`)'))
         }
         handleResize()
         return () => window.removeEventListener('resize', handleResize)

@@ -1,15 +1,16 @@
-import React from "react";
-import styles from "./Loader.module.css"; 
+import { useTheme } from "@mui/material";
+import styles from "./Loader.module.css";
 
 const Loader = () => {
+  const theme = useTheme();
   return (
-    <div >
+    <div>
       <svg xmlns="http://www.w3.org/2000/svg" height="200" width="200">
         <g style={{ order: "-1" }}>
           <polygon
             transform="rotate(45 100 100)"
             strokeWidth={1}
-            stroke="#d3a410"
+            stroke={theme.palette.primary.main}
             fill="none"
             points="70,70 148,50 130,130 50,150"
             className={styles.bounce}
@@ -17,7 +18,7 @@ const Loader = () => {
           <polygon
             transform="rotate(45 100 100)"
             strokeWidth={1}
-            stroke="#d3a410"
+            stroke={theme.palette.primary.main}
             fill="none"
             points="70,70 148,50 130,130 50,150"
             className={styles.bounce2}
@@ -51,7 +52,7 @@ const Loader = () => {
             transform="translate(20, 31)"
             strokeWidth={2}
             stroke=""
-            fill="#b7870f"
+            fill={theme.palette.primary.dark}
             points="80,50 80,75 80,99 40,75"
           />
           <polygon
@@ -74,7 +75,7 @@ const Loader = () => {
                 offset="20%"
               />
               <stop
-                style={{ stopColor: "#d3a51054", stopOpacity: "1" }}
+                style={{ stopColor: theme.palette.primary.dark, stopOpacity: "1" }}
                 offset="100%"
                 className={styles.animatedStop}
               />
@@ -84,7 +85,7 @@ const Loader = () => {
             transform="rotate(180 100 100) translate(20, 20)"
             strokeWidth={2}
             stroke=""
-            fill="#d3a410"
+            fill={theme.palette.primary.main}
             points="80,50 80,75 80,99 40,75"
           />
           <polygon
@@ -101,7 +102,7 @@ const Loader = () => {
                 offset="20%"
               />
               <stop
-                style={{ stopColor: "#d3a51054", stopOpacity: "1" }}
+                style={{ stopColor: theme.palette.primary.dark, stopOpacity: "1" }}
                 offset="100%"
                 className={styles.animatedStop}
               />
