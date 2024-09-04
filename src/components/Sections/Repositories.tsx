@@ -1,13 +1,16 @@
-import { Box, Card, CardContent, Chip, Container, Link, useTheme } from '@mui/material'
+import { Box, Button, Card, CardContent, Chip, Container, Link, useTheme } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import { GitHubRepos } from '../../Interfaces/GitHubRepos'
 import Loader from '../Utils/Loader'
 import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
+const GITHUB_TOKEN: string = import.meta.env.VITE_GITHUB_TOKEN || ''
+
 // interface Filters {
 //     owner: boolean;
 //     forked: boolean;
 // }
+ 
 
 const Repositories = () => {
     const username = 'OtavioMendesSantos'
@@ -21,13 +24,16 @@ const Repositories = () => {
 
     useEffect(() => {
         async function getUserRepositories() {
-            try{
+            try {
                 setLoadingRepos(true)
-                const response = await fetch(`https://api.github.com/users/${username}/repos`)
+                const response = await fetch(`https://api.github.com/users/${username}/repos`,{
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        Accept: 'application/vnd.github.v3+json'
+                    }
+                })
                 if (response.ok) {
                     const data: GitHubRepos[] = await response.json()
-                    const ownerRepos = data.filter((repo) => repo.owner.login === username)
-                    console.log(ownerRepos);
                     setRepos(data)
                 }
             } catch (error) {
@@ -37,6 +43,52 @@ const Repositories = () => {
             }
         }
         getUserRepositories()
+
+        /*   async function getUserRepositories2() {
+              try{
+                  const response = await fetch('https://api.github.com/users/OtavioMendesSantos')
+                  if (response.ok) {
+                      const data = await response.json()
+                      console.log(data);
+                  }
+              } catch (error) {
+                  console.log(error);
+              } finally {
+                  setLoadingRepos(false)
+              }
+          }
+          getUserRepositories2()
+          
+          async function getUserRepositories3() {
+              try{
+                  const response = await fetch(`https://api.github.com/repos/${username}/Projeto_Autodidata`)
+                  if (response.ok) {
+                      const data = await response.json()
+                      console.log(data);
+                  }
+              } catch (error) {
+                  console.log(error);
+              } finally {
+                  setLoadingRepos(false)
+              }
+          }
+          getUserRepositories3() 
+          async function getUserRepositories34() {
+              try{
+                  const response = await fetch(`https://api.github.com/repos/${username}/Projeto_Autodidata/commits`)
+                  if (response.ok) {
+                      const data = await response.json()
+                      console.log(data);
+                  }
+              } catch (error) {
+                  console.log(error);
+              } finally {
+                  setLoadingRepos(false)
+              }
+          }
+          getUserRepositories34()
+          */
+
     }, [])
 
     return (
@@ -57,7 +109,7 @@ const Repositories = () => {
                             key={repo.id}
                             sx={{
                                 flex: '1 0 200px',
-                                minWidth: 'fit-content',
+                                minWidth: '200px',
                                 maxWidth: '400px',
                                 borderRadius: 4,
                                 transition: 'all 0.3s ease-in-out',
@@ -72,7 +124,12 @@ const Repositories = () => {
                         >
                             <Card sx={{ borderRadius: 4, height: '100%' }}>
                                 <CardContent sx={{ height: '100%', }}>
-                                    <Typography variant="h3" sx={{ minWidth: 'fit-content' }}>{repo.name}</Typography>
+                                    <Typography
+                                        variant="h3"
+                                        sx={{ textOverflow: 'ellipsis', overflow: 'hidden', }}
+                                    >
+                                        {repo.name}
+                                    </Typography>
                                     {repo.topics?.map((topic) => (
                                         <Chip key={topic} label={topic} size="small" sx={{ mr: 1 }} />
                                     ))}
@@ -85,7 +142,9 @@ const Repositories = () => {
                                         rel="noopener noreferrer"
                                         variant={'body1'}
                                     >
-                                        Visitar repositório <LaunchRoundedIcon fontSize="inherit" />
+                                        <Button>
+                                            Visitar repositório <LaunchRoundedIcon fontSize="inherit" />
+                                        </Button>
                                     </Link>
                                 </CardContent>
                             </Card>
@@ -94,9 +153,10 @@ const Repositories = () => {
                 ) : (
                     <Box sx={{ display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column' }}>
                         <Loader />
-                        {loadingRepos 
-                        ? <Typography variant="body1">Carregando repositórios...</Typography>
-                        : <Typography variant="body1">Erro Inesperado :)</Typography>}
+                        {loadingRepos
+                            ? <Typography variant="body1">Carregando repositórios...</Typography>
+                            : null
+                        }
                     </ Box>
                 )}
             </Container>

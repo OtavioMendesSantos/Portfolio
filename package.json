@@ -18,6 +18,7 @@
     "@react-three/drei": "9.75.0",
     "@react-three/fiber": "8.13.3",
     "@types/three": "0.152.1",
+    "dotenv": "^16.4.5",
     "leva": "^0.9.35",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@types/node": "^22.5.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
