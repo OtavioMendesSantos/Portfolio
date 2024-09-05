@@ -1,9 +1,10 @@
-import { Box, Button, Card, CardContent, Chip, Container, Link, useTheme } from '@mui/material'
+import { Box, Button, Card, CardContent, Chip, Container, Link, Stack, useTheme } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import { GitHubRepos } from '../../Interfaces/GitHubRepos'
 import Loader from '../Utils/Loader'
 import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
+import { applyOpacity } from '../../utils/utils'
 const GITHUB_TOKEN: string = import.meta.env.VITE_GITHUB_TOKEN || ''
 
 // interface Filters {
@@ -91,8 +92,6 @@ const Repositories = () => {
 
     }, [])
 
-    
-
     return (
         <Box component="section">
             <Typography variant="h1">Repositórios</Typography>
@@ -120,7 +119,7 @@ const Repositories = () => {
                                 '&:hover': {
                                     backgroundImage: `linear-gradient(163deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.light} 100%)`,
                                     borderImage: `linear-gradient(163deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.light} 100%)`,
-                                    boxShadow: '0px 0px 30px 1px rgb(244, 118, 79, 0.3)',
+                                    boxShadow: `0px 0px 30px 1px ${applyOpacity(theme.palette.primary.main, 0.3)}`,
                                 },
                             }}
                         >
@@ -133,11 +132,11 @@ const Repositories = () => {
                                         {repo.name}
                                     </Typography>
                                     {repo.topics?.length > 0 &&
-                                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '.5rem' }}>
+                                        <Stack direction="row" sx={{ mb: 1, flexWrap: 'wrap', gap: 0.5 }} useFlexGap>
                                             {repo.topics?.map((topic) => (
                                                 <Chip key={topic} label={topic} size="small" sx={{ mr: 1 }} />
                                             ))}
-                                        </Box>
+                                        </Stack>
                                     }
                                     <Typography variant="body2">
                                         {repo.description ? repo.description : 'Sem descrição'}
