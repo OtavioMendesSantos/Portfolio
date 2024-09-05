@@ -10,7 +10,7 @@ const GITHUB_TOKEN: string = import.meta.env.VITE_GITHUB_TOKEN || ''
 //     owner: boolean;
 //     forked: boolean;
 // }
- 
+
 
 const Repositories = () => {
     const username = 'OtavioMendesSantos'
@@ -26,7 +26,7 @@ const Repositories = () => {
         async function getUserRepositories() {
             try {
                 setLoadingRepos(true)
-                const response = await fetch(`https://api.github.com/users/${username}/repos`,{
+                const response = await fetch(`https://api.github.com/users/${username}/repos`, {
                     headers: {
                         'Authorization': `token ${GITHUB_TOKEN}`,
                         Accept: 'application/vnd.github.v3+json'
@@ -91,8 +91,10 @@ const Repositories = () => {
 
     }, [])
 
+    
+
     return (
-        <Box>
+        <Box component="section">
             <Typography variant="h1">Repositórios</Typography>
             <Container
                 sx={{
@@ -122,17 +124,21 @@ const Repositories = () => {
                                 },
                             }}
                         >
-                            <Card sx={{ borderRadius: 4, height: '100%' }}>
-                                <CardContent sx={{ height: '100%', }}>
+                            <Card sx={{ borderRadius: 4, height: '100%', }}>
+                                <CardContent sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                     <Typography
                                         variant="h3"
                                         sx={{ textOverflow: 'ellipsis', overflow: 'hidden', }}
                                     >
                                         {repo.name}
                                     </Typography>
-                                    {repo.topics?.map((topic) => (
-                                        <Chip key={topic} label={topic} size="small" sx={{ mr: 1 }} />
-                                    ))}
+                                    {repo.topics?.length > 0 &&
+                                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '.5rem' }}>
+                                            {repo.topics?.map((topic) => (
+                                                <Chip key={topic} label={topic} size="small" sx={{ mr: 1 }} />
+                                            ))}
+                                        </Box>
+                                    }
                                     <Typography variant="body2">
                                         {repo.description ? repo.description : 'Sem descrição'}
                                     </Typography>

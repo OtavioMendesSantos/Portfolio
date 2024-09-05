@@ -2,10 +2,10 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import PresentationAvatar from '../../components/Models/PresentationAvatar'
 import useResponsive from '../../hooks/useResponsive'
-import { Box, Container, Grid2, IconButton, Typography, useTheme } from '@mui/material'
+import { Box, Container, Grid2, IconButton, useTheme } from '@mui/material'
 import StacksList from '../../components/StacksList'
 import KeyboardDoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown'
-import { StyledTypography } from '../../components/Styled/StyledComponents'
+import { StyledTypography as Typography } from '../../components/Styled/StyledComponents'
 import Repositories from '../../components/Sections/Repositories'
 
 const Home = () => {
@@ -33,17 +33,17 @@ const Home = () => {
             justifyContent: 'center',
           }}
         >
-          {!isMobile &&
+          {/* {!isMobile &&
             <Grid2 sizes={{ xs: 0, sm: 0, md: 6 }} height={"100%"}>
               <PresentationAvatar />
             </Grid2>
-          }
+          } */}
           <Grid2
             sizes={{ xs: 12, md: 12 }}
             display="flex"
             flexDirection="column"
           >
-            <StyledTypography variant="h1" indicate>Otávio Mendes Santos</StyledTypography>
+            <Typography variant="h1" indicate>Otávio Mendes Santos</Typography>
             <Typography variant="subtitle1">Dev. Front End</Typography>
             <StacksList indicate title='Stacks'
               itens={['react', 'javascript', 'typescript', 'materialui', 'redux']}
@@ -72,11 +72,18 @@ const Home = () => {
           backgroundPosition: '-5px -5px'
         }}
       >
-        <StyledTypography indicate variant='h1'>Sobre Mim</StyledTypography>
-        <StyledTypography indicate variant='h1'>Habilidades</StyledTypography>
-        <StyledTypography indicate variant='h1'>Experiência</StyledTypography>
-        <StyledTypography indicate variant='h1'>Formação</StyledTypography>
-        <StyledTypography indicate variant='h1'>Projetos</StyledTypography>
+        {/* <Typography indicate variant='h1'>Sobre Mim</Typography>
+        <Typography>
+          Olá, meu nome é Otávio, tenho 19 anos e estou cursando <strong>Análise e Desenvolvimento de Sistemas</strong> no <strong>Senac DF</strong>.
+        </Typography>
+        <Typography>
+          No meu dia a dia, trabalho principalmente com <strong>React.js</strong>, utilizando bibliotecas como <strong>Material UI Design</strong> e atualmente estou aprofundando meus estudos em outras, como o <strong>Redux</strong> e <strong>Next</strong>.
+        </Typography>*/}
+
+        <Typography indicate variant='h1'>Habilidades</Typography> 
+        {/* <Typography indicate variant='h1'>Experiência</Typography>
+        <Typography indicate variant='h1'>Formação</Typography> */}
+        <Typography indicate variant='h1'>Projetos</Typography>
         <Repositories />
       </Container>
       <Footer />
