@@ -17,6 +17,7 @@ export const StyledTypography = styled(Typography, {
 })<CustomTypographyProps>(({ theme, indicate }) => ({
     ...(indicate && {
         position: 'relative',
+        zIndex: 1,
         '&::before': {
             content: '""',
             position: 'absolute',
