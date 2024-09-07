@@ -7,6 +7,7 @@ import { Box, Container, useTheme } from '@mui/material'
 import Repositories from '../../components/Sections/Repositories'
 import Skills from '../../components/Sections/Skills'
 import Presentation from '../../components/Sections/Presentation'
+import Experience from '../../components/Sections/Experience'
 
 const Home = () => {
   const theme = useTheme()
@@ -35,8 +36,8 @@ const Home = () => {
         }}
       >
         <Skills />
-        {/* <Typography indicate variant='h1'>Experiência</Typography>
-        <Typography indicate variant='h1'>Formação</Typography> */}
+        <Experience />
+        {/*        <Typography indicate variant='h1'>Formação</Typography> */}
         {/* <Typography indicate variant='h1'>Projetos</Typography> */}
         <Repositories />
       </Container>

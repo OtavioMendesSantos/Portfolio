@@ -5,7 +5,6 @@ import { GitHubRepos } from '../../Interfaces/GitHubRepos'
 import Loader from '../Utils/Loader'
 import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
 import { applyOpacity } from '../../utils/utils'
-const GITHUB_TOKEN: string = import.meta.env.VITE_GITHUB_TOKEN || ''
 
 // interface Filters {
 //     owner: boolean;
@@ -17,6 +16,8 @@ const Repositories = () => {
     const username = 'OtavioMendesSantos'
     const [repos, setRepos] = useState<GitHubRepos[]>([])
     const theme = useTheme()
+    const GITHUB_TOKEN: string = import.meta.env.VITE_GITHUB_TOKEN || ''
+
     // const [filters, setFilters] = useState<Filters>({
     //     owner: true,
     //     forked: false
@@ -26,10 +27,11 @@ const Repositories = () => {
     useEffect(() => {
         async function getUserRepositories() {
             try {
+                if (!GITHUB_TOKEN) throw new Error('Token Ausente')
                 setLoadingRepos(true)
                 const response = await fetch(`https://api.github.com/users/${username}/repos`, {
                     headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
                         Accept: 'application/vnd.github.v3+json'
                     }
                 })
@@ -94,7 +96,7 @@ const Repositories = () => {
 
     return (
         <Box component="section">
-            <Typography variant="h1">Repositórios</Typography>
+            <Typography variant="h1" indicate>Repositórios</Typography>
             <Container
                 sx={{
                     display: 'flex',

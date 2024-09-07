@@ -1,11 +1,17 @@
-import { Container, Link, Typography } from '@mui/material'
+import { Box, Link, Typography } from '@mui/material'
 
 const Footer = () => {
   return (
-    <Container
-      component="footer"
+    <Box
+      component="section"
       sx={{
-        minHeight: '50vh'
+        height: 'calc(100vh - 60px)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+        bgcolor: 'background.default',
       }}
     >
       <Typography align="center">
@@ -17,7 +23,7 @@ const Footer = () => {
           @OtavioMendesSantos
         </Link>
       </Typography>
-    </Container>
+    </Box>
   )
 }
 
