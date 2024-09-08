@@ -3,15 +3,19 @@ import {
     ThemeProvider,
     Theme,
     CssBaseline,
+    ThemeOptions,
 } from '@mui/material'
 import React, { useCallback, useEffect, useState } from 'react'
 import { deepmerge } from '@mui/utils'
 
 const CustomThemeProvider = (
-    { children }: { children: React.ReactNode }
+    { children, mode }: { children: React.ReactNode, mode: 'light' | 'dark' }
 ) => {
-
     const [theme, setTheme] = useState<Theme | null>(null)
+
+    useEffect(() => {
+        console.log('%cSeja Bem vindo!', 'color: #F25424; font-size: 32px; width: 100%;, text-align: center;')
+    }, [])
 
     const generateCSS = useCallback((theme: Theme) => {
         return `
@@ -38,12 +42,31 @@ const CustomThemeProvider = (
             font-weight: ${theme.typography.h1.fontWeight};
             }
         `
-    }, [])
+    }, [theme])
 
     useEffect(() => {
-        console.log('%cSeja Bem vindo!', 'color: #F25424; font-size: 32px; width: 100%;, text-align: center;')
-        const defaultTheme = createTheme({
-            palette: {
+        const colorMode: {
+            light: ThemeOptions['palette'];
+            dark: ThemeOptions['palette'];
+        } = {
+            light: {
+                mode: 'light',
+                primary: {
+                    main: '#F25424'
+                },
+                secondary: {
+                    main: '#244CF2'
+                },
+                background: {
+                    default: '#FFFFFF',
+                    paper: '#FFFFFF'
+                },
+                text: {
+                    primary: '#222222',
+                    secondary: '#FFFFFF',
+                }
+            },
+            dark: {
                 mode: 'dark',
                 primary: {
                     main: '#F25424'
@@ -60,7 +83,14 @@ const CustomThemeProvider = (
                     secondary: '#161616',
                 }
             }
+        }
+
+        const defaultTheme = createTheme({
+            palette: {
+                ...colorMode[mode]
+            }
         })
+
         const CustomTheme = createTheme({
             palette: { ...defaultTheme.palette },
             typography: {
@@ -161,7 +191,7 @@ const CustomThemeProvider = (
         setTheme(finalTheme)
         //@ts-ignore
         window.theme = finalTheme
-    }, [])
+    }, [mode])
 
     useEffect(() => {
         if (theme) {

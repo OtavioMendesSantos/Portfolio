@@ -10,7 +10,7 @@ const Ds = () => {
         <Box>
             <Header />
             <Container>
-                <Typography my={2} variant="h1" align="center">Desing Sistem</Typography>
+                <Typography my={2} variant="h1" align="center">Desing System</Typography>
                 <Paper
                     sx={{ p: 2, display: 'flex', flexDirection: 'column' }}
                     elevation={3}
@@ -95,7 +95,6 @@ const Ds = () => {
                     </Collapse>
 
                 </Paper>
-                
             </Container>
         </Box>
     )

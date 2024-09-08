@@ -9,18 +9,31 @@ import Skills from '../../components/Sections/Skills'
 import Presentation from '../../components/Sections/Presentation'
 import Experience from '../../components/Sections/Experience'
 import Projects from '../../components/Sections/Projects'
+import { changeOpacity, applyOpacity, identifyColorType } from '../../utils/utils'
 
 const Home = () => {
   const theme = useTheme()
   // const { isMobile } = useResponsive()
   const timeAnimation = 300
 
+  const changeBgColor = (color: string) => {
+    const colorType = identifyColorType(color)
+
+    if (colorType == 'rgb' || colorType == 'hex') {
+      return applyOpacity(color, 0.2)
+    } else if (colorType == 'hsl' || colorType == 'hsla' || colorType == 'rgba') {
+      return changeOpacity(color, 0.2)
+    } else {
+      return color
+    }
+  }
+
   return (
     <Box
       component="main"
       sx={{
         backgroundColor: theme.palette.background.paper,
-        backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0)',
+        backgroundImage: `radial-gradient(${changeBgColor(theme.palette.getContrastText(theme.palette.background.paper))} 2px, transparent 0)`,
         backgroundSize: '40px 40px',
         backgroundPosition: '-5px -5px'
       }}

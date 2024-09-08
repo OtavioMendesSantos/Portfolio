@@ -3,8 +3,8 @@ import './App.css'
 import Home from './pages/Home'
 import Blog from './pages/Blog'
 import NotFound from './pages/NotFound'
-import CustomThemeProvider from './styles/CustomThemeProvider'
 import Ds from './pages/Ds'
+import { ThemeProviderWrapper } from './Context/ThemeContext'
 
 function App() {
   const router = createBrowserRouter([
@@ -27,9 +27,9 @@ function App() {
   ])
 
   return (
-    <CustomThemeProvider>
+    <ThemeProviderWrapper>
       <RouterProvider router={router} />
-    </CustomThemeProvider>
+    </ThemeProviderWrapper>
   )
 }
 
