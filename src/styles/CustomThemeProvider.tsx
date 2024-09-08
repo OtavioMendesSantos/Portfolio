@@ -126,36 +126,17 @@ const CustomThemeProvider = (
                     fontFamily: '"Poppins", sans-serif',
                     fontSize: '0.75rem',
                     fontWeight: 400,
-                    display: 'block'
+                    color: defaultTheme.palette.grey[400]
                 },
                 overline: {
                     fontFamily: '"Poppins", sans-serif',
                     fontSize: '0.75rem',
                     fontWeight: 700,
-                    display: 'block'
+                    color: defaultTheme.palette.grey[400]
                 }
             },
             components: {
                 MuiTypography: {
-                    // styleOverrides: {
-                        // root: ({ theme, ownerState }: any) => ({
-                        //     ...(ownerState.indicate === true && {
-                        //         position: 'relative',
-                        //         '&::before': {
-                        //             content: '""',
-                        //             position: 'absolute',
-                        //             left: '-4px',
-                        //             bottom: '-6px',
-                        //             transform: 'translateY(-50%)',
-                        //             width: '15px',
-                        //             height: '15px',
-                        //             zIndex: -1,
-                        //             backgroundColor: theme.palette.primary.main,
-                        //             borderRadius: '3px'
-                        //         },
-                        //     }),
-                        // }),
-                    // },
                     defaultProps: {
                         variantMapping: {
                             h1: 'h1',

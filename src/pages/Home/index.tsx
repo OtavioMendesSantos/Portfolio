@@ -8,6 +8,7 @@ import Repositories from '../../components/Sections/Repositories'
 import Skills from '../../components/Sections/Skills'
 import Presentation from '../../components/Sections/Presentation'
 import Experience from '../../components/Sections/Experience'
+import Projects from '../../components/Sections/Projects'
 
 const Home = () => {
   const theme = useTheme()
@@ -38,7 +39,7 @@ const Home = () => {
         <Skills />
         <Experience />
         {/*        <Typography indicate variant='h1'>Formação</Typography> */}
-        {/* <Typography indicate variant='h1'>Projetos</Typography> */}
+        <Projects />
         <Repositories />
       </Container>
       <Footer />
