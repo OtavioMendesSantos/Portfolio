@@ -17,20 +17,20 @@ const StacksList = (
 ) => {
   const { isMobile } = useResponsive()
   const containerRef = useRef<HTMLDivElement>(null)
-  const [showArrows, setShowArrows] = useState(false)
+  const [showArrows, setShowArrows] = useState(true)
+
+  const checkScroll = () => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+      setShowArrows(container.scrollWidth > container.clientWidth);
+    }
+  };
 
   useEffect(() => {
-    const checkScroll = () => {
-      if (containerRef.current) {
-        const container = containerRef.current;
-        setShowArrows(container.scrollWidth > container.clientWidth);
-      }
-    };
+    checkScroll(); 
+    window.addEventListener('resize', checkScroll);
 
-    checkScroll(); // Initial check
-    window.addEventListener('resize', checkScroll); // Check on resize
-
-    return () => window.removeEventListener('resize', checkScroll); // Cleanup on unmount
+    return () => window.removeEventListener('resize', checkScroll);
   }, [itens])
 
   const handleScrollRight = () => {
@@ -84,7 +84,6 @@ const StacksList = (
             ...containerProps?.sx
           }}
         >
-
           {itens.map((item) => (
             <Box
               key={item}
@@ -110,7 +109,7 @@ const StacksList = (
                     }
                   }}
                   onDragStart={(e: DragEvent) => e.preventDefault()}
-                  src={`/svgs/${item}-original.svg`}
+                  src={`assets/svgs/${item}-original.svg`}
                   alt={item}
                   {...boxProps}
                 />

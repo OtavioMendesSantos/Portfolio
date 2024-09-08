@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import Logo from '/svgs/logo_outlined.svg'
+import Logo from '/assets/svgs/logo_outlined.svg'
 // 
 import { AppBar, Box, useTheme } from '@mui/material'
 const Header = (

@@ -2,7 +2,7 @@ import { Box, Button, Card, CardContent, Chip, Container, Link, Stack, useTheme 
 import { useEffect, useState } from 'react'
 import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import { GitHubRepos } from '../../Interfaces/GitHubRepos'
-import Loader from '../Utils/Loader'
+import Loader from '../Utils/Loader/Loader'
 import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
 import { applyOpacity } from '../../utils/utils'
 
