@@ -1,10 +1,11 @@
-import { Box, BoxProps, Container, ContainerProps, IconButton, IconButtonProps, styled, Tooltip } from '@mui/material'
-import useResponsive from '../../hooks/useResponsive'
-import { StyledTypography } from '../Styled/StyledComponents'
-import { useEffect, useRef, useState } from 'react'
+import { Box, BoxProps, Container, ContainerProps, IconButton, IconButtonProps, styled, Tooltip } from '@mui/material';
+import useResponsive from '../../hooks/useResponsive';
+import { StyledTypography } from '../Styled/StyledComponents';
+import { useEffect, useRef, useState } from 'react';
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import { applyOpacity } from '../../utils/utils';
+import ImgWithLoading from '../Utils/ImgWithLoading';
 
 const StacksList = (
   { title, itens, indicate, boxProps, containerProps }: {
@@ -15,9 +16,9 @@ const StacksList = (
     containerProps?: ContainerProps,
   }
 ) => {
-  const { isMobile } = useResponsive()
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [showArrows, setShowArrows] = useState(true)
+  const { isMobile } = useResponsive();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [showArrows, setShowArrows] = useState(true);
 
   const checkScroll = () => {
     if (containerRef.current) {
@@ -27,29 +28,29 @@ const StacksList = (
   };
 
   useEffect(() => {
-    checkScroll(); 
+    checkScroll();
     window.addEventListener('resize', checkScroll);
 
     return () => window.removeEventListener('resize', checkScroll);
-  }, [itens])
+  }, [itens]);
 
   const handleScrollRight = () => {
     if (containerRef.current) {
       containerRef.current.scrollBy({
-        left: 200, // Ajuste esse valor conforme necessário
+        left: 200,
         behavior: 'smooth'
       });
     }
-  }
+  };
 
   const handleScrollLeft = () => {
     if (containerRef.current) {
       containerRef.current.scrollBy({
-        left: -200, // Ajuste esse valor conforme necessário
+        left: -200,
         behavior: 'smooth'
       });
     }
-  }
+  };
 
   return (
     <Box>
@@ -61,7 +62,7 @@ const StacksList = (
           {title}
         </StyledTypography>
       }
-      <Box sx={{ position: 'relative' }}>
+      <Box sx={{ position: 'relative', padding: '0' }}>
         {showArrows && (
           <StyledIconButton
             sx={{ left: '0' }}
@@ -84,35 +85,34 @@ const StacksList = (
             ...containerProps?.sx
           }}
         >
+          {showArrows && <Box />}
           {itens.map((item) => (
             <Box
               key={item}
               component="li"
               sx={{
-                // flex: 1,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center'
               }}
             >
               <Tooltip title={isMobile ? '' : item.toUpperCase()} arrow>
-                <Box
-                  component="img"
-                  sx={{
-                    maxWidth: '60px',
-                    minWidth: '46px',
-                    width: isMobile ? '46px' : '100%',
-                    filter: isMobile ? 'grayscale(0%)' : 'grayscale(10%)',
-                    '&:hover': {
-                      filter: 'grayscale(0%)',
-                      transition: 'filter 0.3s ease',
-                    }
-                  }}
-                  onDragStart={(e: DragEvent) => e.preventDefault()}
-                  src={`assets/svgs/${item}-original.svg`}
-                  alt={item}
-                  {...boxProps}
-                />
+                <Box>
+                  <ImgWithLoading
+                    src={`assets/svgs/${item}-original.svg`}
+                    alt={item}
+                    imgProps={{
+                      style: {
+                        maxWidth: '60px',
+                        minWidth: '46px',
+                        width: isMobile ? '46px' : '100%',
+                      },
+                      // onDragStart: ((event: DragEvent) => event.preventDefault()),
+                      onDragStart: (e: React.DragEvent<HTMLImageElement>) => { e.preventDefault() },
+                    }}
+                    boxProps={{ ...boxProps }}
+                  />
+                </Box>
               </Tooltip>
               {isMobile &&
                 <StyledTypography variant="caption">
@@ -120,6 +120,7 @@ const StacksList = (
                 </StyledTypography>}
             </Box>
           ))}
+          {showArrows && <Box />}
         </Container>
         {showArrows && (
           <StyledIconButton
@@ -130,9 +131,9 @@ const StacksList = (
           </StyledIconButton>
         )}
       </Box>
-    </Box >
-  )
-}
+    </Box>
+  );
+};
 
 interface StyledIconButtonProps extends IconButtonProps {
   children?: React.ReactNode;
@@ -153,4 +154,4 @@ const StyledIconButton = styled(({ children, ...props }: StyledIconButtonProps) 
   }
 }));
 
-export default StacksList
+export default StacksList;

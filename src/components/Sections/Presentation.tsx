@@ -2,11 +2,13 @@ import { Box, Grid2, IconButton, Slide } from '@mui/material'
 import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import KeyboardDoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown'
 import StacksList from '../StacksList'
+import useResponsive from '../../hooks/useResponsive'
 
 const Presentation = (
     { timeAnimation = 300 }:
         { timeAnimation?: number }
 ) => {
+    const {isMobile} = useResponsive()
     return (
         <Box
             component="section"
@@ -18,6 +20,7 @@ const Presentation = (
                 alignItems: 'center',
                 overflow: 'hidden',
                 bgcolor: 'background.default',
+                px: isMobile ? 2 : 0,
             }}
         >
             <Slide in={true} direction="left" timeout={timeAnimation}>
@@ -42,7 +45,7 @@ const Presentation = (
                         flexDirection="column"
                     >
                         <Grid2
-                            size={{ xs: 12, sm: 6 }}
+                            size={{ xs: 12, sm: 12, md: 6 }}
                             display="flex"
                             flexDirection="column"
                         >
@@ -55,7 +58,7 @@ const Presentation = (
                                 itens={['react', 'javascript', 'typescript', 'materialui', 'redux']}
                             />
                             <StacksList indicate title='Contatos'
-                                itens={['linkedin', 'github', 'twitter']}
+                                itens={['linkedin', 'github']}
                             />
                         </Grid2>
                     </Grid2>

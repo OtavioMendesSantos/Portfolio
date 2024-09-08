@@ -10,10 +10,13 @@ import { CheckCircle } from '@mui/icons-material';
 import ErrorRoundedIcon from '@mui/icons-material/ErrorRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
+import useResponsive from '../../hooks/useResponsive';
 
 type Status = Project['status']
 
 const Projects = () => {
+    const { isMobile } = useResponsive();
+
     const projects: Array<Project> = [
         // nome: 'Dogs - Rede Social Para Cachorros',
         {
@@ -42,7 +45,7 @@ const Projects = () => {
             descricao: 'Site feito para explorar as propriedades do display flexbox.',
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Sites_Portifolio/tree/main/projetos/origamid/FlexBlog',
             linkProjeto: 'https://otaviomendessantos.github.io/Sites_Portifolio/projetos/origamid/FlexBlog/index.html',
-            status: 'em_desenvolvimento',
+            status: 'concluido',
             stacks: ['javascript', 'react', 'typescript'],
         },
         // nome: 'Pomodoro',
@@ -163,6 +166,12 @@ const Projects = () => {
                                                     borderRadius: '4px',
                                                 }
                                             }}
+                                            boxProps={{
+                                                sx: {
+                                                    width: isMobile ? '80%' : '100%',
+                                                    margin: '0 auto',
+                                                }
+                                            }}
                                         />
                                     </Grid2>
                                     <Grid2
@@ -234,7 +243,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
     backgroundColor: applyOpacity(theme.palette.primary.main, 0),
     backdropFilter: 'blur(1px)',
     flex: '1 0 400px',
-    minHeight: '350px', 
+    minHeight: '350px',
     display: 'flex',
     flexDirection: 'column',
     [theme.breakpoints.down('md')]: {
@@ -253,7 +262,7 @@ const StyledContainer = styled(Container)(({ }) => ({
     flexDirection: 'row',
     gap: '1rem',
     justifyContent: 'center',
-    alignItems: 'stretch', 
+    alignItems: 'stretch',
 }));
 
 export default Projects
