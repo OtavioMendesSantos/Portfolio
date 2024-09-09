@@ -10,6 +10,7 @@ import Presentation from '../../components/Sections/Presentation'
 import Experience from '../../components/Sections/Experience'
 import Projects from '../../components/Sections/Projects'
 import { changeOpacity, applyOpacity, identifyColorType } from '../../utils/utils'
+import Training from '../../components/Sections/Training'
 
 const Home = () => {
   const theme = useTheme()
@@ -51,7 +52,7 @@ const Home = () => {
       >
         <Skills />
         <Experience />
-        {/*        <Typography indicate variant='h1'>Formação</Typography> */}
+        <Training />
         <Projects />
         <Repositories />
       </Container>

@@ -1,7 +1,6 @@
-import { Box, Button, Card, CardContent, Container, Grid2, Link, Stack, styled, Tooltip } from '@mui/material'
-import { StyledTypography as Typography } from '../Styled/StyledComponents'
+import { Box, Button, CardContent, Container, Grid2, Link, Stack, styled, Tooltip } from '@mui/material'
+import { StyledTypography as Typography, StyledCard } from '../Styled/StyledComponents'
 import { Project } from '../../Interfaces/Project'
-import { applyOpacity } from '../../utils/utils'
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import StacksList from '../StacksList';
@@ -187,6 +186,7 @@ const Projects = () => {
                                                 {project.descricao}
                                             </Typography>
                                         </Box>
+                                        <Typography variant='subtitle1'>Tecnologias Utilizadas:</Typography>
                                         <StacksList
                                             containerProps={{
                                                 sx: {
@@ -238,23 +238,6 @@ const Projects = () => {
         </Box>
     )
 }
-
-const StyledCard = styled(Card)(({ theme }) => ({
-    backgroundColor: applyOpacity(theme.palette.primary.main, 0),
-    backdropFilter: 'blur(1px)',
-    flex: '1 0 400px',
-    minHeight: '350px',
-    display: 'flex',
-    flexDirection: 'column',
-    [theme.breakpoints.down('md')]: {
-        flexBasis: '100%',
-    },
-    '& .MuiCardContent-root': {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-}));
 
 const StyledContainer = styled(Container)(({ }) => ({
     display: 'flex',

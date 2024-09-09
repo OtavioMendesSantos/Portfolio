@@ -2,8 +2,10 @@ import {
     styled,
     Typography,
     TypographyProps as MuiTypographyProps,
-    Theme
+    Theme,
+    Card
 } from "@mui/material";
+import { applyOpacity } from "../../utils/utils";
 
 interface CustomTypographyProps extends MuiTypographyProps {
     indicate?: boolean;
@@ -32,3 +34,23 @@ export const StyledTypography = styled(Typography, {
         },
     })
 }))
+
+export const StyledCard = styled(Card)(({ theme }) => ({
+    backgroundColor: applyOpacity(theme.palette.primary.main, 0),
+    backdropFilter: 'blur(1px)',
+    flex: '1 0 400px',
+    minHeight: '350px',
+    display: 'flex',
+    flexDirection: 'column',
+    [theme.breakpoints.down('md')]: {
+        flexBasis: '100%',
+    },
+    '& .MuiCardContent-root': {
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    ...theme.applyStyles('light', {
+        boxShadow: theme.shadows[2],
+    }),
+}));
