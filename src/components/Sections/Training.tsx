@@ -94,13 +94,6 @@ const Training = () => {
             description: 'Introdução ao desenvolvimento de jogos utilizando JavaScript, abordando conceitos básicos de programação de jogos e criação de interatividade. Inclui projetos feitos durante o curso (Piano Virtual, Jogo Detona Ralph, Jogo da Memória, etc).'
         },
         {
-            name: 'Adm Banco de Dados',
-            organization: 'Senai',
-            src: '/assets/images/certificates/adm_banco_de_dados-senai.jpg',
-            horas: 240,
-            description: 'Curso completo sobre administração de bancos de dados, incluindo teoria de bancos de dados, relacionamentos e cardinalidades. Aborda também SQL básico e o uso de SQL Server e MySQL.'
-        },
-        {
             name: 'Desenvolvimento Back End com Kotlin',
             organization: 'DIO',
             src: '/assets/images/certificates/desenvolvimento_back_end_com_kotlin.jpg',
