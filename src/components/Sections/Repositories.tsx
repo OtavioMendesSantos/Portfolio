@@ -5,7 +5,7 @@ import { GitHubRepos } from '../../Interfaces/GitHubRepos'
 import Loader from '../Utils/Loader/Loader'
 import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
 import { applyOpacity } from '../../utils/utils'
-import { max } from 'three/examples/jsm/nodes/Nodes.js'
+import { motion } from 'framer-motion'
 
 // interface Filters {
 //     owner: boolean;
@@ -113,24 +113,40 @@ const Repositories = () => {
                 }}
             >
                 {repos.length > 0 ? (
-                    repos.map((repo) => (
-                        <Box
+                    repos.map((repo, index) => (
+                        <motion.div
                             key={repo.id}
-                            sx={{
-                                flex: '1 0 300px',
-                                maxWidth: '350px',
-                                border: `1px solid ${theme.palette.divider}`,
-                                borderRadius: 2,
-                                transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                                '&:hover': {
-                                    transform: 'translateY(-5px)',
-                                    borderColor: theme.palette.primary.main,
-                                    boxShadow: `0px 4px 20px ${applyOpacity(theme.palette.primary.main, 0.2)}`,
-                                },
+                            style={{ flex: '1', minWidth: '300px', maxWidth: '350px', height: 'min-content' }}
+                            initial={{ opacity: 0, y: 100 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ 
+                                duration: 0.5, 
+                                delay: (index % 2) * 0.2 
                             }}
                         >
-                            <StyledCard sx={{ height: '100%' }}>
-                                <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', p: 3 }}>
+                            <StyledCard
+                                sx={{
+                                    flex: '1 1 300px',
+                                    maxWidth: '350px',
+                                    minHeight: '250px',
+                                    border: `1px solid ${theme.palette.divider}`,
+                                    borderRadius: 2,
+                                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                                    '&:hover': {
+                                        transform: 'translateY(-5px)',
+                                        borderColor: theme.palette.primary.main,
+                                        boxShadow: `0px 4px 20px ${applyOpacity(theme.palette.primary.main, 0.2)}`,
+                                    },
+                                }}
+                            >
+                                <CardContent sx={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-between',
+                                    p: 3,
+                                    flex: '1'
+                                }}>
                                     <Box>
                                         <Typography
                                             variant="h3"
@@ -168,7 +184,8 @@ const Repositories = () => {
                                     </Link>
                                 </CardContent>
                             </StyledCard>
-                        </Box>
+
+                        </motion.div>
                     ))
                 ) : (
                     <Box sx={{ display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column' }}>
