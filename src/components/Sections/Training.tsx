@@ -10,7 +10,6 @@ import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded';
 import { CheckCircle } from '@mui/icons-material';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { head } from 'framer-motion/client';
 
 interface Certificate {
     name: string;
