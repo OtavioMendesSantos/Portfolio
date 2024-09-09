@@ -243,7 +243,7 @@ const Training = () => {
                 </Card>
 
                 <Typography variant="h2" sx={{ mb: 2 }}>Cursos e Certificados</Typography>
-                <Grid2 container sx={{ height: '50vh' }} spacing={2}>
+                <Grid2 container sx={{ minHeight: '50vh' }} spacing={2}>
                     <Grid2 size={{ xs: 12, sm: 8, md: 6 }}>
                         <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
                             <Typography
@@ -267,13 +267,12 @@ const Training = () => {
                                         animate={{ opacity: 1, x: 0 }}
                                         exit={{ opacity: 0, x: 100 }}
                                         transition={{ duration: 0.3 }}
-                                        style={{ width: '100%', height: '100%' }}
+                                        style={{ width: '100%', height: '100%', aspectRatio: '3/2' }}
                                     >
                                         <ImgWithLoading
                                             src={certificate.src}
                                             alt={certificate.name}
                                             boxProps={{ sx: { borderRadius: '4px', overflow: 'hidden' } }}
-                                        // imgProps={{style:{ width: '100%', height: '100%' }}}
                                         />
                                     </motion.div>
                                 ))}
