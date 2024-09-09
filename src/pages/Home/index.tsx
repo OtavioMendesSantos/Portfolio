@@ -2,7 +2,7 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 // import PresentationAvatar from '../../components/Models/PresentationAvatar'
 // import useResponsive from '../../hooks/useResponsive'
-import { Box, Container, useTheme } from '@mui/material'
+import { Box, Container, Fab, useTheme } from '@mui/material'
 // import { StyledTypography as Typography } from '../../components/Styled/StyledComponents'
 import Repositories from '../../components/Sections/Repositories'
 import Skills from '../../components/Sections/Skills'
@@ -11,9 +11,13 @@ import Experience from '../../components/Sections/Experience'
 import Projects from '../../components/Sections/Projects'
 import { changeOpacity, applyOpacity, identifyColorType } from '../../utils/utils'
 import Training from '../../components/Sections/Training'
+import KeyboardDoubleArrowUpRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowUpRounded';
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 const Home = () => {
   const theme = useTheme()
+  const [showFaq, setShowFaq] = useState(false)
   // const { isMobile } = useResponsive()
   const timeAnimation = 300
 
@@ -28,6 +32,14 @@ const Home = () => {
       return color
     }
   }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowFaq(window.scrollY > window.innerHeight)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <Box
@@ -55,6 +67,25 @@ const Home = () => {
         <Training />
         <Projects />
         <Repositories />
+        <motion.div
+          animate={{ opacity: showFaq ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          exit={{ opacity: 0 }}
+        >
+          <Fab
+            color="primary"
+            size='small'
+            sx={{
+              position: 'fixed',
+              bottom: 16,
+              right: 16,
+            }}
+            aria-label="To top"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <KeyboardDoubleArrowUpRoundedIcon />
+          </Fab>
+        </motion.div>
       </Container>
       <Footer />
     </Box>
