@@ -116,10 +116,11 @@ const Repositories = () => {
                     repos.map((repo, index) => (
                         <motion.div
                             key={repo.id}
-                            style={{ flex: '1', minWidth: '300px', maxWidth: '350px', height: 'min-content' }}
+                            style={{ flex: '1', minWidth: '300px', maxWidth: '350px', height: 'min-content', width: '100%', }}
                             initial={{ opacity: 0, y: 100 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.5 }}
+                            exit={{ opacity: 0, y: 100 }}
+                            viewport={{ once: false, amount: 0.5, margin: '900px 0px 0px 0px' }}
                             transition={{ 
                                 duration: 0.5, 
                                 delay: (index % 2) * 0.2 

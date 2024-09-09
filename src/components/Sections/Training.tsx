@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Container, Divider, Grid2, IconButton, IconButtonProps, Stack, styled, Tooltip, useTheme, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Modal, Theme } from '@mui/material'
+import { Box, Button, Card, CardContent, Container, Divider, Grid2, IconButton, IconButtonProps, Stack, styled, Tooltip, useTheme, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Modal, Theme, Fade } from '@mui/material'
 import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
@@ -167,75 +167,77 @@ const Training = () => {
                             open={open}
                             onClose={handleClose}
                         >
-                            <Box sx={{
-                                position: 'absolute' as 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                maxWidth: '600px',
-                                maxHeight: '600px',
-                                bgcolor: 'background.paper',
-                                boxShadow: 24,
-                                p: 2,
-                                display: 'flex',
-                                flexDirection: 'column',
-                            }}>
-                                <Stack
-                                    direction="row"
-                                    justifyContent="space-between"
-                                    alignItems="center"
-                                    sx={{ position: 'relative' }}
-                                >
-                                    <Typography variant="h2" align='center' sx={{ mb: 2, px: 4 }}>
-                                        Análise e Desenvolvimento de Sistemas
-                                    </Typography>
-                                    <IconButton variant="filled" onClick={handleClose} color='primary' sx={{ position: 'absolute', right: 10 }}>
-                                        <CloseRoundedIcon />
-                                    </IconButton>
-                                </Stack>
-                                <Box
-                                    sx={(theme: Theme) => ({
-                                        flex: '1',
-                                        overflow: 'auto',
-                                        '&::-webkit-scrollbar': {
-                                            width: '8px',
-                                        },
-                                        '&::-webkit-scrollbar-track': {
-                                            backgroundColor: theme.palette.background.default,
-                                        },
-                                        '&::-webkit-scrollbar-thumb': {
-                                            backgroundColor: theme.palette.primary.main,
-                                            borderRadius: '4px',
-                                        },
-                                        '&::-webkit-scrollbar-thumb:hover': {
-                                            backgroundColor: theme.palette.primary.dark,
-                                        },
-                                        scrollbarWidth: 'thin',
-                                        scrollbarColor: `${theme.palette.primary.main} ${theme.palette.background.default}`,
-                                    })}
-                                >
-                                    <TableContainer component={Paper}>
-                                        <Table>
-                                            <TableHead>
-                                                <TableRow>
-                                                    <TableCell><Typography variant="h6">Ordem</Typography></TableCell>
-                                                    <TableCell><Typography variant="h6">Unidade Curricular</Typography></TableCell>
-                                                    <TableCell><Typography variant="h6">CH</Typography></TableCell>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-                                                {curriculumData.map((item) => (
-                                                    <TableRow key={item.ordem}>
-                                                        <TableCell>{item.ordem}</TableCell>
-                                                        <TableCell>{item.unidadeCurricular}</TableCell>
-                                                        <TableCell>{item.ch}</TableCell>
+                            <Fade in={open} timeout={300}>
+                                <Box sx={{
+                                    position: 'absolute' as 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    maxWidth: '600px',
+                                    maxHeight: '600px',
+                                    bgcolor: 'background.paper',
+                                    boxShadow: 24,
+                                    p: 2,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                }}>
+                                    <Stack
+                                        direction="row"
+                                        justifyContent="space-between"
+                                        alignItems="center"
+                                        sx={{ position: 'relative' }}
+                                    >
+                                        <Typography variant="h2" align='center' sx={{ mb: 2, px: 4 }}>
+                                            Análise e Desenvolvimento de Sistemas
+                                        </Typography>
+                                        <IconButton variant="filled" onClick={handleClose} color='primary' sx={{ position: 'absolute', right: 10 }}>
+                                            <CloseRoundedIcon />
+                                        </IconButton>
+                                    </Stack>
+                                    <Box
+                                        sx={(theme: Theme) => ({
+                                            flex: '1',
+                                            overflow: 'auto',
+                                            '&::-webkit-scrollbar': {
+                                                width: '8px',
+                                            },
+                                            '&::-webkit-scrollbar-track': {
+                                                backgroundColor: theme.palette.background.default,
+                                            },
+                                            '&::-webkit-scrollbar-thumb': {
+                                                backgroundColor: theme.palette.primary.main,
+                                                borderRadius: '4px',
+                                            },
+                                            '&::-webkit-scrollbar-thumb:hover': {
+                                                backgroundColor: theme.palette.primary.dark,
+                                            },
+                                            scrollbarWidth: 'thin',
+                                            scrollbarColor: `${theme.palette.primary.main} ${theme.palette.background.default}`,
+                                        })}
+                                    >
+                                        <TableContainer component={Paper}>
+                                            <Table>
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell><Typography variant="h6">Ordem</Typography></TableCell>
+                                                        <TableCell><Typography variant="h6">Unidade Curricular</Typography></TableCell>
+                                                        <TableCell><Typography variant="h6">CH</Typography></TableCell>
                                                     </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
+                                                </TableHead>
+                                                <TableBody>
+                                                    {curriculumData.map((item) => (
+                                                        <TableRow key={item.ordem}>
+                                                            <TableCell>{item.ordem}</TableCell>
+                                                            <TableCell>{item.unidadeCurricular}</TableCell>
+                                                            <TableCell>{item.ch}</TableCell>
+                                                        </TableRow>
+                                                    ))}
+                                                </TableBody>
+                                            </Table>
+                                        </TableContainer>
+                                    </Box>
                                 </Box>
-                            </Box>
+                            </Fade>
                         </Modal>
                     </CardContent>
                 </Card>

@@ -10,12 +10,12 @@ import ErrorRoundedIcon from '@mui/icons-material/ErrorRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import useResponsive from '../../hooks/useResponsive';
+import { motion } from 'framer-motion';
 
 type Status = Project['status']
 
 const Projects = () => {
     const { isMobile } = useResponsive();
-
     const projects: Array<Project> = [
         // nome: 'Dogs - Rede Social Para Cachorros',
         {
@@ -137,71 +137,96 @@ const Projects = () => {
             <Typography indicate variant="h1" sx={{ mb: 2 }}>Projetos</Typography>
             <StyledContainer>
                 {projects.map((project, index) => (
-                    <StyledCard key={index}>
-                        <CardContent sx={{ position: 'relative', display: 'flex', flexDirection: 'column', height: '100%' }}>
-                            <Box sx={{ top: 16, left: 16, position: 'absolute' }} >
-                                <Tooltip placement='top' arrow title={project.status.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}>
-                                    <Box sx={{ height: 'min-content', width: 'min-content' }}>
-                                        <ProjectStatus status={project.status} />
-                                    </Box>
-                                </Tooltip>
-                            </Box>
-                            <Typography
-                                variant='h2'
-                                align='center'
-                                sx={{ mb: 2, px: 2.5 }}
-                            >
-                                {project.nome}
-                            </Typography>
-                            <Stack direction="row" sx={{ width: '100%', flexGrow: 1 }}>
-                                <Grid2 container spacing={2} sx={{ width: '100%', height: '100%' }}>
-                                    <Grid2 size={{ xs: 12, sm: 4 }}>
-                                        <ImgWithLoading
-                                            alt={project.nome}
-                                            src={project.img || ''}
-                                            imgProps={{
-                                                style: {
-                                                    aspectRatio: '1 / 1',
-                                                    borderRadius: '4px',
-                                                }
-                                            }}
-                                            boxProps={{
-                                                sx: {
-                                                    width: isMobile ? '80%' : '100%',
-                                                    margin: '0 auto',
-                                                }
-                                            }}
-                                        />
-                                    </Grid2>
-                                    <Grid2
-                                        size={{ xs: 12, sm: 8 }}
-                                        sx={{
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            justifyContent: 'space-between',
-                                        }}
-                                    >
-                                        <Box>
-                                            <Typography>
-                                                {project.descricao}
-                                            </Typography>
+                    <motion.div
+                        key={index}
+                        style={{ width: '100%' }}
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -100 }}
+                        viewport={{ once: false, amount: isMobile ? 0.3 : 0.5, margin: '3000px 0px 0px 0px' }}
+                        transition={{
+                            duration: 0.5,
+                            delay: (index % 2) * 0.2
+                        }}
+                    >
+                        <StyledCard key={index}>
+                            <CardContent sx={{ position: 'relative', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                <Box sx={{ top: 16, left: 16, position: 'absolute' }} >
+                                    <Tooltip placement='top' arrow title={project.status.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}>
+                                        <Box sx={{ height: 'min-content', width: 'min-content' }}>
+                                            <ProjectStatus status={project.status} />
                                         </Box>
-                                        <Typography variant='subtitle1'>Tecnologias Utilizadas:</Typography>
-                                        <StacksList
-                                            containerProps={{
-                                                sx: {
-                                                    justifyContent: 'space-between'
-                                                }
+                                    </Tooltip>
+                                </Box>
+                                <Typography
+                                    variant='h2'
+                                    align='center'
+                                    sx={{ mb: 2, px: 2.5 }}
+                                >
+                                    {project.nome}
+                                </Typography>
+                                <Stack direction="row" sx={{ width: '100%', flexGrow: 1 }}>
+                                    <Grid2 container spacing={2} sx={{ width: '100%', height: '100%' }}>
+                                        <Grid2 size={{ xs: 12, sm: 4 }}>
+                                            <ImgWithLoading
+                                                alt={project.nome}
+                                                src={project.img || ''}
+                                                imgProps={{
+                                                    style: {
+                                                        aspectRatio: '1 / 1',
+                                                        borderRadius: '4px',
+                                                    }
+                                                }}
+                                                boxProps={{
+                                                    sx: {
+                                                        width: isMobile ? '80%' : '100%',
+                                                        margin: '0 auto',
+                                                    }
+                                                }}
+                                            />
+                                        </Grid2>
+                                        <Grid2
+                                            size={{ xs: 12, sm: 8 }}
+                                            sx={{
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                justifyContent: 'space-between',
                                             }}
-                                            itens={project.stacks}
-                                        />
-                                        <Stack
-                                            useFlexGap
-                                            sx={{ gap: 1 }}
                                         >
-                                            {project.linkProjeto &&
+                                            <Box>
+                                                <Typography>
+                                                    {project.descricao}
+                                                </Typography>
+                                            </Box>
+                                            <Typography variant='subtitle1'>Tecnologias Utilizadas:</Typography>
+                                            <StacksList
+                                                containerProps={{
+                                                    sx: {
+                                                        justifyContent: 'space-between'
+                                                    }
+                                                }}
+                                                itens={project.stacks}
+                                            />
+                                            <Stack
+                                                useFlexGap
+                                                sx={{ gap: 1 }}
+                                            >
+                                                {project.linkProjeto &&
+                                                    <Link
+                                                        href={project.linkProjeto}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <Button
+                                                            fullWidth
+                                                            variant="contained"
+                                                            sx={{ gap: 1 }}
+                                                        >
+                                                            Veja o projeto <OpenInNewRoundedIcon />
+                                                        </Button>
+                                                    </Link>}
                                                 <Link
-                                                    href={project.linkProjeto}
+                                                    href={project.linkRepositorio}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                 >
@@ -210,29 +235,17 @@ const Projects = () => {
                                                         variant="contained"
                                                         sx={{ gap: 1 }}
                                                     >
-                                                        Veja o projeto <OpenInNewRoundedIcon />
+                                                        Veja o código
+                                                        <CodeRoundedIcon />
                                                     </Button>
-                                                </Link>}
-                                            <Link
-                                                href={project.linkRepositorio}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <Button
-                                                    fullWidth
-                                                    variant="contained"
-                                                    sx={{ gap: 1 }}
-                                                >
-                                                    Veja o código
-                                                    <CodeRoundedIcon />
-                                                </Button>
-                                            </Link>
-                                        </Stack>
+                                                </Link>
+                                            </Stack>
+                                        </Grid2>
                                     </Grid2>
-                                </Grid2>
-                            </Stack>
-                        </CardContent>
-                    </StyledCard>
+                                </Stack>
+                            </CardContent>
+                        </StyledCard>
+                    </motion.div>
                 ))}
             </StyledContainer>
         </Box>
