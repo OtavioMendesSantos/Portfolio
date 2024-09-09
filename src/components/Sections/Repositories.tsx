@@ -118,7 +118,7 @@ const Repositories = () => {
                             key={repo.id}
                             sx={{
                                 flex: '1 0 300px',
-                                maxWidth: '400px',
+                                maxWidth: '350px',
                                 border: `1px solid ${theme.palette.divider}`,
                                 borderRadius: 2,
                                 transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
