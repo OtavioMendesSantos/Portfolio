@@ -5,6 +5,7 @@ import { GitHubRepos } from '../../Interfaces/GitHubRepos'
 import Loader from '../Utils/Loader/Loader'
 import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
 import { applyOpacity } from '../../utils/utils'
+import { max } from 'three/examples/jsm/nodes/Nodes.js'
 
 // interface Filters {
 //     owner: boolean;
@@ -116,14 +117,11 @@ const Repositories = () => {
                         <Box
                             key={repo.id}
                             sx={{
-                                display: 'flex',
                                 flex: '1 0 300px',
-                                minWidth: '200px',
-                                maxWidth: '350px',
+                                maxWidth: '400px',
+                                border: `1px solid ${theme.palette.divider}`,
                                 borderRadius: 2,
                                 transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                                border: `1px solid ${theme.palette.divider}`,
-                                boxSizing: 'border-box',
                                 '&:hover': {
                                     transform: 'translateY(-5px)',
                                     borderColor: theme.palette.primary.main,
@@ -131,7 +129,7 @@ const Repositories = () => {
                                 },
                             }}
                         >
-                            <StyledCard>
+                            <StyledCard sx={{ height: '100%' }}>
                                 <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', p: 3 }}>
                                     <Box>
                                         <Typography
