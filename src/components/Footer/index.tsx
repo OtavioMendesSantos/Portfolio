@@ -1,10 +1,8 @@
-import { Box, Divider, Link, Stack, styled, Typography } from '@mui/material'
+import { Box, Link, Stack, styled, Typography } from '@mui/material'
 import { LinkedIn } from '@mui/icons-material'
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
-// import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
-import { motion } from 'framer-motion';
-import { color } from 'chart.js/helpers';
+
 const Footer = () => {
   return (
     <Box
