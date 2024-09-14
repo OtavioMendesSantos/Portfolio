@@ -1,6 +1,7 @@
 type Status = 'nao_iniciado' | 'em_desenvolvimento' | 'concluido' | 'refatorando';
 
 export interface Project {
+    id: string,
     nome: string;
     img?: string;
     descricao: string;
