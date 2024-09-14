@@ -24,14 +24,6 @@ interface FilterOptions {
 }
 
 const Projects = () => {
-    const { isMobile } = useResponsive();
-    const maxViewProjects = 5
-    const [viewProjects, setViewProjects] = useState(maxViewProjects)
-    const [filters, setFilters] = useState<FilterOptions>({
-        status: [],
-        stack: []
-    })
-
     const projects: Project[] = useMemo(() => ([
         {
             id: uuidv4(),
@@ -135,27 +127,43 @@ const Projects = () => {
         },
     ]), []);
 
+    const { isMobile } = useResponsive();
+    const maxViewProjects = isMobile ? 3 : 5
+
+    const [viewProjects, setViewProjects] = useState(maxViewProjects)
+    const [filters, setFilters] = useState<FilterOptions>({
+        status: [],
+        stack: []
+    })
     const [filteredProjects, setFilteredProjects] = useState(projects)
 
     const renameStatus = (status: string) => {
         return status.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())
     }
 
-    const filteredStacks = projects.reduce((acc, project) => {
-        project.stacks.forEach((stack) => {
-            if (!acc.includes(stack)) {
-                acc.push(stack)
-            }
-        })
-        return acc
-    }, [] as string[])
+    const filteredStacks = useMemo(() => {
+        return (
+            projects.reduce((acc, project) => {
+                project.stacks.forEach((stack) => {
+                    if (!acc.includes(stack)) {
+                        acc.push(stack)
+                    }
+                })
+                return acc
+            }, [] as string[])
+        )
+    }, [projects])
 
-    const filteredStatus = projects.reduce((acc, project) => {
-        if (!acc.includes(project.status)) {
-            acc.push(project.status)
-        }
-        return acc
-    }, [] as Status[])
+    const filteredStatus = useMemo(() => {
+        return (
+            projects.reduce((acc, project) => {
+                if (!acc.includes(project.status)) {
+                    acc.push(project.status)
+                }
+                return acc
+            }, [] as Status[])
+        )
+    }, [projects])
 
     const ProjectStatus: React.FC<{ status: Status }> = ({ status }) => {
         switch (status) {
@@ -203,10 +211,7 @@ const Projects = () => {
     }
 
     const handleFilterChange = (event: SelectChangeEvent<string[]>, name: string) => {
-        const {
-            target: { value },
-        } = event
-
+        const { target: { value } } = event
         setFilters((prev) => ({ ...prev, [name]: value as string[] }))
     }
 
@@ -244,10 +249,10 @@ const Projects = () => {
                         direction="row"
                         justifyContent="space-between"
                         alignItems="center"
-                        sx={{ p: 2, gap: 2 }}
+                        sx={{ p: 2, gap: 2, flexWrap: 'wrap' }}
                         useFlexGap
                     >
-                        <FormControl sx={{ width: '100%' }} size='small'>
+                        <FormControl sx={{ flex: '1 0 300px' }} size='small'>
                             <InputLabel
                                 id='Stack-Label'
                                 sx={(theme: Theme) => ({
@@ -271,7 +276,7 @@ const Projects = () => {
                                 ))}
                             </Select>
                         </FormControl>
-                        <FormControl sx={{ width: '100%' }} size='small'>
+                        <FormControl sx={{ flex: '1 0 300px' }} size='small'>
                             <InputLabel
                                 id='Status-Label'
                                 sx={(theme: Theme) => ({
@@ -422,9 +427,11 @@ const Projects = () => {
                     }
                 </AnimatePresence>
                 {filteredProjects.length > viewProjects && (
-                    <Button fullWidth onClick={handleClick}>
-                        Ver Mais
-                    </Button>
+                    <Box>
+                        <Button fullWidth variant="outlined" onClick={handleClick}>
+                            Ver Mais
+                        </Button>
+                    </Box>
                 )}
             </StyledContainer>
         </Box>
