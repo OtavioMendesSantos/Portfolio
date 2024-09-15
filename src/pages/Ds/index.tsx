@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, Button, Chip, Collapse, Container, Divider, IconButton, IconButtonProps, Paper, PaperProps, styled, Theme, Typography, useTheme } from '@mui/material'
+import { Box, Button, Chip, Collapse, Container, Divider, IconButton, IconButtonProps, Paper, PaperProps, styled, Typography, useTheme } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import Header from '../../components/common/Header';
@@ -61,7 +61,7 @@ const Ds = () => {
             <Container sx={{ minHeight: 'calc(100vh - 60px)', height: '100%', display: 'flex', flexDirection: 'column', gap: 4 }}>
                 <StyledPaper>
                     <Typography my={2} variant="h2" align="center">
-                        Paleta de Cores - {theme.palette.mode}
+                        Paleta de Cores - {theme.palette.mode} mode
                     </Typography>
                     <StyledIconButton onClick={() => handleClick('box')}>
                         {paperColapsed.box ? <ExpandLessIcon /> : <ExpandMoreIcon />}
