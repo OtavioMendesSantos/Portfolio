@@ -3,12 +3,10 @@ import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import KeyboardDoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown'
 import StacksList from '../StacksList'
 import useResponsive from '../../hooks/useResponsive'
+import { motion } from 'framer-motion'
 
-const Presentation = (
-    { timeAnimation = 300 }:
-        { timeAnimation?: number }
-) => {
-    const {isMobile} = useResponsive()
+const Presentation = () => {
+    const { isMobile } = useResponsive()
     return (
         <Box
             component="section"
@@ -23,21 +21,35 @@ const Presentation = (
                 px: isMobile ? 2 : 0,
             }}
         >
-            <Slide in={true} direction="left" timeout={timeAnimation}>
-                <Grid2
-                    container
-                    sx={{
-                        height: '100%',
-                        width: '100%',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
-                >
-                    {/* {!isMobile &&
+
+            <Grid2
+                container
+                sx={{
+                    maxHeight: '100%',
+                    height: '100%',
+                    width: '100%',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}
+            >
+                {/* {!isMobile &&
               <Grid2 size={{ xs: 0, sm: 0, md: 6 }} height={"100%"}>
                 <PresentationAvatar />
               </Grid2>
             } */}
+                <motion.div
+                    initial={{ opacity: 0, x: 400 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3 }}
+                    viewport={{ once: true }}
+                    style={{
+                        width: '100%',
+                        minHeight: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
                     <Grid2
                         container
                         alignItems="center"
@@ -63,8 +75,10 @@ const Presentation = (
                             />
                         </Grid2>
                     </Grid2>
-                </Grid2>
-            </Slide>
+                </motion.div>
+            </Grid2>
+            {/* <Slide in={true} direction="left" timeout={timeAnimation}>
+            </Slide> */}
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 2 }}>
                 <IconButton
@@ -74,7 +88,7 @@ const Presentation = (
                     <KeyboardDoubleArrowDown />
                 </IconButton>
             </Box>
-        </Box>
+        </Box >
     )
 }
 

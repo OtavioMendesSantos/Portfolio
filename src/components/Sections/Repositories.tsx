@@ -139,6 +139,7 @@ const Repositories = () => {
                                     sx={{
                                         flex: '1 1 300px',
                                         maxWidth: '350px',
+                                        minWidth: isMobile ? '200px' :  '300px',
                                         minHeight: '250px',
                                         border: `1px solid ${theme.palette.divider}`,
                                         borderRadius: 2,

@@ -19,7 +19,6 @@ const Home = () => {
   const theme = useTheme()
   const [showFaq, setShowFaq] = useState(false)
   // const { isMobile } = useResponsive()
-  const timeAnimation = 300
 
   const changeBgColor = (color: string) => {
     const colorType = identifyColorType(color)
@@ -52,7 +51,7 @@ const Home = () => {
       }}
     >
       <Header position='sticky' />
-      <Presentation timeAnimation={timeAnimation} />
+      <Presentation />
       <Container
         component="section"
         sx={{
