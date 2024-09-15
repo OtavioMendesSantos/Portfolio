@@ -1,9 +1,11 @@
-import { Box, Button, Container, Grid2, useTheme } from '@mui/material';
+import { Box, Button, Container, Grid2, useTheme, Link } from '@mui/material';
 import { StyledTypography as Typography } from '../Styled/StyledComponents';
 import { Radar } from 'react-chartjs-2';
 import { ChartData, ChartOptions, Chart, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from 'chart.js';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { applyOpacity } from '../../utils/utils';
+import CustomModal from '../common/Modal';
+import ImgWithLoading from '../Utils/ImgWithLoading';
 
 // Registra os componentes necessários
 Chart.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
@@ -33,7 +35,7 @@ const skills: SkillData[] = [
   {
     name: 'REACT',
     level: 7,
-    objetivo: 9,
+    objetivo: 8,
   },
   {
     name: 'TYPESCRIPT',
@@ -48,12 +50,12 @@ const skills: SkillData[] = [
   {
     name: 'REDUX',
     level: 5,
-    objetivo: 7,
+    objetivo: 6,
   },
   {
     name: 'REACT NATIVE',
     level: 1,
-    objetivo: 8,
+    objetivo: 4,
   },
   {
     name: 'NODEJS',
@@ -64,6 +66,7 @@ const skills: SkillData[] = [
 
 const Skills = () => {
   const chartRef = useRef<Chart<'radar'> | null>(null);
+  const [open, setOpen] = useState(false);
   const theme = useTheme();
 
   const data: ChartData<'radar'> = {
@@ -77,7 +80,7 @@ const Skills = () => {
         pointBackgroundColor: applyOpacity(theme.palette.primary.main, 0.1),
       },
       {
-        label: 'Objetivo',
+        label: 'Meta',
         data: skills.map(skill => skill.objetivo),
         backgroundColor: applyOpacity(theme.palette.secondary.main, 0.3),
         borderColor: theme.palette.secondary.main,
@@ -134,72 +137,71 @@ const Skills = () => {
               <Typography variant='overline'>9-10:</Typography> Expertise ou nível de domínio.<br />
             </Typography>
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 2 }}>
-              <Button variant='outlined'>Como me autoavalio?</Button>
+              <Button variant='outlined' onClick={() => setOpen(true)}>Como me autoavalio?</Button>
             </Box>
           </Grid2>
         </Grid2>
-        {/* <Typography variant="h2">
-          Como me autoavalio?:
-        </Typography>
-        <Typography variant="body1">
-          1. Autoavaliação por Critérios Específicos
-          Divida as habilidades em categorias (Ex.: Técnicas, Soft Skills, Ferramentas, Linguagens, Metodologias).
-          Critérios de avaliação: Para cada habilidade, defina critérios claros que justifiquem sua pontuação. Por exemplo:
-          1-3: Conhecimento básico ou iniciante.
-          4-6: Conhecimento intermediário, capaz de usar em projetos pequenos.
-          7-8: Conhecimento avançado, experiência sólida.
-          9-10: Expertise ou nível de domínio.
-          Essa escala ajuda a tornar a avaliação mais objetiva. Você pode criar descrições específicas para cada habilidade e nível.
-        </Typography>
-        <Typography variant="body1">
-          2. Avaliação de Feedback Externo
-          Feedback de colegas, mentores ou líderes: Peça a outras pessoas (gerentes, colegas de trabalho, professores) que avaliem suas habilidades atuais. Isso dá uma perspectiva externa e pode equilibrar sua autoavaliação.
-          Combine a autoavaliação com a avaliação externa para ajustar sua pontuação final.
-        </Typography>
-        <Typography variant="body1">
-          3. Objetivos de Curto, Médio e Longo Prazo
-          Ao pontuar o que você almeja saber, divida os objetivos em:
-          Curto prazo (1-3 meses): Habilidades que você deseja melhorar em breve.
-          Médio prazo (6 meses - 1 ano): Aquisições de habilidades que vão exigir mais prática ou aprendizado.
-          Longo prazo (1-2 anos): Habilidades complexas ou de nível avançado.
-          Essa segmentação pode ser exibida no gráfico, mostrando seu progresso e metas ao longo do tempo.
-        </Typography>
-        <Typography variant="body1">
-          4. Autoavaliação por Projetos
-          Baseado em projetos ou situações reais: Reflita sobre seus projetos passados e avalie seu desempenho com base nos resultados práticos. Isso pode ser uma forma concreta de definir suas pontuações.
-          Para as habilidades que deseja desenvolver, considere o tipo de projeto ou situação em que gostaria de aplicá-las no futuro.
-        </Typography>
-        <Typography variant="body1">
-          5. Método de Competências Progressivas
-          Framework de aprendizado: Use frameworks de aprendizado progressivo para mapear suas habilidades. Um exemplo é a pirâmide de aprendizado:
-          Iniciante: Conhecimento superficial ou básico.
-          Praticante: Habilidade em usar a ferramenta ou linguagem em cenários conhecidos.
-          Avançado: Capaz de resolver problemas complexos e lidar com desafios.
-          Especialista: Capaz de ensinar ou liderar outros na habilidade.
-        </Typography>
-        <Typography variant="body1">
-          6. Modelo SMART para Metas Almejadas
-          Use o modelo SMART para definir os níveis que você deseja alcançar:
 
-          Specific (Específico): Determine exatamente qual aspecto da habilidade você deseja melhorar.
-          Measurable (Mensurável): Como você medirá o sucesso? Por exemplo, completar um projeto, obter uma certificação, etc.
-          Attainable (Alcançável): A habilidade é realista para seu nível atual e contexto?
-          Relevant (Relevante): Como essa habilidade contribui para seus objetivos de carreira ou pessoais?
-          Time-bound (Com prazo): Em quanto tempo você espera atingir esse nível?
-        </Typography>
-        <Typography variant="body1">
-          7. Uso de Ferramentas Gráficas
-          Sugestão de gráficos:
-
-          Radar Chart (Gráfico de Radar): É ideal para comparar suas habilidades atuais com as metas. Ele destaca facilmente as áreas em que você já é forte e onde precisa melhorar.
-          Bar Chart (Gráfico de Barras): Comparar as habilidades em barras lado a lado (habilidade atual vs. almejada).
-          Heatmap: Um gráfico de calor pode mostrar a intensidade das habilidades e o quanto você deseja avançar.
-        </Typography>
-        <Typography variant="body1">
-          8. Benchmarking com o Mercado
-          Compare-se com padrões do mercado: Pesquise quais são as expectativas do mercado para as habilidades que você deseja desenvolver. Isso ajuda a ajustar suas pontuações de acordo com o que é necessário em sua área de atuação.
-        </Typography> */}
       </Container>
+      <CustomModal open={open} onClose={() => setOpen(false)} title='Como me Autoavalio?' maxWidth="700px">
+        <Box>
+          <Typography variant="h2">Como me autoavalio?:</Typography>
+
+          <Typography variant="h3" sx={{ m: '1rem 0 .5rem 0' }}>1. Autoavaliação por Critérios Específicos</Typography>
+          <Typography variant="body1" sx={{ pl: 2 }}>
+            Reflito sobre meus projetos passados e avalio meu desempenho com base nos resultados práticos: <br />
+            1-3: Conhecimento básico ou iniciante. <br />
+            4-6: Conhecimento intermediário, capaz de aplicar em projetos pequenos. <br />
+            7-8: Conhecimento avançado, com experiência sólida. <br />
+            9-10: Expertise ou nível de domínio.
+          </Typography>
+
+          <Typography variant="h3" sx={{ m: '1rem 0 .5rem 0' }}>2. Avaliação de Feedback Externo</Typography>
+          <Typography variant="body1" sx={{ pl: 2 }}>
+            Peço feedback a colegas, mentores ou líderes (gerentes, colegas de trabalho, professores) para avaliar minhas habilidades atuais. Isso oferece uma perspectiva externa e equilibra minha autoavaliação.
+          </Typography>
+
+          <Typography variant="h3" sx={{ m: '1rem 0 .5rem 0' }}>3. Objetivos de Curto, Médio e Longo Prazo</Typography>
+          <Typography variant="body1" sx={{ pl: 2 }}>
+            Curto prazo (1-3 meses): Habilidades que desejo melhorar em breve. <br />
+            Médio prazo (6 meses - 1 ano): Habilidades que exigem mais prática ou aprendizado. <br />
+            Longo prazo (1-2 anos): Habilidades mais complexas ou de nível avançado.
+          </Typography>
+
+          {/* <Typography variant="h3" sx={{ m: '1rem 0 .5rem 0' }}>4. Método de Competências Progressivas</Typography>
+          <Typography variant="body1" sx={{ pl: 2 }}>
+            Framework de aprendizado: Use frameworks de aprendizado progressivo para mapear suas habilidades. Um exemplo é a pirâmide de aprendizado: <br />
+            Iniciante: Conhecimento superficial ou básico. <br />
+            Praticante: Habilidade em usar a ferramenta ou linguagem em cenários conhecidos. <br />
+            Avançado: Capaz de resolver problemas complexos e lidar com desafios. <br />
+            Especialista: Capaz de ensinar ou liderar outros na habilidade.
+          </Typography> */}
+
+          <Typography variant="h3" sx={{ m: '1rem 0 .5rem 0' }}>4. Modelo SMART para Metas Almejadas</Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', maxWidth: '500px', margin: '0 auto 1rem' }}>
+            <ImgWithLoading src='https://marqponto.com.br/blog/wp-content/uploads/2021/12/Smart.png' alt='SMART' imgProps={{ style: { width: '100%', marginTop: '1rem' } }} />
+            <Link
+              href='https://marqponto.com.br/blog/tecnica-smart-saiba-como-usar/'
+              target='_blank'
+              variant="caption"
+              rel="noreferrer noopen"
+            >
+              https://marqponto.com.br/blog/tecnica-smart-saiba-como-usar/
+            </Link>
+          </Box>
+          <Typography variant="body1" sx={{ pl: 2 }}>
+            Specific (Específico): Determino exatamente qual aspecto da habilidade desejo melhorar. <br />
+            Measurable (Mensurável): Como o sucesso pode ser medido? Por exemplo, concluir um projeto ou obter uma certificação. <br />
+            Attainable (Atingível): A habilidade é realista considerando meu nível atual e contexto? <br />
+            Relevant (Relevante): Como essa habilidade contribui para meus objetivos de carreira ou pessoais? <br />
+            Time-bound (Temporal): Em quanto tempo espero atingir esse nível?
+          </Typography>
+
+          <Typography variant="h3" sx={{ m: '1rem 0 .5rem 0' }}>5. Benchmarking com o Mercado</Typography>
+          <Typography variant="body1" sx={{ pl: 2 }}>
+            Pesquiso as expectativas do mercado para as habilidades que desejo desenvolver, ajustando minhas avaliações de acordo com as exigências da minha área de atuação.          </Typography>
+        </Box>
+      </CustomModal>
     </Box>
   );
 };
