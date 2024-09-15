@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Container, Divider, Grid2, IconButton, IconButtonProps, Stack, styled, Tooltip, useTheme, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Modal, Theme, Fade } from '@mui/material'
+import { Box, Button, Card, CardContent, Container, Divider, Grid2, IconButton, IconButtonProps, Stack, styled, Tooltip, useTheme, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
 import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded';
 import { CheckCircle } from '@mui/icons-material';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import CustomModal from '../common/Modal';
 
 interface Certificate {
     name: string;
@@ -64,7 +64,6 @@ const Training = () => {
     const handleClose = () => setOpen(false);
     const [modalImgOpen, setModalImgOpen] = useState(false);
     const [modalImg, setModalImg] = useState('')
-
 
     const certificates: Certificate[] = [
         {
@@ -171,84 +170,6 @@ const Training = () => {
                         >
                             Ver Matérias <ArrowOutwardRoundedIcon />
                         </Button>
-                        <Modal
-                            open={open}
-                            onClose={handleClose}
-                        >
-                            <Fade in={open} timeout={300}>
-                                <Box sx={{
-                                    position: 'absolute' as 'absolute',
-                                    top: '50%',
-                                    left: '50%',
-                                    transform: 'translate(-50%, -50%)',
-                                    maxWidth: '800px',
-                                    maxHeight: '600px',
-                                    bgcolor: 'background.paper',
-                                    boxShadow: 24,
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    borderRadius: '8px',
-                                }}>
-                                    <Stack
-                                        direction="row"
-                                        justifyContent="space-between"
-                                        alignItems="center"
-                                        sx={{ position: 'relative', p: 2, }}
-                                    >
-                                        <Typography variant="h2" align='center' sx={{ px: 4 }}>
-                                            Análise e Desenvolvimento de Sistemas
-                                        </Typography>
-                                        <IconButton variant="filled" onClick={handleClose} color='primary' sx={{ position: 'absolute', right: 10 }}>
-                                            <CloseRoundedIcon />
-                                        </IconButton>
-                                    </Stack>
-                                    <Divider />
-                                    <Box
-                                        sx={(theme: Theme) => ({
-                                            m: 2,
-                                            flex: '1',
-                                            overflow: 'auto',
-                                            '&::-webkit-scrollbar': {
-                                                width: '8px',
-                                            },
-                                            '&::-webkit-scrollbar-track': {
-                                                backgroundColor: theme.palette.background.default,
-                                            },
-                                            '&::-webkit-scrollbar-thumb': {
-                                                backgroundColor: theme.palette.primary.main,
-                                                borderRadius: '4px',
-                                            },
-                                            '&::-webkit-scrollbar-thumb:hover': {
-                                                backgroundColor: theme.palette.primary.dark,
-                                            },
-                                            scrollbarWidth: 'thin',
-                                            scrollbarColor: `${theme.palette.primary.main} ${theme.palette.background.default}`,
-                                        })}
-                                    >
-                                        <TableContainer component={Paper}>
-                                            <Table>
-                                                <TableHead>
-                                                    <TableRow>
-                                                        <TableCell><Typography variant="h6">Ordem</Typography></TableCell>
-                                                        <TableCell><Typography variant="h6" align='center'>Unidade Curricular</Typography></TableCell>
-                                                        <TableCell><Typography variant="h6">CH</Typography></TableCell>
-                                                    </TableRow>
-                                                </TableHead>
-                                                <TableBody>
-                                                    {curriculumData.map((item) => (
-                                                        <TableRow key={item.ordem} hover>
-                                                            <TableCell>{item.ordem}</TableCell>
-                                                            <TableCell>{item.unidadeCurricular}</TableCell>
-                                                            <TableCell>{item.ch}</TableCell>
-                                                        </TableRow>
-                                                    ))}
-                                                </TableBody>
-                                            </Table>
-                                        </TableContainer>
-                                    </Box>
-                                </Box>
-                            </Fade>
-                        </Modal>
                     </CardContent>
                 </Card>
 
@@ -352,56 +273,45 @@ const Training = () => {
                     </Grid2>
                 </Grid2>
             </Container>
-            <Modal
+            <CustomModal
+                open={open}
+                onClose={handleClose}
+                maxWidth='800px'
+                maxHeight='700px'
+                title='Análise e Desenvolvimento de Sistemas'
+            >
+                <TableContainer component={Paper}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell><Typography variant="h6">Ordem</Typography></TableCell>
+                                <TableCell><Typography variant="h6" align='center'>Unidade Curricular</Typography></TableCell>
+                                <TableCell><Typography variant="h6">CH</Typography></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {curriculumData.map((item) => (
+                                <TableRow key={item.ordem} hover>
+                                    <TableCell>{item.ordem}</TableCell>
+                                    <TableCell>{item.unidadeCurricular}</TableCell>
+                                    <TableCell>{item.ch}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </CustomModal>
+            <CustomModal
                 open={modalImgOpen}
                 onClose={handleModalImgClose}
+                title='Certificado'
             >
-                <Fade in={modalImgOpen} timeout={300}>
-                    <Box sx={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        width: 'calc(100% - 32px)', // Garante um espaçamento lateral na viewport (16px de cada lado)
-                        maxWidth: '900px', // Tamanho máximo do modal (900px)
-                        maxHeight: 'calc(100vh - 64px)', // Tamanho máximo de altura (com 32px de margem na parte superior e inferior)
-                        overflowY: 'auto', // Adiciona scroll se o conteúdo for maior que a viewport
-                        boxShadow: 24,
-                        bgcolor: 'background.paper',
-                        borderRadius: '8px', // Borda mais arredondada para um visual moderno
-                    }}>
-                        <Box sx={{
-                            width: '100%',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            borderRadius: '4px',
-                            bgcolor: 'background.default',
-                        }}>
-                            <Stack
-                                direction="row"
-                                justifyContent="center"
-                                alignItems="center"
-                                sx={{ position: 'relative', p: 2 }}
-                            >
-                                <Typography variant="h2" align="center" sx={{ px: 4 }}>
-                                    Certificado
-                                </Typography>
-                                <IconButton variant="filled" onClick={handleModalImgClose} color='primary' sx={{ position: 'absolute', right: 10 }}>
-                                    <CloseRoundedIcon />
-                                </IconButton>
-                            </Stack>
-                            <Divider />
-                            <Box sx={{ textAlign: 'center', p: 2 }}>
-                                <ImgWithLoading
-                                    alt={certificates[activeImg - 1].name}
-                                    src={modalImg}
-                                    imgProps={{ style: { borderRadius: '4px', maxWidth: '100%' } }} // Certifica-se de que a imagem seja responsiva
-                                />
-                            </Box>
-                        </Box>
-                    </Box>
-                </Fade>
-            </Modal>
+                <ImgWithLoading
+                    alt={certificates[activeImg - 1].name}
+                    src={modalImg}
+                    imgProps={{ style: { borderRadius: '4px', maxWidth: '100%' } }} // Certifica-se de que a imagem seja responsiva
+                />
+            </CustomModal>
         </Box >
     )
 }
