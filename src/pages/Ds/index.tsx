@@ -1,32 +1,33 @@
 import { useState } from 'react'
-import { Box, Chip, Collapse, Container, Divider, IconButton, Paper, Typography } from '@mui/material'
+import { Box, Button, Chip, Collapse, Container, Divider, IconButton, IconButtonProps, Paper, PaperProps, styled, Typography } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import Header from '../../components/Header';
+import Header from '../../components/common/Header';
+import Footer from '../../components/common/Footer';
 
 const Ds = () => {
-    const [collapsedTypography, setCollapsedTypography] = useState(false)
+    const [paperColapsed, setPaperColapsed] = useState({
+        typography: false,
+        button: false,
+    })
+
+    type PaperOptions = 'typography' | 'button'
+
+    const handleClick = (option: PaperOptions) => {
+        setPaperColapsed({ ...paperColapsed, [option]: !paperColapsed[option] })
+    }
+
     return (
         <Box>
-            <Header />
-            <Container>
-                <Typography my={2} variant="h1" align="center">Desing System</Typography>
-                <Paper
-                    sx={{ p: 2, display: 'flex', flexDirection: 'column' }}
-                    elevation={3}
-                >
+            <Header position='sticky' />
+            <Typography my={2} variant="h1" align="center">Desing System</Typography>
+            <Container sx={{ minHeight: 'calc(100vh - 60px)', height: '100%', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <StyledPaper>
                     <Typography my={2} variant="h2" align="center">Tipografia</Typography>
-                    <IconButton
-                        sx={{
-                            margin: 'auto',
-                            width: 'fit-content',
-                        }}
-                        onClick={() => setCollapsedTypography(!collapsedTypography)}
-                        color='primary'
-                    >
-                        {collapsedTypography ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                    </IconButton>
-                    <Collapse in={collapsedTypography}>
+                    <StyledIconButton onClick={() => handleClick('typography')}>
+                        {paperColapsed.typography ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                    </StyledIconButton>
+                    <Collapse in={paperColapsed.typography}>
                         <Divider textAlign='left'>
                             <Chip label='variant = h1' size="small" />
                         </Divider>
@@ -94,10 +95,49 @@ const Ds = () => {
                         <Typography my={2} variant="overline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore corrupti iste hic qui eum vitae ducimus optio enim nostrum est.</Typography>
                     </Collapse>
 
-                </Paper>
+                </StyledPaper>
+                <StyledPaper>
+                    <Typography my={2} variant="h2" align="center">Botão</Typography>
+                    <StyledIconButton onClick={() => handleClick('button')}>
+                        {paperColapsed.button ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                    </StyledIconButton>
+                    <Collapse in={paperColapsed.button}>
+                        <Divider textAlign='left'>
+                            <Chip label='variant = contained' size="small" />
+                        </Divider>
+                        <Button variant="contained" sx={{ my: 2 }}>Lorem ipsum dolor.</Button>
+
+                        <Divider textAlign='left'>
+                            <Chip label='variant = text' size="small" />
+                        </Divider>
+                        <Button variant="text" sx={{ my: 2 }}>Lorem ipsum dolor.</Button>
+
+                        <Divider textAlign='left'>
+                            <Chip label='variant = outlined' size="small" />
+                        </Divider>
+                        <Button variant="outlined" sx={{ my: 2 }}>Lorem ipsum dolor.</Button>
+                    </Collapse>
+                </StyledPaper>
             </Container>
+            <Footer />
         </Box>
     )
 }
+
+
+const StyledIconButton = styled(({ children, ...props }: IconButtonProps) => (
+    <IconButton color='primary' {...props}>{children}</IconButton>
+))(({ }) => ({
+    margin: 'auto',
+    width: 'fit-content',
+}))
+
+const StyledPaper = styled(({ children, ...props }: PaperProps) => (
+    <Paper {...props} elevation={3}>{children}</Paper>
+))(({ }) => ({
+    padding: '1rem',
+    display: 'flex',
+    flexDirection: 'column'
+}))
 
 export default Ds

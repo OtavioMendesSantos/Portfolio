@@ -1,4 +1,4 @@
-import { Box, Link, Stack, styled, Typography } from '@mui/material'
+import { Box, Link, Stack, styled, Theme, Typography } from '@mui/material'
 import { LinkedIn } from '@mui/icons-material'
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -6,8 +6,8 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 const Footer = () => {
   return (
     <Box
-      component="section"
-      sx={{
+      component="footer"
+      sx={(theme: Theme)=>({
         height: 'calc(100vh - 60px)',
         display: 'flex',
         flexDirection: 'column',
@@ -15,7 +15,8 @@ const Footer = () => {
         alignItems: 'center',
         overflow: 'hidden',
         bgcolor: 'background.default',
-      }}
+        boxShadow: theme.shadows[24],
+      })}
     >
       <Typography align="center">
         Desenvolvido por

@@ -3,7 +3,7 @@ import { StyledTypography as Typography, StyledCard } from '../Styled/StyledComp
 import { Project } from '../../Interfaces/Project'
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
-import StacksList from '../StacksList';
+import StacksList from '../common/StacksList';
 import ImgWithLoading from '../Utils/ImgWithLoading';
 import { CheckCircle } from '@mui/icons-material';
 import ErrorRoundedIcon from '@mui/icons-material/ErrorRounded';

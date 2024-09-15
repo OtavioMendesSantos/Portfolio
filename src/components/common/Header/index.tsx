@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import Logo from '/assets/svgs/logo_outlined.svg'
 import { AppBar, Box, Stack, Switch, useTheme } from '@mui/material'
 import { useState } from 'react'
-import { useThemeContext } from '../../Context/ThemeContext'
+import { useThemeContext } from '../../../Context/ThemeContext'
 const Header = (
   { position = 'static' }:
     { position?: 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative' }
@@ -65,7 +65,12 @@ const Header = (
               },
             }}
           />
-          <Switch sx={{ position: 'absolute', right: '10px' }} onChange={handleChange} checked={darkMode} />
+          <Switch
+            sx={{ position: 'absolute', right: '10px' }}
+            onChange={handleChange}
+            checked={darkMode}
+            aria-label='Switch Dark Mode'
+          />
         </Stack>
       </AppBar>
     </>

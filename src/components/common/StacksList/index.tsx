@@ -1,11 +1,11 @@
 import { Box, BoxProps, Container, ContainerProps, IconButton, IconButtonProps, styled, Tooltip } from '@mui/material';
-import useResponsive from '../../hooks/useResponsive';
-import { StyledTypography } from '../Styled/StyledComponents';
+import useResponsive from '../../../hooks/useResponsive';
+import { StyledTypography } from '../../Styled/StyledComponents';
 import { useEffect, useRef, useState } from 'react';
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
-import { applyOpacity } from '../../utils/utils';
-import ImgWithLoading from '../Utils/ImgWithLoading';
+import { applyOpacity } from '../../../utils/utils';
+import ImgWithLoading from '../../Utils/ImgWithLoading';
 
 const StacksList = (
   { title, itens, indicate, boxProps, containerProps }: {
@@ -65,6 +65,7 @@ const StacksList = (
       <Box sx={{ position: 'relative', padding: '0' }}>
         {showArrows && (
           <StyledIconButton
+            aria-label='scroll left'
             sx={{ left: '0' }}
             onClick={handleScrollLeft}
           >
@@ -100,7 +101,7 @@ const StacksList = (
                 <Box>
                   <ImgWithLoading
                     src={`assets/svgs/${item}-original.svg`}
-                    alt={item}
+                    alt={`${item} - logo`}
                     imgProps={{
                       style: {
                         maxWidth: '60px',
@@ -124,6 +125,7 @@ const StacksList = (
         </Container>
         {showArrows && (
           <StyledIconButton
+            aria-label='scroll right'
             sx={{ right: '0' }}
             onClick={handleScrollRight}
           >

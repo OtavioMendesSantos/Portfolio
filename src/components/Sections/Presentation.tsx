@@ -1,7 +1,7 @@
 import { Box, Grid2, IconButton } from '@mui/material'
 import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import KeyboardDoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown'
-import StacksList from '../StacksList'
+import StacksList from '../common/StacksList'
 import useResponsive from '../../hooks/useResponsive'
 import { motion } from 'framer-motion'
 
@@ -81,6 +81,7 @@ const Presentation = () => {
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 2 }}>
                 <IconButton
+                    aria-label='go main page'
                     color="primary"
                     onClick={() => window.scroll({ top: window.innerHeight - 60, behavior: 'smooth' })}
                 >

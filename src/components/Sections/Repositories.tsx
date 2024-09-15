@@ -161,13 +161,12 @@ const Repositories = () => {
                                         <Box>
                                             <Typography
                                                 variant="h3"
+                                                component='p'
                                                 sx={{
                                                     textOverflow: 'ellipsis',
                                                     overflow: 'hidden',
                                                     whiteSpace: 'nowrap',
                                                     mb: 1,
-                                                    fontWeight: 'bold',
-                                                    color: theme.palette.text.primary,
                                                 }}
                                             >
                                                 {repo.name}
