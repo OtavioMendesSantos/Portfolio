@@ -125,7 +125,7 @@ const Repositories = () => {
                         inView > index && (
                             <motion.div
                                 key={repo.id}
-                                style={{ flex: '1', minWidth: '300px', maxWidth: '350px', height: 'min-content', width: '100%', }}
+                                style={{ flex: '1', maxWidth: '350px', height: 'min-content', width: '100%', }}
                                 initial={{ opacity: 0, y: 100 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 100 }}

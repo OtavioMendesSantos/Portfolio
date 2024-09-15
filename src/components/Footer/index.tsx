@@ -28,8 +28,8 @@ const Footer = () => {
       </Typography>
       <Stack
         direction="row"
-        spacing={2}
-        sx={{ mt: 2, flexWrap: 'wrap' }}
+        useFlexGap
+        sx={{ mt: 2, flexWrap: 'wrap', gap: 2, justifyContent: 'center' }}
       >
         <Link href="https://www.linkedin.com/in/otaviomendessantos/" target="_blank" rel="noreferrer noopen">
           <StyledBox>
