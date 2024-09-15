@@ -240,6 +240,7 @@ const Projects = () => {
         setViewProjects((prev) => prev + maxViewProjects)
     }
 
+
     return (
         <Box component="section">
             <Typography indicate variant="h1" sx={{ mb: 2 }}>Projetos</Typography>
@@ -352,7 +353,8 @@ const Projects = () => {
                                                                     sx: {
                                                                         width: isMobile ? '80%' : '100%',
                                                                         margin: '0 auto',
-                                                                    }
+                                                                    },
+
                                                                 }}
                                                             />
                                                         </Grid2>

@@ -35,9 +35,11 @@ const ImgWithLoading = ({ src, alt, boxProps, imgProps }: ImageProps) => {
         >
             {loading && <CircularProgress color="primary" />}
             <img
-                {...imgProps}
                 src={src}
                 alt={alt}
+                onLoad={handleLoad}
+                onError={handleError} 
+                {...imgProps}
                 style={{
                     width: '100%',
                     height: '100%',
@@ -47,9 +49,8 @@ const ImgWithLoading = ({ src, alt, boxProps, imgProps }: ImageProps) => {
                     display: loading ? 'none' : 'block', // Oculta a imagem enquanto carrega
                     ...imgProps?.style
                 }}
-                onLoad={handleLoad}
-                onError={handleError} // Adiciona tratamento de erro
-            />
+                onClick={imgProps?.onClick}
+                />
         </Box>
     )
 }

@@ -1,4 +1,4 @@
-import { Box, Grid2, IconButton, Slide } from '@mui/material'
+import { Box, Grid2, IconButton } from '@mui/material'
 import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import KeyboardDoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown'
 import StacksList from '../StacksList'
@@ -21,13 +21,12 @@ const Presentation = () => {
                 px: isMobile ? 2 : 0,
             }}
         >
-
             <Grid2
                 container
                 sx={{
                     maxHeight: '100%',
                     height: '100%',
-                    width: '100%',
+                    maxWidth: '100%',
                     alignItems: 'center',
                     justifyContent: 'center',
                 }}

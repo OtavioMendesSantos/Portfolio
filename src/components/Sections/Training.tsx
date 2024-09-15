@@ -62,6 +62,8 @@ const Training = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [modalImgOpen, setModalImgOpen] = useState(false);
+    const [modalImg, setModalImg] = useState('')
 
 
     const certificates: Certificate[] = [
@@ -133,6 +135,19 @@ const Training = () => {
         const comparisonDate = new Date(year, month - 1); // Mês é 0-indexado
         return currentDate < comparisonDate;
     }
+
+    const handleImageClick = (event: React.MouseEvent<HTMLImageElement>) => {
+        if (event.currentTarget instanceof HTMLImageElement) {
+            setModalImg(event.currentTarget.src)
+        }
+        setModalImgOpen(true)
+    }
+
+    const handleModalImgClose = () => {
+        setModalImgOpen(false)
+        setModalImg('')
+    };
+
     return (
         <Box>
             <Typography indicate variant="h1" sx={{ mb: 2 }}>Formação</Typography>
@@ -166,29 +181,31 @@ const Training = () => {
                                     top: '50%',
                                     left: '50%',
                                     transform: 'translate(-50%, -50%)',
-                                    maxWidth: '600px',
+                                    maxWidth: '800px',
                                     maxHeight: '600px',
                                     bgcolor: 'background.paper',
                                     boxShadow: 24,
-                                    p: 2,
                                     display: 'flex',
                                     flexDirection: 'column',
+                                    borderRadius: '8px',
                                 }}>
                                     <Stack
                                         direction="row"
                                         justifyContent="space-between"
                                         alignItems="center"
-                                        sx={{ position: 'relative' }}
+                                        sx={{ position: 'relative', p: 2, }}
                                     >
-                                        <Typography variant="h2" align='center' sx={{ mb: 2, px: 4 }}>
+                                        <Typography variant="h2" align='center' sx={{ px: 4 }}>
                                             Análise e Desenvolvimento de Sistemas
                                         </Typography>
                                         <IconButton variant="filled" onClick={handleClose} color='primary' sx={{ position: 'absolute', right: 10 }}>
                                             <CloseRoundedIcon />
                                         </IconButton>
                                     </Stack>
+                                    <Divider />
                                     <Box
                                         sx={(theme: Theme) => ({
+                                            m: 2,
                                             flex: '1',
                                             overflow: 'auto',
                                             '&::-webkit-scrollbar': {
@@ -213,13 +230,13 @@ const Training = () => {
                                                 <TableHead>
                                                     <TableRow>
                                                         <TableCell><Typography variant="h6">Ordem</Typography></TableCell>
-                                                        <TableCell><Typography variant="h6">Unidade Curricular</Typography></TableCell>
+                                                        <TableCell><Typography variant="h6" align='center'>Unidade Curricular</Typography></TableCell>
                                                         <TableCell><Typography variant="h6">CH</Typography></TableCell>
                                                     </TableRow>
                                                 </TableHead>
                                                 <TableBody>
                                                     {curriculumData.map((item) => (
-                                                        <TableRow key={item.ordem}>
+                                                        <TableRow key={item.ordem} hover>
                                                             <TableCell>{item.ordem}</TableCell>
                                                             <TableCell>{item.unidadeCurricular}</TableCell>
                                                             <TableCell>{item.ch}</TableCell>
@@ -265,7 +282,8 @@ const Training = () => {
                                         <ImgWithLoading
                                             src={certificate.src}
                                             alt={certificate.name}
-                                            boxProps={{ sx: { borderRadius: '4px', overflow: 'hidden' } }}
+                                            boxProps={{ sx: { borderRadius: '4px', overflow: 'hidden', cursor: 'pointer' } }}
+                                            imgProps={{ onClick: (e) => handleImageClick(e) }}
                                         />
                                     </motion.div>
                                 ))}
@@ -334,6 +352,56 @@ const Training = () => {
                     </Grid2>
                 </Grid2>
             </Container>
+            <Modal
+                open={modalImgOpen}
+                onClose={handleModalImgClose}
+            >
+                <Fade in={modalImgOpen} timeout={300}>
+                    <Box sx={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 'calc(100% - 32px)', // Garante um espaçamento lateral na viewport (16px de cada lado)
+                        maxWidth: '900px', // Tamanho máximo do modal (900px)
+                        maxHeight: 'calc(100vh - 64px)', // Tamanho máximo de altura (com 32px de margem na parte superior e inferior)
+                        overflowY: 'auto', // Adiciona scroll se o conteúdo for maior que a viewport
+                        boxShadow: 24,
+                        bgcolor: 'background.paper',
+                        borderRadius: '8px', // Borda mais arredondada para um visual moderno
+                    }}>
+                        <Box sx={{
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            borderRadius: '4px',
+                            bgcolor: 'background.default',
+                        }}>
+                            <Stack
+                                direction="row"
+                                justifyContent="center"
+                                alignItems="center"
+                                sx={{ position: 'relative', p: 2 }}
+                            >
+                                <Typography variant="h2" align="center" sx={{ px: 4 }}>
+                                    Certificado
+                                </Typography>
+                                <IconButton variant="filled" onClick={handleModalImgClose} color='primary' sx={{ position: 'absolute', right: 10 }}>
+                                    <CloseRoundedIcon />
+                                </IconButton>
+                            </Stack>
+                            <Divider />
+                            <Box sx={{ textAlign: 'center', p: 2 }}>
+                                <ImgWithLoading
+                                    alt={certificates[activeImg - 1].name}
+                                    src={modalImg}
+                                    imgProps={{ style: { borderRadius: '4px', maxWidth: '100%' } }} // Certifica-se de que a imagem seja responsiva
+                                />
+                            </Box>
+                        </Box>
+                    </Box>
+                </Fade>
+            </Modal>
         </Box >
     )
 }
