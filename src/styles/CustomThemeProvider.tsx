@@ -181,7 +181,7 @@ const CustomThemeProvider = (
                             body2: 'p',
                             button: 'span',
                             caption: 'p',
-                            overline: 'p'
+                            overline: 'span'
                         }
                     }
                 }
