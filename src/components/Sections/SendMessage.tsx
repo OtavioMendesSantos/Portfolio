@@ -1,28 +1,82 @@
-import { Box, Button, Stack, TextField, Container } from "@mui/material"
+import { Box, Button, Stack, TextField, Container, CircularProgress } from "@mui/material"
 import { StyledTypography } from "../Styled/StyledComponents"
 import { useRef, useState } from "react"
 import emailjs from 'emailjs-com';
 
 const SendMessage = () => {
-    const [formdata, setFormdata] = useState({
+    const VITE_EMAILJS_USER_ID = import.meta.env.VITE_EMAILJS_USER_ID
+    const VITE_EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const VITE_EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const [loading, setLoading] = useState(false)
+
+    const [formData, setFormData] = useState({
         name: "",
         email: "",
         message: "",
     })
 
+    const [errors, setErrors] = useState({
+        name: "",
+        email: "",
+    })
+
+    const [touched, setTouched] = useState({
+        name: false,
+        email: false,
+    });
+
     const formRef = useRef(null)
 
-    const VITE_EMAILJS_USER_ID = import.meta.env.VITE_EMAILJS_USER_ID
-    const VITE_EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-    const VITE_EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const validateName = (name: string) => {
+        if (name.length < 3) {
+            return "O nome deve ter pelo menos 3 letras.";
+        }
+        return "";
+    }
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return "Email inválido";
+        }
+        return "";
+    }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
-        setFormdata({ ...formdata, [name]: value })
+        setFormData({ ...formData, [name]: value })
+        if (name === "name" && touched.name) {
+            setErrors({ ...errors, name: validateName(value) });
+        } else if (name === "email" && touched.email) {
+            setErrors({ ...errors, email: validateEmail(value) });
+        }
     }
+
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+
+        setTouched({ ...touched, [name]: true });
+
+        if (name === "name") {
+            setErrors({ ...errors, name: validateName(value) });
+        } else if (name === "email") {
+            setErrors({ ...errors, email: validateEmail(value) });
+        }
+    };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+
+        const nameError = validateName(formData.name);
+        const emailError = validateEmail(formData.email);
+
+        if (nameError || emailError) {
+            setErrors({
+                name: nameError,
+                email: emailError,
+            });
+            return;
+        }
 
         const serviceID = VITE_EMAILJS_SERVICE_ID
         const templateID = VITE_EMAILJS_TEMPLATE_ID
@@ -34,6 +88,7 @@ const SendMessage = () => {
         }
 
         if (formRef.current === null) return
+        setLoading(true)
         emailjs.sendForm(serviceID, templateID, formRef.current, userID)
             .then((response) => {
                 console.log('Email enviado com sucesso!', response.status, response.text);
@@ -42,7 +97,23 @@ const SendMessage = () => {
             .catch((err) => {
                 console.log('Erro ao enviar o email', err);
                 alert('Ocorreu um erro ao enviar sua mensagem.');
-            });
+            })
+            .finally(() => {
+                setLoading(false)
+                setFormData({
+                    name: "",
+                    email: "",
+                    message: "",
+                })
+                setErrors({
+                    name: "",
+                    email: "",
+                })
+                setTouched({
+                    name: false,
+                    email: false,
+                })
+            })
     }
 
     return (
@@ -54,25 +125,31 @@ const SendMessage = () => {
                         <TextField
                             size="small"
                             label="Nome"
-                            value={formdata.name}
+                            value={formData.name}
                             name="name"
                             onChange={handleChange}
+                            onBlur={handleBlur}
                             type="text"
                             placeholder="Nome"
+                            error={!!errors.name}
+                            helperText={errors.name}
                         />
                         <TextField
                             size="small"
                             label="Email"
-                            value={formdata.email}
+                            value={formData.email}
                             name="email"
                             onChange={handleChange}
+                            onBlur={handleBlur}
                             type="text"
                             placeholder="Email"
+                            error={!!errors.email}
+                            helperText={errors.email}
                         />
                         <TextField
                             size="small"
                             label="Mensagem"
-                            value={formdata.message}
+                            value={formData.message}
                             onChange={handleChange}
                             name="message"
                             id="message"
@@ -81,11 +158,11 @@ const SendMessage = () => {
                             placeholder="Mensagem"
                         />
                         <Button
-                            disabled={formdata.name === "" || formdata.email === "" || formdata.message === ""}
+                            disabled={(formData.name === "" || formData.email === "" || formData.message === "" || !!errors.name || !!errors.email) || loading}
                             variant="contained"
                             type="submit"
                         >
-                            Enviar
+                            {loading ? <CircularProgress size={20} /> : "Enviar"}
                         </Button>
                     </Stack>
                 </form>
