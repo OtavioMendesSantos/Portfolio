@@ -14,6 +14,7 @@ import Training from '../../components/Sections/Training'
 import KeyboardDoubleArrowUpRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowUpRounded';
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import SendMessage from '../../components/Sections/SendMessage'
 
 const Home = () => {
   const theme = useTheme()
@@ -66,6 +67,7 @@ const Home = () => {
         <Training />
         <Projects />
         <Repositories />
+        <SendMessage />
         <motion.div
           animate={{ opacity: showFaq ? 1 : 0 }}
           transition={{ duration: 0.3 }}
