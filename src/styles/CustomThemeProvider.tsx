@@ -7,7 +7,6 @@ import {
 } from '@mui/material'
 import React, { useCallback, useEffect, useState } from 'react'
 import { deepmerge } from '@mui/utils'
-import { style } from 'framer-motion/client'
 
 const CustomThemeProvider = (
     { children, mode }: { children: React.ReactNode, mode: 'light' | 'dark' }
