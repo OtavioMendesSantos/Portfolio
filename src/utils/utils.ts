@@ -54,47 +54,63 @@ export const changeOpacity = (cor: string, opacidade: number) => {
     throw new Error("Opacidade deve estar entre 0 e 1.");
   }
   // Verifica se a cor está no formato RGBA
-  const match = cor.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(0?\.\d+|1(\.0)?)\)$/);
+  const match = cor.match(
+    /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(0?\.\d+|1(\.0)?)\)$/
+  );
   if (match) {
-      const [, r, g, b, _] = match.map(Number);
+    const [, r, g, b, _] = match.map(Number);
 
-      // Retorna a cor RGBA com a nova opacidade
-      return `rgba(${r}, ${g}, ${b}, ${opacidade})`;
+    // Retorna a cor RGBA com a nova opacidade
+    return `rgba(${r}, ${g}, ${b}, ${opacidade})`;
   }
 
   // Se a cor não estiver no formato RGBA, lança um erro
-  console.log(cor)
+  console.log(cor);
   throw new Error("Formato de cor inválido. Use RGBA.");
-}
+};
 
-type CorTipo = 'hex' | 'rgb' | 'rgba' | 'hsl' | 'hsla' | 'unknown';
+type CorTipo = "hex" | "rgb" | "rgba" | "hsl" | "hsla" | "unknown";
 export const identifyColorType = (cor: string): CorTipo => {
-   // Expressão regular para identificar HEX (com ou sem hash e em formatos curto ou longo)
-   const hexRegex = /^#(?:[0-9A-Fa-f]{3}){1,2}$/;
+  // Expressão regular para identificar HEX (com ou sem hash e em formatos curto ou longo)
+  const hexRegex = /^#(?:[0-9A-Fa-f]{3}){1,2}$/;
 
-   // Expressão regular para identificar RGB
-   const rgbRegex = /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/;
+  // Expressão regular para identificar RGB
+  const rgbRegex = /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/;
 
-   // Expressão regular para identificar RGBA
-   const rgbaRegex = /^rgba\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(0?\.\d+|1(\.0)?)\)$/;
+  // Expressão regular para identificar RGBA
+  const rgbaRegex =
+    /^rgba\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(0?\.\d+|1(\.0)?)\)$/;
 
-   // Expressão regular para identificar HSL
-   const hslRegex = /^hsl\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*\)$/;
+  // Expressão regular para identificar HSL
+  const hslRegex = /^hsl\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*\)$/;
 
-   // Expressão regular para identificar HSLA
-   const hslaRegex = /^hsla\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*,\s*(0?\.\d+|1(\.0)?)\)$/;
+  // Expressão regular para identificar HSLA
+  const hslaRegex =
+    /^hsla\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*,\s*(0?\.\d+|1(\.0)?)\)$/;
 
-   if (hexRegex.test(cor)) {
-       return 'hex';
-   } else if (rgbRegex.test(cor)) {
-       return 'rgb';
-   } else if (rgbaRegex.test(cor)) {
-       return 'rgba';
-   } else if (hslRegex.test(cor)) {
-       return 'hsl';
-   } else if (hslaRegex.test(cor)) {
-       return 'hsla';
-   } else {
-       return 'unknown';
-   }
-}
+  if (hexRegex.test(cor)) {
+    return "hex";
+  } else if (rgbRegex.test(cor)) {
+    return "rgb";
+  } else if (rgbaRegex.test(cor)) {
+    return "rgba";
+  } else if (hslRegex.test(cor)) {
+    return "hsl";
+  } else if (hslaRegex.test(cor)) {
+    return "hsla";
+  } else {
+    return "unknown";
+  }
+};
+
+export const handleOpacityColor = (color: string, opacity: number) => {
+  const colorType = identifyColorType(color);
+
+  if (colorType == "rgb" || colorType == "hex") {
+    return applyOpacity(color, opacity);
+  } else if (colorType == "hsl" || colorType == "hsla" || colorType == "rgba") {
+    return changeOpacity(color, opacity);
+  } else {
+    return color;
+  }
+};

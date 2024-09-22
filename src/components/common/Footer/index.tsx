@@ -8,7 +8,7 @@ const Footer = () => {
     <Box
       component="footer"
       sx={(theme: Theme)=>({
-        height: 'calc(100vh - 60px)',
+        height: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',

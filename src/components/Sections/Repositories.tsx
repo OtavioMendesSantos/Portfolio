@@ -7,6 +7,7 @@ import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded';
 import { applyOpacity } from '../../utils/utils'
 import { motion } from 'framer-motion'
 import useResponsive from '../../hooks/useResponsive'
+import BoxSection from '../common/BoxSection'
 
 // interface Filters {
 //     owner: boolean;
@@ -14,13 +15,13 @@ import useResponsive from '../../hooks/useResponsive'
 // }
 
 
-const Repositories = () => {
+const Repositories = ({ className }: { className?: string }) => {
     const username = 'OtavioMendesSantos'
     const { isMobile } = useResponsive()
     const [repos, setRepos] = useState<GitHubRepos[]>([])
     const theme = useTheme()
     const GITHUB_TOKEN: string = import.meta.env.VITE_GITHUB_TOKEN || ''
-    const maxView = isMobile? 6 : 9
+    const maxView = isMobile ? 6 : 9
     const [inView, setInView] = useState(maxView)
 
     // const [filters, setFilters] = useState<Filters>({
@@ -104,7 +105,7 @@ const Repositories = () => {
     }
 
     return (
-        <Box component="section">
+        <BoxSection title="Repositórios" className={className}>
             <Typography variant="h1" indicate>Repositórios</Typography>
             <Container
                 sx={{
@@ -139,7 +140,7 @@ const Repositories = () => {
                                     sx={{
                                         flex: '1 1 300px',
                                         maxWidth: '350px',
-                                        minWidth: isMobile ? '200px' :  '300px',
+                                        minWidth: isMobile ? '200px' : '300px',
                                         minHeight: '250px',
                                         border: `1px solid ${theme.palette.divider}`,
                                         borderRadius: 2,
@@ -210,7 +211,7 @@ const Repositories = () => {
                     <Button variant="outlined" onClick={handleClick}>Ver mais</Button>
                 </Box>
             )}
-        </Box >
+        </BoxSection >
     )
 }
 

@@ -1,9 +1,10 @@
-import { Box, Button, Stack, TextField, Container, CircularProgress } from "@mui/material"
+import { Button, Stack, TextField, Container, CircularProgress } from "@mui/material"
 import { StyledTypography } from "../Styled/StyledComponents"
 import { useRef, useState } from "react"
 import emailjs from 'emailjs-com';
+import BoxSection from "../common/BoxSection";
 
-const SendMessage = () => {
+const SendMessage = ({ className }: { className?: string }) => {
     const VITE_EMAILJS_USER_ID = import.meta.env.VITE_EMAILJS_USER_ID
     const VITE_EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
     const VITE_EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
@@ -117,7 +118,7 @@ const SendMessage = () => {
     }
 
     return (
-        <Box component="section">
+        <BoxSection title="Fale Comigo" className={className}>
             <StyledTypography variant="h1" indicate>Fale Comigo</StyledTypography>
             <Container maxWidth="sm">
                 <form onSubmit={handleSubmit} ref={formRef} style={{ margin: '2rem 0' }}>
@@ -167,7 +168,7 @@ const SendMessage = () => {
                     </Stack>
                 </form>
             </Container>
-        </Box>
+        </BoxSection>
     )
 }
 

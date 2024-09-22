@@ -4,12 +4,12 @@ import KeyboardDoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown
 import StacksList from '../common/StacksList'
 import useResponsive from '../../hooks/useResponsive'
 import { motion } from 'framer-motion'
+import BoxSection from '../common/BoxSection'
 
-const Presentation = () => {
+const Presentation = ({ className }: { className?: string }) => {
     const { isMobile } = useResponsive()
     return (
-        <Box
-            component="section"
+        <BoxSection
             sx={{
                 height: 'calc(100vh - 60px)',
                 display: 'flex',
@@ -20,6 +20,8 @@ const Presentation = () => {
                 bgcolor: 'background.default',
                 px: isMobile ? 2 : 0,
             }}
+            title="Sobre mim"
+            className={className}
         >
             <Grid2
                 container
@@ -37,10 +39,9 @@ const Presentation = () => {
               </Grid2>
             } */}
                 <motion.div
-                    initial={{ opacity: 0, x: 400 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}
-                    viewport={{ once: true }}
+                    initial={{ opacity: 0, x: 300 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.5 }}
                     style={{
                         width: '100%',
                         minHeight: '100%',
@@ -88,7 +89,7 @@ const Presentation = () => {
                     <KeyboardDoubleArrowDown />
                 </IconButton>
             </Box>
-        </Box >
+        </BoxSection >
     )
 }
 

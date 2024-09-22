@@ -10,6 +10,7 @@ import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded';
 import { CheckCircle } from '@mui/icons-material';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import CustomModal from '../common/Modal';
+import BoxSection from '../common/BoxSection';
 
 interface Certificate {
     name: string;
@@ -53,7 +54,7 @@ const curriculumData: CurriculumItem[] = [
     { ordem: 25, unidadeCurricular: 'Linguagem de Programação para Mobile', ch: 60 }
 ];
 
-const Training = () => {
+const Training = ({ className }: { className?: string }) => {
     const theme = useTheme();
     const [activeImg, setActiveImg] = useState(1);
     const [prevAnimation, setPrevAnimation] = useState<'left' | 'right' | null>(null);
@@ -148,7 +149,7 @@ const Training = () => {
     };
 
     return (
-        <Box>
+        <BoxSection title="Formação" className={className}>
             <Typography indicate variant="h1" sx={{ mb: 2 }}>Formação</Typography>
             <Container>
                 <Typography variant="h2">Faculdade </Typography>
@@ -312,7 +313,7 @@ const Training = () => {
                     imgProps={{ style: { borderRadius: '4px', maxWidth: '100%' } }} // Certifica-se de que a imagem seja responsiva
                 />
             </CustomModal>
-        </Box >
+        </BoxSection >
     )
 }
 

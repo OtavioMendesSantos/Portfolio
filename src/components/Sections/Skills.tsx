@@ -6,6 +6,7 @@ import { useRef, useState } from 'react';
 import { applyOpacity } from '../../utils/utils';
 import CustomModal from '../common/Modal';
 import ImgWithLoading from '../Utils/ImgWithLoading';
+import BoxSection from '../common/BoxSection';
 
 // Registra os componentes necessários
 Chart.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
@@ -62,9 +63,14 @@ const skills: SkillData[] = [
     level: 0,
     objetivo: 4,
   },
+  {
+    name: 'NEXT',
+    level: 0,
+    objetivo: 4,
+  },
 ]
 
-const Skills = () => {
+const Skills = ({ className }: {className?: string}) => {
   const chartRef = useRef<Chart<'radar'> | null>(null);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
@@ -104,7 +110,7 @@ const Skills = () => {
   };
 
   return (
-    <Box component="section">
+    <BoxSection title='Habilidades' className={className}>
       <Typography indicate variant='h1'>Habilidades</Typography>
       <Container sx={{ height: '100%' }}>
         <Grid2 container sx={{ minHeight: '50vh' }}>
@@ -202,7 +208,7 @@ const Skills = () => {
             Pesquiso as expectativas do mercado para as habilidades que desejo desenvolver, ajustando minhas avaliações de acordo com as exigências da minha área de atuação.          </Typography>
         </Box>
       </CustomModal>
-    </Box>
+    </BoxSection>
   );
 };
 

@@ -14,6 +14,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState, useMemo } from 'react';
 import Loader from '../Utils/Loader/Loader';
 import { v4 as uuidv4 } from 'uuid';
+import BoxSection from '../common/BoxSection';
 // import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 
 type Status = Project['status']
@@ -23,7 +24,7 @@ interface FilterOptions {
     stack: string[];
 }
 
-const Projects = () => {
+const Projects = ({ className }: { className?: string }) => {
     const projects: Project[] = useMemo(() => ([
         {
             id: uuidv4(),
@@ -186,7 +187,8 @@ const Projects = () => {
                     alignItems: 'center',
                     overflow: 'hidden',
                     transition: 'all 0.3s ease',
-                }}>
+                }}
+            >
                 <AnimatePresence>
                     {selected.map((value) => (
                         <motion.div
@@ -242,7 +244,7 @@ const Projects = () => {
 
 
     return (
-        <Box component="section">
+        <BoxSection title="Projetos" className={className}>
             <Typography indicate variant="h1" sx={{ mb: 2 }}>Projetos</Typography>
             <StyledContainer>
                 <Card sx={{ width: '100%' }}>
@@ -436,7 +438,7 @@ const Projects = () => {
                     </Box>
                 )}
             </StyledContainer>
-        </Box>
+        </BoxSection>
     )
 }
 

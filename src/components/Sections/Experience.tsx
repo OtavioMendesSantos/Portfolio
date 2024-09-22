@@ -1,10 +1,11 @@
 import { Box, useTheme } from '@mui/material'
 import { StyledTypography as Typography } from '../Styled/StyledComponents'
+import BoxSection from '../common/BoxSection'
 
-const Experience = () => {
+const Experience = ({ className }: { className?: string }) => {
     const theme = useTheme()
     return (
-        <Box component="section">
+        <BoxSection title="Experiência" className={className}>
             <Typography indicate variant="h1" sx={{ mb: 2 }}>Experiência</Typography>
             <Box
                 sx={{
@@ -29,7 +30,7 @@ const Experience = () => {
                 </ul>
 
             </Box>
-        </Box>
+        </BoxSection>
     )
 }
 

@@ -2,7 +2,6 @@ import {
     styled,
     Typography,
     TypographyProps as MuiTypographyProps,
-    Theme,
     Card
 } from "@mui/material";
 import { applyOpacity } from "../../utils/utils";
@@ -20,6 +19,7 @@ export const StyledTypography = styled(Typography, {
     ...(indicate && {
         position: 'relative',
         zIndex: 1,
+        pointerEvents: 'none',
         '&::before': {
             content: '""',
             position: 'absolute',
@@ -29,8 +29,9 @@ export const StyledTypography = styled(Typography, {
             width: '15px',
             height: '15px',
             zIndex: -1,
-            backgroundColor: (theme as Theme).palette.primary.main,
-            borderRadius: '3px'
+            backgroundColor: theme.palette.primary.main,
+            borderRadius: '3px', 
+            pointerEvents: 'none',
         },
     })
 }))
