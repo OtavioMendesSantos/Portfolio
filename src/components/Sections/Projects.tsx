@@ -78,6 +78,16 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
+            nome: 'To Do List',
+            img: '/assets/images/to_do_list.png',
+            descricao: 'To Do List Básica, com uma lista de tarefas e botões de adição e remoção.',
+            linkProjeto: 'https://todolist-otavio.vercel.app/',
+            linkRepositorio: 'https://github.com/OtavioMendesSantos/ToDoList-NextJs',
+            status: 'concluido',
+            stacks: ['nextjs', 'react', 'typescript', 'sass'],
+        },
+        {
+            id: uuidv4(),
             nome: 'Jogo da Velha',
             img: '/assets/images/jogo_da_velha.jpg',
             descricao: 'Jogo da velha, Player vs Computador.',
