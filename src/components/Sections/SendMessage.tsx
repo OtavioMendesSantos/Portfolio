@@ -3,12 +3,16 @@ import { StyledTypography } from "../Styled/StyledComponents"
 import { useRef, useState } from "react"
 import emailjs from 'emailjs-com';
 import BoxSection from "../common/BoxSection";
+import useSnackbar from "../../hooks/useSnackbar";
+import SnackbarAlert from "../common/SnackbarAlert";
+
 
 const SendMessage = ({ className }: { className?: string }) => {
     const VITE_EMAILJS_USER_ID = import.meta.env.VITE_EMAILJS_USER_ID
     const VITE_EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
     const VITE_EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
     const [loading, setLoading] = useState(false)
+    const messageSnackbar = useSnackbar({ duration: 6000 })
 
     const [formData, setFormData] = useState({
         name: "",
@@ -91,13 +95,12 @@ const SendMessage = ({ className }: { className?: string }) => {
         if (formRef.current === null) return
         setLoading(true)
         emailjs.sendForm(serviceID, templateID, formRef.current, userID)
-            .then((response) => {
-                console.log('Email enviado com sucesso!', response.status, response.text);
-                alert('Mensagem enviada com sucesso!');
+            .then((_response) => {
+                messageSnackbar.showSuccess('Mensagem enviada com sucesso!', 6000)
             })
             .catch((err) => {
+                messageSnackbar.showError('Ocorreu um erro ao enviar sua mensagem. Tente novamente mais tarde.', 6000)
                 console.log('Erro ao enviar o email', err);
-                alert('Ocorreu um erro ao enviar sua mensagem.');
             })
             .finally(() => {
                 setLoading(false)
@@ -118,57 +121,60 @@ const SendMessage = ({ className }: { className?: string }) => {
     }
 
     return (
-        <BoxSection title="Fale Comigo" className={className}>
-            <StyledTypography variant="h1" indicate>Fale Comigo</StyledTypography>
-            <Container maxWidth="sm">
-                <form onSubmit={handleSubmit} ref={formRef} style={{ margin: '2rem 0' }}>
-                    <Stack gap={2}>
-                        <TextField
-                            size="small"
-                            label="Nome"
-                            value={formData.name}
-                            name="name"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            type="text"
-                            placeholder="Nome"
-                            error={!!errors.name}
-                            helperText={errors.name}
-                        />
-                        <TextField
-                            size="small"
-                            label="Email"
-                            value={formData.email}
-                            name="email"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            type="text"
-                            placeholder="Email"
-                            error={!!errors.email}
-                            helperText={errors.email}
-                        />
-                        <TextField
-                            size="small"
-                            label="Mensagem"
-                            value={formData.message}
-                            onChange={handleChange}
-                            name="message"
-                            id="message"
-                            multiline
-                            rows={6}
-                            placeholder="Mensagem"
-                        />
-                        <Button
-                            disabled={(formData.name === "" || formData.email === "" || formData.message === "" || !!errors.name || !!errors.email) || loading}
-                            variant="contained"
-                            type="submit"
-                        >
-                            {loading ? <CircularProgress size={20} /> : "Enviar"}
-                        </Button>
-                    </Stack>
-                </form>
-            </Container>
-        </BoxSection>
+        <>
+            <BoxSection title="Fale Comigo" className={className}>
+                <StyledTypography variant="h1" indicate>Fale Comigo</StyledTypography>
+                <Container maxWidth="sm">
+                    <form onSubmit={handleSubmit} ref={formRef} style={{ margin: '2rem 0' }}>
+                        <Stack gap={2}>
+                            <TextField
+                                size="small"
+                                label="Nome"
+                                value={formData.name}
+                                name="name"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                type="text"
+                                placeholder="Nome"
+                                error={!!errors.name}
+                                helperText={errors.name}
+                            />
+                            <TextField
+                                size="small"
+                                label="Email"
+                                value={formData.email}
+                                name="email"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                type="text"
+                                placeholder="Email"
+                                error={!!errors.email}
+                                helperText={errors.email}
+                            />
+                            <TextField
+                                size="small"
+                                label="Mensagem"
+                                value={formData.message}
+                                onChange={handleChange}
+                                name="message"
+                                id="message"
+                                multiline
+                                rows={6}
+                                placeholder="Mensagem"
+                            />
+                            <Button
+                                disabled={(formData.name === "" || formData.email === "" || formData.message === "" || !!errors.name || !!errors.email) || loading}
+                                variant="contained"
+                                type="submit"
+                            >
+                                {loading ? <CircularProgress size={20} /> : "Enviar"}
+                            </Button>
+                        </Stack>
+                    </form>
+                </Container>
+            </BoxSection>
+            <SnackbarAlert {...messageSnackbar} />
+        </>
     )
 }
 
