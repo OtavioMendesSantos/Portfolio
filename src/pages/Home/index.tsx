@@ -49,7 +49,8 @@ const Home = () => {
           <Skills className='homeSection' />
           <Experience className='homeSection' />
           <Training className='homeSection' />
-          <Projects className='homeSection' />          <SendMessage className='homeSection' />
+          <Projects className='homeSection' />          
+          <SendMessage className='homeSection' />
           <Repositories className='homeSection' />
         </Container>
         <Footer />
