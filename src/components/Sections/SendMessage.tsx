@@ -122,10 +122,10 @@ const SendMessage = ({ className }: { className?: string }) => {
 
     return (
         <>
-            <BoxSection title="Fale Comigo" className={className}>
+            <BoxSection title="Fale Comigo" className={className} sx={{}}>
                 <StyledTypography variant="h1" indicate>Fale Comigo</StyledTypography>
-                <Container maxWidth="sm">
-                    <form onSubmit={handleSubmit} ref={formRef} style={{ margin: '2rem 0' }}>
+                <Container maxWidth="sm" sx={{ my: 4 }}>
+                    <form onSubmit={handleSubmit} ref={formRef} >
                         <Stack gap={2}>
                             <TextField
                                 size="small"

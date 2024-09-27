@@ -105,7 +105,7 @@ const Repositories = ({ className }: { className?: string }) => {
     }
 
     return (
-        <BoxSection title="Repositórios" className={className}>
+        <BoxSection title="Repositórios" className={className} sx={{ mb: 4}}>
             <Typography variant="h1" indicate>Repositórios</Typography>
             <Container
                 sx={{

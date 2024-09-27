@@ -113,7 +113,7 @@ const Skills = ({ className }: {className?: string}) => {
     <BoxSection title='Habilidades' className={className}>
       <Typography indicate variant='h1'>Habilidades</Typography>
       <Container sx={{ height: '100%' }}>
-        <Grid2 container sx={{ minHeight: '50vh' }}>
+        <Grid2 container sx={{ minHeight: '50vh', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <Grid2
             size={{ xs: 12, sm: 12, md: 6 }}
             height={'100%'}
