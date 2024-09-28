@@ -3,7 +3,7 @@ import { StyledTypography as Typography } from '../Styled/StyledComponents'
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import { applyOpacity } from '../../utils/utils';
-import ImgWithLoading from '../Utils/ImgWithLoading';
+import ImgWithLoading from '../common/ImgWithLoading';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded';

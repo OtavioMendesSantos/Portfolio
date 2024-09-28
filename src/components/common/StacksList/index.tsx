@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import { applyOpacity } from '../../../utils/utils';
-import ImgWithLoading from '../../Utils/ImgWithLoading';
+import ImgWithLoading from '../ImgWithLoading';
 
 const StacksList = (
   { title, itens, indicate, boxProps, containerProps }: {

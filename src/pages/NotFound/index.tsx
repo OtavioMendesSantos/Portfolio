@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import Loader from '../../components/Utils/Loader/Loader'
+import Loader from '../../components/common/Loader/Loader'
 import { Button, Container } from '@mui/material'
 import { StyledTypography } from '../../components/Styled/StyledComponents'
 

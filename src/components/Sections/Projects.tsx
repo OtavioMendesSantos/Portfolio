@@ -4,7 +4,7 @@ import { Project } from '../../Interfaces/Project'
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import StacksList from '../common/StacksList';
-import ImgWithLoading from '../Utils/ImgWithLoading';
+import ImgWithLoading from '../common/ImgWithLoading';
 import { CheckCircle } from '@mui/icons-material';
 import ErrorRoundedIcon from '@mui/icons-material/ErrorRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
@@ -12,7 +12,7 @@ import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import useResponsive from '../../hooks/useResponsive';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState, useMemo } from 'react';
-import Loader from '../Utils/Loader/Loader';
+import Loader from '../common/Loader/Loader';
 import { v4 as uuidv4 } from 'uuid';
 import BoxSection from '../common/BoxSection';
 // import ClearRoundedIcon from '@mui/icons-material/ClearRounded';

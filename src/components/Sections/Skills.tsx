@@ -5,7 +5,7 @@ import { ChartData, ChartOptions, Chart, RadialLinearScale, PointElement, LineEl
 import { useRef, useState } from 'react';
 import { applyOpacity } from '../../utils/utils';
 import CustomModal from '../common/Modal';
-import ImgWithLoading from '../Utils/ImgWithLoading';
+import ImgWithLoading from '../common/ImgWithLoading';
 import BoxSection from '../common/BoxSection';
 
 // Registra os componentes necessários
