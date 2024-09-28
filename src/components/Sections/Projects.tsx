@@ -136,6 +136,22 @@ const Projects = ({ className }: { className?: string }) => {
             status: 'refatorando',
             stacks: ['javascript', 'html', 'css'],
         },
+        {
+            id: uuidv4(),
+            nome: 'Breeze',
+            descricao: 'Aplicativo mobile feito para previsão do tempo - Estudando React Native e Expo. ',
+            linkRepositorio: 'https://github.com/OtavioMendesSantos/Breeze',
+            status: 'em_planejamento',
+            stacks: ['expo', 'react'],
+        },
+        // {
+        //     id: uuidv4(),
+        //     nome: 'Coffee Marketplace',
+        //     descricao: 'Marketplace de cafe para o mundo.',
+        //     linkRepositorio: '',
+        //     status: 'nao_iniciado',
+        //     stacks: ['node'],
+        // },
     ]), []);
 
     const { isMobile } = useResponsive();
@@ -184,6 +200,8 @@ const Projects = ({ className }: { className?: string }) => {
                 return <WarningRoundedIcon sx={{ color: 'warning.main', fontSize: '1' }} />
             case 'nao_iniciado':
                 return <ErrorRoundedIcon sx={{ color: 'error.main', fontSize: '1' }} />
+            case 'em_planejamento':
+                return <ErrorRoundedIcon sx={{ color: 'grey.400', fontSize: '1' }} />
             case 'refatorando':
                 return <InfoRoundedIcon sx={{ color: 'info.main', fontSize: '1' }} />
         }
@@ -350,11 +368,11 @@ const Projects = ({ className }: { className?: string }) => {
                                                     {project.nome}
                                                 </Typography>
                                                 <Stack direction="row" sx={{ width: '100%', flexGrow: 1 }}>
-                                                    <Grid2 container spacing={2} sx={{ width: '100%', height: '100%' }}>
+                                                    <Grid2 container spacing={2} sx={{ width: '100%', height: '100%', justifyContent: 'center' }}>
                                                         <Grid2 size={{ xs: 12, sm: 4 }}>
                                                             <ImgWithLoading
                                                                 alt={project.nome}
-                                                                src={project.img || ''}
+                                                                src={project.img || '/assets/images/no_image.png'}
                                                                 imgProps={{
                                                                     style: {
                                                                         aspectRatio: '1 / 1',
@@ -387,7 +405,7 @@ const Projects = ({ className }: { className?: string }) => {
                                                             <StacksList
                                                                 containerProps={{
                                                                     sx: {
-                                                                        justifyContent: 'space-between'
+                                                                        justifyContent: 'space-evenly'
                                                                     }
                                                                 }}
                                                                 itens={project.stacks}

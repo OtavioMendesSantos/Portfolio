@@ -1,4 +1,4 @@
-type Status = 'nao_iniciado' | 'em_desenvolvimento' | 'concluido' | 'refatorando';
+type Status = 'nao_iniciado' | 'em_planejamento' | 'em_desenvolvimento' | 'concluido' | 'refatorando';
 
 export interface Project {
     id: string,

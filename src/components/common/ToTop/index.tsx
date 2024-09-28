@@ -5,6 +5,7 @@ import { Fab } from '@mui/material';
 
 const ToTop = () => {
     const [showFaq, setShowFaq] = useState(false)
+    
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
@@ -12,10 +13,8 @@ const ToTop = () => {
             const documentHeight = document.documentElement.scrollHeight;
 
             const start = viewportHeight;
-
             const end = documentHeight - viewportHeight * 2;
 
-            console.log(scrollY >= start, scrollY < end)
             const shouldShowFaq = scrollY >= start && scrollY < end;
 
             setShowFaq(shouldShowFaq);
