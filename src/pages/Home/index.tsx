@@ -11,7 +11,7 @@ import Experience from '../../components/Sections/Experience'
 import Projects from '../../components/Sections/Projects'
 import { handleOpacityColor } from '../../utils/utils'
 import Training from '../../components/Sections/Training'
-import { useEffect, useRef, } from 'react'
+import { useEffect, useRef, useState, } from 'react'
 import SendMessage from '../../components/Sections/SendMessage'
 import NavigateSection from '../../components/common/NavigateSections'
 import ToTop from '../../components/common/ToTop'
@@ -19,9 +19,11 @@ import ToTop from '../../components/common/ToTop'
 const Home = () => {
   const theme = useTheme()
   const refSections = useRef<NodeListOf<Element> | null>(null)
+  const [elements, setElements] = useState<NodeListOf<Element> | null>(null)
 
   useEffect(() => {
     refSections.current = document.querySelectorAll('.homeSection')
+    setElements(refSections.current)
   }, [])
 
   return (
@@ -56,7 +58,7 @@ const Home = () => {
         <Footer />
         <ToTop />
       </Box>
-      <NavigateSection elements={refSections.current} />
+      <NavigateSection elements={elements} />
     </>
   )
 }
