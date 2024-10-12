@@ -6,9 +6,10 @@ interface ImageProps {
     alt: string;
     boxProps?: BoxProps;
     imgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+    href?: string
 }
 
-const ImgWithLoading = ({ src, alt, boxProps, imgProps }: ImageProps) => {
+const ImgWithLoading = ({ src, alt, boxProps, imgProps, href }: ImageProps) => {
     const [loading, setLoading] = useState(true);
 
     const handleLoad = () => {
@@ -34,23 +35,52 @@ const ImgWithLoading = ({ src, alt, boxProps, imgProps }: ImageProps) => {
             }}
         >
             {loading && <CircularProgress color="primary" />}
-            <img
-                src={src}
-                alt={alt}
-                onLoad={handleLoad}
-                onError={handleError} 
-                {...imgProps}
-                style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                    transition: 'all 0.3s ease-in-out',
-                    display: loading ? 'none' : 'block', // Oculta a imagem enquanto carrega
-                    ...imgProps?.style
-                }}
-                onClick={imgProps?.onClick}
-                />
+            {href
+                ? (
+                    <a
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <img
+                            src={src}
+                            alt={alt}
+                            onLoad={handleLoad}
+                            onError={handleError}
+                            {...imgProps}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                                objectPosition: 'center',
+                                transition: 'all 0.3s ease-in-out',
+                                display: loading ? 'none' : 'block', // Oculta a imagem enquanto carrega
+                                ...imgProps?.style
+                            }}
+                            onClick={imgProps?.onClick}
+                        />
+                    </a>
+                ) : (
+                    <img
+                        src={src}
+                        alt={alt}
+                        onLoad={handleLoad}
+                        onError={handleError}
+                        {...imgProps}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: 'center',
+                            transition: 'all 0.3s ease-in-out',
+                            display: loading ? 'none' : 'block', // Oculta a imagem enquanto carrega
+                            ...imgProps?.style
+                        }}
+                        onClick={imgProps?.onClick}
+                    />
+                )
+            }
+
         </Box>
     )
 }

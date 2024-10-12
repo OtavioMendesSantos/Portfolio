@@ -7,14 +7,21 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
 import { applyOpacity } from '../../../utils/utils';
 import ImgWithLoading from '../ImgWithLoading';
 
+interface StackItem {
+  name: string;
+  href?: string;
+}
+
+interface StacksListProps {
+  title?: string,
+  itens: StackItem[],
+  indicate?: boolean,
+  boxProps?: BoxProps,
+  containerProps?: ContainerProps,
+}
+
 const StacksList = (
-  { title, itens, indicate, boxProps, containerProps }: {
-    title?: string,
-    itens: string[],
-    indicate?: boolean,
-    boxProps?: BoxProps,
-    containerProps?: ContainerProps,
-  }
+  { title, itens, indicate, boxProps, containerProps }: StacksListProps
 ) => {
   const { isMobile } = useResponsive();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -97,18 +104,19 @@ const StacksList = (
                 alignItems: 'center'
               }}
             >
-              <Tooltip title={isMobile ? '' : item.toUpperCase()} arrow>
+              <Tooltip title={isMobile ? '' : item.name.toUpperCase()} arrow>
                 <Box>
                   <ImgWithLoading
-                    src={`assets/svgs/${item}-original.svg`}
-                    alt={`${item} - logo`}
+                    src={`assets/svgs/${item.name}-original.svg`}
+                    alt={`${item.name} - logo`}
+                    href={item.href}
                     imgProps={{
                       style: {
                         maxWidth: '60px',
                         minWidth: '46px',
                         width: isMobile ? '46px' : '100%',
+                        userSelect: 'none'
                       },
-                      // onDragStart: ((event: DragEvent) => event.preventDefault()),
                       onDragStart: (e: React.DragEvent<HTMLImageElement>) => { e.preventDefault() },
                     }}
                     boxProps={{ ...boxProps }}
@@ -117,7 +125,7 @@ const StacksList = (
               </Tooltip>
               {isMobile &&
                 <StyledTypography variant="caption">
-                  {item.toUpperCase()}
+                  {item.name.toUpperCase()}
                 </StyledTypography>}
             </Box>
           ))}

@@ -270,6 +270,9 @@ const Projects = ({ className }: { className?: string }) => {
         setViewProjects((prev) => prev + maxViewProjects)
     }
 
+    const projectStacks = (stacks: string[]): { name: string }[] => {
+        return stacks.map((stack) => ({ name: stack }))
+    }
 
     return (
         <BoxSection title="Projetos" className={className}>
@@ -408,7 +411,7 @@ const Projects = ({ className }: { className?: string }) => {
                                                                         justifyContent: 'space-evenly'
                                                                     }
                                                                 }}
-                                                                itens={project.stacks}
+                                                                itens={projectStacks(project.stacks)}
                                                             />
                                                             <Stack
                                                                 useFlexGap

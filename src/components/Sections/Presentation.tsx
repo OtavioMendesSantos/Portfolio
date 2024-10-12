@@ -8,6 +8,30 @@ import BoxSection from '../common/BoxSection'
 
 const Presentation = ({ className }: { className?: string }) => {
     const { isMobile } = useResponsive()
+
+    const stacksItens = [
+        { name: 'react' },
+        { name: 'javascript' },
+        { name: 'typescript' },
+        { name: 'materialui' },
+        { name: 'redux' },
+    ]
+
+    const contactsList = [
+        {
+            name: 'github',
+            href: 'https://github.com/OtavioMendesSantos',
+        },
+        {
+            name: 'linkedin',
+            href: 'https://www.linkedin.com/in/otaviomendessantos//',
+        },
+        {
+            name: 'twitter',
+            href: 'https://x.com/OtavioDev',
+        },
+    ]
+
     return (
         <BoxSection
             sx={{
@@ -68,10 +92,10 @@ const Presentation = ({ className }: { className?: string }) => {
                                 Apaixonado por tecnologia, sou um desenvolvedor web júnior em constante aprendizado. Sou um profissional comunicativo e colaborativo, que valoriza o trabalho em equipe e a troca de conhecimento.
                             </Typography>
                             <StacksList indicate title='Stacks'
-                                itens={['react', 'javascript', 'typescript', 'materialui', 'redux']}
+                                itens={stacksItens}
                             />
                             <StacksList indicate title='Contatos'
-                                itens={['linkedin', 'github']}
+                                itens={contactsList}
                             />
                         </Grid2>
                     </Grid2>
