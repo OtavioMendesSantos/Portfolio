@@ -286,7 +286,7 @@ const Projects = ({ className }: { className?: string }) => {
                         sx={{ p: 2, gap: 2, flexWrap: 'wrap' }}
                         useFlexGap
                     >
-                        <FormControl sx={{ flex: '1 0 300px' }} size='small'>
+                        <FormControl sx={{ flex: '1 0 150px' }} size='small'>
                             <InputLabel
                                 id='Stack-Label'
                                 sx={(theme: Theme) => ({
@@ -304,13 +304,13 @@ const Projects = ({ className }: { className?: string }) => {
                                 multiple
                                 renderValue={(selected) => (chipsSelect({ selected }))}
                             >
-                                <MenuItem value="" disabled>Selcione...</MenuItem>
+                                <MenuItem value="" disabled>Selecione...</MenuItem>
                                 {filteredStacks.map((project, index) => (
                                     <MenuItem value={project} key={index}>{project}</MenuItem>
                                 ))}
                             </Select>
                         </FormControl>
-                        <FormControl sx={{ flex: '1 0 300px' }} size='small'>
+                        <FormControl sx={{ flex: '1 0 150px' }} size='small'>
                             <InputLabel
                                 id='Status-Label'
                                 sx={(theme: Theme) => ({
