@@ -5,6 +5,7 @@ import Blog from './pages/Blog'
 import NotFound from './pages/NotFound'
 import Ds from './pages/Ds'
 import { ThemeProviderWrapper } from './Context/ThemeContext'
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const router = createBrowserRouter([
@@ -27,9 +28,12 @@ function App() {
   ])
 
   return (
-    <ThemeProviderWrapper>
-      <RouterProvider router={router} />
-    </ThemeProviderWrapper>
+    <>
+      <ThemeProviderWrapper>
+        <RouterProvider router={router} />
+      </ThemeProviderWrapper>
+      <Analytics />
+    </>
   )
 }
 
