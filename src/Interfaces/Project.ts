@@ -5,7 +5,7 @@ export interface Project {
     nome: string;
     img?: string;
     descricao: string;
-    linkRepositorio: string;
+    linkRepositorio?: string;
     linkProjeto?: string;
     status: Status,
     stacks: Array<string>;

@@ -28,6 +28,15 @@ const Projects = ({ className }: { className?: string }) => {
     const projects: Project[] = useMemo(() => ([
         {
             id: uuidv4(),
+            nome: 'Clear Kanban',
+            img: 'assets/images/clearkanban.png',
+            descricao: 'Uma aplicação Kanban projetada para gerenciar demandas de forma eficiente e colaborativa. Oferece recursos como autenticação de usuário, recuperação de senha via e-mail, e comunicação em tempo real utilizando WebSockets, garantindo atualizações instantâneas e uma experiência de uso fluida.',
+            linkProjeto: 'https://clearkanban.com',
+            status: 'em_desenvolvimento',
+            stacks: ['nodejs', 'typescript', 'react', 'postgresql', 'socketio', 'railway', 'jwt', 'sass', 'redux'],
+        },
+        {
+            id: uuidv4(),
             nome: 'Dogs - Rede Social Para Cachorros',
             img: 'assets/images/dogs.jpg',
             descricao: 'Rede Social Para Cachorros. Completo, com comentários, posts, autenticação, etc.',
@@ -155,7 +164,7 @@ const Projects = ({ className }: { className?: string }) => {
     ]), []);
 
     const { isMobile } = useResponsive();
-    const maxViewProjects = isMobile ? 3 : 5
+    const maxViewProjects = 3
 
     const [viewProjects, setViewProjects] = useState(maxViewProjects)
     const [filters, setFilters] = useState<FilterOptions>({
@@ -431,20 +440,22 @@ const Projects = ({ className }: { className?: string }) => {
                                                                             Veja o projeto <OpenInNewRoundedIcon />
                                                                         </Button>
                                                                     </Link>}
-                                                                <Link
-                                                                    href={project.linkRepositorio}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                >
-                                                                    <Button
-                                                                        fullWidth
-                                                                        variant="contained"
-                                                                        sx={{ gap: 1 }}
+                                                                {project.linkRepositorio &&
+                                                                    <Link
+                                                                        href={project.linkRepositorio}
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
                                                                     >
-                                                                        Veja o código
-                                                                        <CodeRoundedIcon />
-                                                                    </Button>
-                                                                </Link>
+                                                                        <Button
+                                                                            fullWidth
+                                                                            variant="contained"
+                                                                            sx={{ gap: 1 }}
+                                                                        >
+                                                                            Veja o código
+                                                                            <CodeRoundedIcon />
+                                                                        </Button>
+                                                                    </Link>
+                                                                }
                                                             </Stack>
                                                         </Grid2>
                                                     </Grid2>

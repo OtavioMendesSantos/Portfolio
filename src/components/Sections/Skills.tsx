@@ -25,7 +25,7 @@ const skills: SkillData[] = [
   },
   {
     name: 'CSS',
-    level: 8,
+    level: 9,
     objetivo: 10,
   },
   {
@@ -35,39 +35,39 @@ const skills: SkillData[] = [
   },
   {
     name: 'REACT',
-    level: 7,
-    objetivo: 8,
+    level: 8,
+    objetivo: 10,
   },
   {
     name: 'TYPESCRIPT',
-    level: 4,
+    level: 7,
     objetivo: 8,
   },
   {
     name: 'GIT',
     level: 6,
-    objetivo: 8,
-  },
-  {
-    name: 'REDUX',
-    level: 5,
     objetivo: 6,
   },
   {
-    name: 'REACT NATIVE',
-    level: 1,
-    objetivo: 4,
+    name: 'REDUX',
+    level: 6,
+    objetivo: 6,
   },
   {
     name: 'NODEJS',
-    level: 0,
-    objetivo: 4,
+    level: 4,
+    objetivo: 6,
   },
-  {
-    name: 'NEXT',
-    level: 0,
-    objetivo: 4,
-  },
+  // {
+  //   name: 'REACT NATIVE',
+  //   level: 1,
+  //   objetivo: 4,
+  // },
+  // {
+  //   name: 'NEXT',
+  //   level: 0,
+  //   objetivo: 4,
+  // },
 ]
 
 const Skills = ({ className }: {className?: string}) => {

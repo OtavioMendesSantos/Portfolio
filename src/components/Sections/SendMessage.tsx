@@ -49,11 +49,15 @@ const SendMessage = ({ className }: { className?: string }) => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
-        setFormData({ ...formData, [name]: value })
+        if (name === 'email'){
+            setFormData({ ...formData, [name]: value.trim() })
+        } else {
+            setFormData({ ...formData, [name]: value })
+        }
         if (name === "name" && touched.name) {
             setErrors({ ...errors, name: validateName(value) });
         } else if (name === "email" && touched.email) {
-            setErrors({ ...errors, email: validateEmail(value) });
+            setErrors({ ...errors, email: validateEmail(value.trim()) });
         }
     }
 
