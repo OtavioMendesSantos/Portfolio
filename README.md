@@ -4,4 +4,4 @@
 - Explorando novas tecnologias, como Node.js e Vue.js.
 - Realizando o curso da Origamid, focado em design e boas práticas de front-end.
 - Desenvolvendo meu próprio software de gerenciameto de demandas: [Clear Kanban](https://clearkanban.com).
-- Mantendo-me atualizado(a) sobre tendências no desenvolvimento e melhorando minhas habilidades em projetos pessoais.
+- Mantendo-me atualizado sobre tendências no desenvolvimento e melhorando minhas habilidades em projetos pessoais.
