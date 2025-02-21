@@ -20,8 +20,8 @@ const NavigateSection = ({ elements }: NavigateSectionProps) => {
         return sectionRect.top < 100 && sectionRect.bottom > 60 // Header
       })
       if (hasActive) {
-        const title = hasActive.getAttribute('title')
-        setActive(title ?? '')
+        const sectionName = hasActive.getAttribute('data-section-name')
+        setActive(sectionName ?? '')
       } else {
         setActive('')
       }
@@ -68,12 +68,12 @@ const NavigateSection = ({ elements }: NavigateSectionProps) => {
             })}
           >
             {Array.from(elements).map((element, index) => {
-              const title = element.getAttribute('title');
-              if (!title) return null;
-              const isActive = title === active
+              const sectionName = element.getAttribute('data-section-name');
+              if (!sectionName) return null;
+              const isActive = sectionName === active
               return (
                 <Box
-                  key={`${title}-${index}`}
+                  key={`${sectionName}-${index}`}
                   onClick={() => handleClick(element)}
                   sx={{
                     cursor: 'pointer',
@@ -87,7 +87,7 @@ const NavigateSection = ({ elements }: NavigateSectionProps) => {
                     }
                   }}
                   role="button"
-                  aria-label={`Navigate to ${title}`}
+                  aria-label={`Navigate to ${sectionName}`}
                 >
                   {isMobile
                     ? <Box
@@ -99,7 +99,7 @@ const NavigateSection = ({ elements }: NavigateSectionProps) => {
                         transition: 'all 0.2s ease',
                       }}
                     />
-                    : title}
+                    : sectionName}
                 </Box>
               )
             })}

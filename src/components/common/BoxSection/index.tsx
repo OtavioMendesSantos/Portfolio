@@ -7,7 +7,12 @@ interface BoxSectionProps extends BoxProps {
 
 const BoxSection = ({ title, className, ...props }: BoxSectionProps) => {
     return (
-        <Box title={title} className={className} {...props} component="section" >
+        <Box 
+            className={className}
+            data-section-name={title}
+            {...props}
+            component="section"
+        >
             {props.children}
         </Box>
     )
