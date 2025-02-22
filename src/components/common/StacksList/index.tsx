@@ -94,9 +94,9 @@ const StacksList = (
           }}
         >
           {showArrows && <Box />}
-          {itens.map((item) => (
+          {itens.map((item, index) => (
             <Box
-              key={item}
+              key={`${item.name}-${index}`}
               component="li"
               sx={{
                 display: 'flex',

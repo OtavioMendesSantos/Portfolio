@@ -167,7 +167,6 @@ const Projects = ({ className }: { className?: string }) => {
     const maxViewProjects = 3
 
     const [viewProjects, setViewProjects] = useState(maxViewProjects)
-    const [isExpanded, setIsExpanded] = useState(false)
     const [filters, setFilters] = useState<FilterOptions>({
         status: [],
         stack: []
@@ -275,10 +274,6 @@ const Projects = ({ className }: { className?: string }) => {
     //     console.log(item);
     //     setFilters((prev) => ({ ...prev, stack: prev.stack.filter((stack) => stack !== item) }))
     // }
-
-    const handleClick = () => {
-        setViewProjects((prev) => prev + maxViewProjects)
-    }
 
     const projectStacks = (stacks: string[]): { name: string }[] => {
         return stacks.map((stack) => ({ name: stack }))
