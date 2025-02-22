@@ -166,6 +166,13 @@ const CustomThemeProvider = (
                 }
             },
             components: {
+                MuiCssBaseline: {
+                    styleOverrides: {
+                        '*': {
+                            transition: 'background-color .3s ease-in-out',
+                        },
+                    },
+                },
                 MuiTypography: {
                     defaultProps: {
                         variantMapping: {
@@ -185,11 +192,11 @@ const CustomThemeProvider = (
                         }
                     }
                 },
-                MuiTextField:{
+                MuiTextField: {
                     styleOverrides: {
-                         root:{
-                            '& .MuiInputLabel-root':{
-                                color: defaultTheme.palette.text.primary,    
+                        root: {
+                            '& .MuiInputLabel-root': {
+                                color: defaultTheme.palette.text.primary,
                             }
                         }
                     }
