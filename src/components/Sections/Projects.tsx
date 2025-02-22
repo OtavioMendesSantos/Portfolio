@@ -167,6 +167,7 @@ const Projects = ({ className }: { className?: string }) => {
     const maxViewProjects = 3
 
     const [viewProjects, setViewProjects] = useState(maxViewProjects)
+    const [isExpanded, setIsExpanded] = useState(false)
     const [filters, setFilters] = useState<FilterOptions>({
         status: [],
         stack: []
@@ -467,18 +468,29 @@ const Projects = ({ className }: { className?: string }) => {
                                 : null
                         ))
                         : <Box>
-                            <Loader />
-                            <Typography> Nenhum projeto encontrado</Typography>
+                            <Loader /><Typography> Nenhum projeto encontrado</Typography>
                         </Box>
                     }
                 </AnimatePresence>
-                {filteredProjects.length > viewProjects && (
-                    <Box>
-                        <Button fullWidth variant="outlined" onClick={handleClick}>
-                            Ver Mais
+                <Box>
+                    {filteredProjects.length > viewProjects ? (
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            onClick={() => setViewProjects((prev) => prev + maxViewProjects)}
+                        >
+                            Ver mais
                         </Button>
-                    </Box>
-                )}
+                    ) : (
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            onClick={() => setViewProjects(maxViewProjects)}
+                        >
+                            Ver menos
+                        </Button>
+                    )}
+                </Box>
             </StyledContainer>
         </BoxSection>
     )
