@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import Logo from '/assets/svgs/logo_outlined.svg'
 import { AppBar, Box, Stack, useTheme } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useThemeContext } from '../../../Context/ThemeContext'
 import { styled } from '@mui/material/styles'
 
@@ -76,6 +76,10 @@ const Header = (
   const theme = useTheme()
   const { mode, setMode } = useThemeContext()
   const [darkMode, setDarkMode] = useState(mode === 'dark')
+
+  useEffect(() => {
+    setDarkMode(theme.palette.mode === 'dark')
+  }, [theme.palette.mode])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newMode = (event.target.checked ? 'dark' : 'light')
