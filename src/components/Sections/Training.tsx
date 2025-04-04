@@ -82,6 +82,13 @@ const Training = ({ className }: { className?: string }) => {
             description: 'Formação completa em JavaScript, cobrindo desde os fundamentos até técnicas avançadas. O curso inclui o uso de classes, objetos, web APIs, padrões de projeto e a manipulação do DOM.'
         },
         {
+            name: 'TypeScript',
+            organization: 'Origamid',
+            src: '/assets/images/certificates/typescript-origamid.jpg',
+            horas: 22,
+            description: 'Curso intensivo sobre TypeScript, abrangendo desde a sintaxe básica até conceitos avançados como Interfaces e Tipagem de Dados.'
+        },
+        {
             name: 'FlexBox',
             organization: 'Origamid',
             src: '/assets/images/certificates/flexbox-origamid.jpg',
