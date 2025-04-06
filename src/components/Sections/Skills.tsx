@@ -36,12 +36,12 @@ const skills: SkillData[] = [
   {
     name: 'REACT',
     level: 8,
-    objetivo: 10,
+    objetivo: 9,
   },
   {
     name: 'TYPESCRIPT',
-    level: 7,
-    objetivo: 8,
+    level: 8,
+    objetivo: 10,
   },
   {
     name: 'GIT',
@@ -70,7 +70,7 @@ const skills: SkillData[] = [
   // },
 ]
 
-const Skills = ({ className }: {className?: string}) => {
+const Skills = ({ className }: { className?: string }) => {
   const chartRef = useRef<Chart<'radar'> | null>(null);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
@@ -99,11 +99,34 @@ const Skills = ({ className }: {className?: string}) => {
   const options: ChartOptions<'radar'> = {
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          color: theme.palette.primary.contrastText,
+          font: {
+            size: 14,
+          }
+        }
+      }
+    },
     scales: {
       r: {
         beginAtZero: true,
+        angleLines: {
+          color: theme.palette.divider
+        },
+        grid: {
+          color: theme.palette.divider
+        },
+        pointLabels: {
+          color: theme.palette.primary.contrastText,
+          font: {
+            size: 14,
+          }
+        },
         ticks: {
-          display: false
+          color: theme.palette.primary.contrastText,
+          backdropColor: 'transparent'
         }
       },
     },
