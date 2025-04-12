@@ -14,7 +14,7 @@ import BoxSection from '../common/BoxSection';
 
 interface Certificate {
     name: string;
-    horas: number;
+    hours: number;
     organization: string;
     src: string;
     description: string;
@@ -71,42 +71,49 @@ const Training = ({ className }: { className?: string }) => {
             name: 'React',
             organization: 'Origamid',
             src: '/assets/images/certificates/react-origamid.png',
-            horas: 36,
+            hours: 36,
             description: 'Curso intensivo sobre React, abrangendo desde a sintaxe básica até conceitos avançados como Hooks e Context API. Inclui um projeto final de conclusão onde desenvolvemos um aplicativo completo (Dogs).'
         },
         {
             name: 'JavaScript',
             organization: 'Origamid',
             src: '/assets/images/certificates/javascript-origamid.jpg',
-            horas: 74,
+            hours: 74,
             description: 'Formação completa em JavaScript, cobrindo desde os fundamentos até técnicas avançadas. O curso inclui o uso de classes, objetos, web APIs, padrões de projeto e a manipulação do DOM.'
         },
         {
             name: 'TypeScript',
             organization: 'Origamid',
             src: '/assets/images/certificates/typescript-origamid.jpg',
-            horas: 22,
+            hours: 22,
             description: 'Curso intensivo sobre TypeScript, abrangendo desde a sintaxe básica até conceitos avançados como Interfaces e Tipagem de Dados.'
+        },
+        {
+            name: 'React com TypeScript',
+            organization: 'Origamid',
+            src: '/assets/images/certificates/react_typescript-origamid.jpg',
+            hours: 22,
+            description: 'Curso intensivo sobre React com TypeScript, abrangendo desde a sintaxe básica até conceitos avançados como Hooks e Context API.'
         },
         {
             name: 'FlexBox',
             organization: 'Origamid',
             src: '/assets/images/certificates/flexbox-origamid.jpg',
-            horas: 6,
+            hours: 6,
             description: 'Curso focado em CSS Flexbox, abordando propriedades como flex, flexShrink, e flexGrow para criar layouts responsivos e flexíveis.'
         },
         {
             name: 'Desenvolvimento de Jogos com JavaScript',
             organization: 'DIO',
             src: '/assets/images/certificates/desenvolvimento_de_jogos_com_js-dio.jpg',
-            horas: 77,
+            hours: 77,
             description: 'Introdução ao desenvolvimento de jogos utilizando JavaScript, abordando conceitos básicos de programação de jogos e criação de interatividade. Inclui projetos feitos durante o curso (Piano Virtual, Jogo Detona Ralph, Jogo da Memória, etc).'
         },
         {
             name: 'Desenvolvimento Back End com Kotlin',
             organization: 'DIO',
             src: '/assets/images/certificates/desenvolvimento_back_end_com_kotlin.jpg',
-            horas: 52,
+            hours: 52,
             description: 'Introdução ao desenvolvimento back end utilizando Kotlin, cobrindo fundamentos da linguagem e a criação de APIs e serviços.'
         },
     ]
@@ -269,7 +276,7 @@ const Training = ({ className }: { className?: string }) => {
                                     <Typography align='center' variant="h3">
                                         {certificate.name}
                                     </Typography>
-                                    <Typography variant="subtitle1" align='center'>{certificate.organization} | {certificate.horas} horas</Typography>
+                                    <Typography variant="subtitle1" align='center'>{certificate.organization} | {certificate.hours} horas</Typography>
                                     <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                         <Typography align='center' variant="body1" sx={{ mb: 2 }}>
                                             {certificate.description}
