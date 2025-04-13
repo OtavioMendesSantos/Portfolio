@@ -7,6 +7,7 @@ import { applyOpacity } from '../../utils/utils';
 import CustomModal from '../common/Modal';
 import ImgWithLoading from '../common/ImgWithLoading';
 import BoxSection from '../common/BoxSection';
+import smartImage from '/assets/images/smart.png';
 
 // Registra os componentes necessários
 Chart.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
@@ -208,7 +209,14 @@ const Skills = ({ className }: { className?: string }) => {
 
           <Typography variant="h3" sx={{ m: '1rem 0 .5rem 0' }}>4. Modelo SMART para Metas Almejadas</Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', maxWidth: '500px', margin: '0 auto 1rem' }}>
-            <ImgWithLoading src='https://marqponto.com.br/blog/wp-content/uploads/2021/12/Smart.png' alt='SMART' imgProps={{ style: { width: '100%', marginTop: '1rem' } }} />
+            <ImgWithLoading
+              src={smartImage}
+              alt='Metodologia SMART'
+              imgProps={{
+                style: { width: '100%', marginTop: '1rem', borderRadius: '.5rem' },
+                onDragStart: (e) => e.preventDefault()
+              }}
+            />
             <Link
               href='https://marqponto.com.br/blog/tecnica-smart-saiba-como-usar/'
               target='_blank'

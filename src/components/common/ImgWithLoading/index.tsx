@@ -5,7 +5,7 @@ interface ImageProps {
     src: string;
     alt: string;
     boxProps?: BoxProps;
-    imgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+    imgProps?: React.ComponentProps<"img">;
     href?: string
 }
 
