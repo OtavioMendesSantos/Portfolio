@@ -162,6 +162,29 @@ const Training = ({ className }: { className?: string }) => {
         setModalImg('')
     };
 
+    const carouselStyles: { [key: string]: React.CSSProperties } = {
+        carousel: {
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+            overflow: 'hidden',
+        },
+        slide: {
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            opacity: 0,
+            visibility: 'hidden',
+            transition: 'opacity 0.3s ease',
+            pointerEvents: 'none',
+        },
+        activeSlide: {
+            opacity: 1,
+            visibility: 'visible',
+            pointerEvents: 'auto',
+        }
+    };
+
     return (
         <BoxSection title="Formação" className={className}>
             <Typography indicate variant="h1" sx={{ mb: 2 }}>Formação</Typography>
@@ -195,37 +218,59 @@ const Training = ({ className }: { className?: string }) => {
                             <Typography
                                 variant="body1"
                                 color="text.primary"
-                                sx={{ position: 'absolute', top: '10px', left: '10px' }}
+                                sx={{ position: 'absolute', top: '10px', left: '10px', zIndex: 2 }}
                             >
                                 {activeImg} / {certificates.length}
                             </Typography>
 
-                            <StyledIconButton sx={{ left: '8px' }} onClick={() => handleClick('left', false)}>
+                            <StyledIconButton
+                                sx={{ left: '8px', zIndex: 2 }}
+                                onClick={() => handleClick('left', false)}
+                            >
                                 <KeyboardArrowLeftRoundedIcon />
                             </StyledIconButton>
 
-                            <Stack direction="row" sx={{ width: '100%', height: '100%' }}>
+                            <Box sx={carouselStyles.carousel}>
                                 {certificates.map((certificate, index) => (
-                                    index + 1 === activeImg &&
                                     <motion.div
                                         key={index + 1}
-                                        initial={{ opacity: 0, x: prevAnimation === 'right' ? -100 : 100 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: 100 }}
+                                        style={{
+                                            ...carouselStyles.slide,
+                                            ...(index + 1 === activeImg ? carouselStyles.activeSlide : {})
+                                        }}
+                                        animate={index + 1 === activeImg ? {
+                                            opacity: 1,
+                                            x: 0,
+                                            visibility: 'visible'
+                                        } : {
+                                            opacity: 0,
+                                            x: prevAnimation === 'right' ? -100 : 100,
+                                            visibility: 'hidden'
+                                        }}
                                         transition={{ duration: 0.3 }}
-                                        style={{ width: '100%', height: '100%', aspectRatio: '3/2' }}
                                     >
                                         <ImgWithLoading
                                             src={certificate.src}
                                             alt={certificate.name}
-                                            boxProps={{ sx: { borderRadius: '4px', overflow: 'hidden', cursor: 'pointer' } }}
+                                            boxProps={{
+                                                sx: {
+                                                    borderRadius: '4px',
+                                                    overflow: 'hidden',
+                                                    cursor: 'pointer',
+                                                    width: '100%',
+                                                    height: '100%',
+                                                }
+                                            }}
                                             imgProps={{ onClick: (e) => handleImageClick(e) }}
                                         />
                                     </motion.div>
                                 ))}
-                            </Stack>
+                            </Box>
 
-                            <StyledIconButton sx={{ right: '8px' }} onClick={() => handleClick('right', false)}>
+                            <StyledIconButton
+                                sx={{ right: '8px', zIndex: 2 }}
+                                onClick={() => handleClick('right', false)}
+                            >
                                 <KeyboardArrowRightRoundedIcon />
                             </StyledIconButton>
 
@@ -235,10 +280,10 @@ const Training = ({ className }: { className?: string }) => {
                                     position: 'absolute', bottom: '10px',
                                     width: '100%',
                                     justifyContent: 'space-around',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    zIndex: 2
                                 }}
-                                divider={<Divider orientation="vertical" sx={{ bgcolor: theme.palette.grey[400], height: '20px' }} />
-                                }
+                                divider={<Divider orientation="vertical" sx={{ bgcolor: theme.palette.grey[400], height: '20px' }} />}
                             >
                                 {certificates.map((_, index) => (
                                     <Box
@@ -261,29 +306,33 @@ const Training = ({ className }: { className?: string }) => {
                             </Stack>
                         </Box>
                     </Grid2>
-                    <Grid2 size={{ xs: 12, sm: 4, md: 6 }}>
+                    <Grid2 size={{ xs: 12, sm: 4, md: 6 }} sx={{ flex: '1', position: 'relative' }}>
                         {certificates.map((certificate, index) => (
-                            index + 1 === activeImg &&
-                            <motion.div
+                            <Box
                                 key={index + 1}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 20 }}
-                                transition={{ duration: 0.3 }}
-                                style={{ width: '100%', height: '100%' }}
+                                sx={{
+                                    flex: '1 1 auto',
+                                    display: 'flex',
+                                    height: '100%',
+                                    flexDirection: 'column',
+                                    position: 'absolute',
+                                    transition: 'opacity 0.3s ease',
+                                    opacity: index + 1 === activeImg ? 1 : 0,
+                                    visibility: index + 1 === activeImg ? 'visible' : 'hidden',
+                                }}
                             >
-                                <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                                    <Typography align='center' variant="h3">
-                                        {certificate.name}
+                                <Typography align='center' variant="h3">
+                                    {certificate.name}
+                                </Typography>
+                                <Typography variant="subtitle1" align='center' sx={{ mb: 1 }}>
+                                    {certificate.organization} | {certificate.hours} horas
+                                </Typography>
+                                <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <Typography align='center' variant="body1" sx={{ mb: 2 }}>
+                                        {certificate.description}
                                     </Typography>
-                                    <Typography variant="subtitle1" align='center'>{certificate.organization} | {certificate.hours} horas</Typography>
-                                    <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        <Typography align='center' variant="body1" sx={{ mb: 2 }}>
-                                            {certificate.description}
-                                        </Typography>
-                                    </Box>
                                 </Box>
-                            </motion.div>
+                            </Box>
                         ))}
                     </Grid2>
                 </Grid2>
