@@ -15,6 +15,7 @@ const Presentation = ({ className }: { className?: string }) => {
         { name: 'typescript' },
         { name: 'materialui' },
         { name: 'redux' },
+        { name: 'git' },
     ]
 
     const contactsList = [
@@ -91,7 +92,7 @@ const Presentation = ({ className }: { className?: string }) => {
                             <Typography variant="body1" sx={{ mb: 2 }}>
                                 Apaixonado por tecnologia, sou um desenvolvedor web júnior em constante aprendizado. Sou um profissional comunicativo e colaborativo, que valoriza o trabalho em equipe e a troca de conhecimento.
                             </Typography>
-                            <StacksList indicate title='Stacks'
+                            <StacksList indicate title='Principais Stacks'
                                 itens={stacksItens}
                             />
                             <StacksList indicate title='Contatos'
