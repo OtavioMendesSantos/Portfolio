@@ -33,7 +33,7 @@ const Projects = ({ className }: { className?: string }) => {
             descricao: 'Uma aplicação Kanban projetada para gerenciar demandas de forma eficiente e colaborativa. Oferece recursos como autenticação de usuário, recuperação de senha via e-mail, e comunicação em tempo real utilizando WebSockets, garantindo atualizações instantâneas e uma experiência de uso fluida.',
             linkProjeto: 'https://clearkanban.com',
             status: 'em_desenvolvimento',
-            stacks: ['nodejs', 'typescript', 'react', 'postgresql', 'socketio', 'railway', 'jwt', 'sass', 'redux'],
+            stacks: ['nodejs', 'typescript', 'react', 'postgresql', 'socketio', 'railway', 'jwt', 'sass', 'redux', 'grafana'],
         },
         {
             id: uuidv4(),
