@@ -303,13 +303,13 @@ const Projects = ({ className }: { className?: string }) => {
                             <Select
                                 fullWidth
                                 labelId='Stack-Label'
-                                label='Stack'
+                                label={t('sections.projects.filters.technologies')}
                                 onChange={(event) => handleFilterChange(event, 'stack')}
                                 value={filters.stack}
                                 multiple
                                 renderValue={(selected) => (chipsSelect({ selected }))}
                             >
-                                <MenuItem value="" disabled>Selecione...</MenuItem>
+                                <MenuItem value="" disabled>{t('sections.projects.filters.select')}</MenuItem>
                                 {filteredStacks.map((project, index) => (
                                     <MenuItem value={project} key={index}>{project}</MenuItem>
                                 ))}

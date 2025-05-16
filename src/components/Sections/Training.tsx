@@ -208,7 +208,7 @@ const Training = ({ className }: { className?: string }) => {
                             variant="contained"
                             onClick={handleOpen}
                         >
-                            Ver Matérias <ArrowOutwardRoundedIcon />
+                            {t('sections.training.viewSubjects')} <ArrowOutwardRoundedIcon />
                         </Button>
                     </CardContent>
                 </Card>
