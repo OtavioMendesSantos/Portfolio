@@ -2,9 +2,9 @@ type Status = 'nao_iniciado' | 'em_planejamento' | 'em_desenvolvimento' | 'concl
 
 export interface Project {
     id: string,
-    nome: string;
+    name: string;
     img?: string;
-    descricao: string;
+    description: string;
     linkRepositorio?: string;
     linkProjeto?: string;
     status: Status,
