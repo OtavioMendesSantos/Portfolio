@@ -69,7 +69,7 @@ const StyledSwitch = styled('div')(({ theme }) => ({
 }));
 
 // Componente de bandeira para seleção de idioma
-const LanguageFlag = styled('div')(({ theme }) => ({
+const LanguageFlag = styled('div')(() => ({
   width: '32px',
   height: '22px',
   borderRadius: '4px',
