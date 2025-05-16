@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+  import { useNavigate } from 'react-router-dom'
 import Logo from '/assets/svgs/logo_outlined.svg'
 import { AppBar, Box, Stack, useTheme, Tooltip } from '@mui/material'
 import { useEffect, useState } from 'react'
@@ -99,7 +99,6 @@ const Header = (
   { position = 'static' }:
     { position?: 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative' }
 ) => {
-  const navigate = useNavigate()
   const theme = useTheme()
   const { mode, setMode } = useThemeContext()
   const [darkMode, setDarkMode] = useState(mode === 'dark')
@@ -114,10 +113,6 @@ const Header = (
     setDarkMode(event.target.checked)
     setMode(newMode)
   }
-
-  const handleNavigate = () => {
-    navigate(window.location.pathname === '/ds' ? '/' : '/ds');
-  };
 
   const toggleLanguage = () => {
     const newLanguage = i18n.language === 'pt' ? 'en' : 'pt'
@@ -184,21 +179,15 @@ const Header = (
             src={Logo}
             alt="Logo Site - Desenvolvedor Otávio"
             onDragStart={(e: DragEvent) => e.preventDefault()}
-            onClick={handleNavigate}
             sx={{
               height: '100%',
               width: 'fit-content',
-              cursor: 'pointer',
-              '&:hover': {
-                bgcolor: 'rgba(0, 0, 0, 0.1)',
-                borderRadius: '5px',
-              },
             }}
           />
           <Stack
             direction="row"
             spacing={2}
-            sx={{ position: 'absolute', right: '10px',  }}
+            sx={{ position: 'absolute', right: '10px', }}
           >
             <Tooltip title={t('header.changeLanguage')}>
               <LanguageFlag onClick={toggleLanguage}>
