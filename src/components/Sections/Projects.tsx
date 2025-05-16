@@ -15,7 +15,7 @@ import { useEffect, useState, useMemo } from 'react';
 import Loader from '../common/Loader/Loader';
 import { v4 as uuidv4 } from 'uuid';
 import BoxSection from '../common/BoxSection';
-// import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import { useTranslation } from 'react-i18next';
 
 type Status = Project['status']
 
@@ -25,21 +25,23 @@ interface FilterOptions {
 }
 
 const Projects = ({ className }: { className?: string }) => {
+    const { t } = useTranslation();
+
     const projects: Project[] = useMemo(() => ([
         {
             id: uuidv4(),
-            nome: 'Clear Kanban',
+            name: t('sections.projects.items.clearKanban.name'),
             img: 'assets/images/clearkanban.png',
-            descricao: 'Uma aplicação Kanban projetada para gerenciar demandas de forma eficiente e colaborativa. Oferece recursos como autenticação de usuário, recuperação de senha via e-mail, e comunicação em tempo real utilizando WebSockets, garantindo atualizações instantâneas e uma experiência de uso fluida.',
+            description: t('sections.projects.items.clearKanban.description'),
             linkProjeto: 'https://clearkanban.com',
             status: 'em_desenvolvimento',
             stacks: ['nodejs', 'typescript', 'react', 'postgresql', 'socketio', 'railway', 'jwt', 'sass', 'redux', 'grafana'],
         },
         {
             id: uuidv4(),
-            nome: 'Dogs - Rede Social Para Cachorros',
+            name: t('sections.projects.items.dogs.name'),
             img: 'assets/images/dogs.jpg',
-            descricao: 'Rede Social Para Cachorros. Completo, com comentários, posts, autenticação, etc.',
+            description: t('sections.projects.items.dogs.description'),
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Projeto_Autodidata-React/tree/main/React-Origamid/08-Projeto_Final',
             linkProjeto: 'https://dogs-otavio.vercel.app/',
             status: 'em_desenvolvimento',
@@ -47,9 +49,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'Animais Fantásticos',
+            name: t('sections.projects.items.fantasticAnimals.name'),
             img: 'assets/images/animais_fantasticos.jpg',
-            descricao: 'Site com funcionalidades feitas em JavaScript',
+            description: t('sections.projects.items.fantasticAnimals.description'),
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Sites_Portifolio/tree/main/projetos/origamid/Animais_Fantasticos',
             linkProjeto: 'https://otaviomendessantos.github.io/Sites_Portifolio/projetos/origamid/Animais_Fantasticos/index.html',
             status: 'concluido',
@@ -57,9 +59,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'FlexBlog',
+            name: t('sections.projects.items.flexBlog.name'),
             img: 'https://otaviomendessantos.github.io/Sites_Portifolio/assets/imgs/projects/screenshot-flexblog.jpg',
-            descricao: 'Site feito para explorar as propriedades do display flexbox.',
+            description: t('sections.projects.items.flexBlog.description'),
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Sites_Portifolio/tree/main/projetos/origamid/FlexBlog',
             linkProjeto: 'https://otaviomendessantos.github.io/Sites_Portifolio/projetos/origamid/FlexBlog/index.html',
             status: 'concluido',
@@ -67,9 +69,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'Pomodoro',
+            name: t('sections.projects.items.pomodoro.name'),
             img: '/assets/images/pomodoro.jpg',
-            descricao: 'Site pomodoro para estudos, com lista de tarefas, avisos sonoros e menu interativo.',
+            description: t('sections.projects.items.pomodoro.description'),
             linkProjeto: 'https://otaviomendessantos.github.io/Sites_Portifolio/projetos/autoritarios/Pomodoro/index.html',
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Sites_Portifolio/tree/main/projetos/autoritarios/Pomodoro',
             status: 'concluido',
@@ -77,9 +79,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'Pokédex',
+            name: t('sections.projects.items.pokedex.name'),
             img: '/assets/images/pokedex.jpg',
-            descricao: 'Pokédex com listagem de Pokémons via pokeAPI.',
+            description: t('sections.projects.items.pokedex.description'),
             linkProjeto: 'https://pokedex-react-topaz.vercel.app/',
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Pokedex-React',
             status: 'concluido',
@@ -87,9 +89,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'To Do List',
+            name: t('sections.projects.items.toDoList.name'),
             img: '/assets/images/to_do_list.png',
-            descricao: 'To Do List Básica, com uma lista de tarefas e botões de adição e remoção.',
+            description: t('sections.projects.items.toDoList.description'),
             linkProjeto: 'https://todolist-otavio.vercel.app/',
             linkRepositorio: 'https://github.com/OtavioMendesSantos/ToDoList-NextJs',
             status: 'concluido',
@@ -97,9 +99,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'Jogo da Velha',
+            name: t('sections.projects.items.ticTacToe.name'),
             img: '/assets/images/jogo_da_velha.jpg',
-            descricao: 'Jogo da velha, Player vs Computador.',
+            description: t('sections.projects.items.ticTacToe.description'),
             linkProjeto: 'https://otaviomendessantos.github.io/Sites_Portifolio/projetos/autoritarios/Jogo_da_Velha/index.html',
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Sites_Portifolio/tree/main/projetos/autoritarios/Jogo_da_Velha',
             status: 'concluido',
@@ -107,9 +109,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'Jogo Detona Ralph',
+            name: t('sections.projects.items.detonaRalph.name'),
             img: '/assets/images/detona_ralph.jpg',
-            descricao: 'Jogo de acertar a toupeira na temática Detona Ralph (Falta adicionar responsividade).',
+            description: t('sections.projects.items.detonaRalph.description'),
             linkProjeto: 'https://otaviomendessantos.github.io/Sites_Portifolio/projetos/dio/Detona_Ralph/index.html',
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Sites_Portifolio/tree/main/projetos/dio/Detona_Ralph',
             status: 'refatorando',
@@ -117,9 +119,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'Jogo da Memória',
+            name: t('sections.projects.items.memoryGame.name'),
             img: '/assets/images/jogo_da_memoria.jpg',
-            descricao: 'Jogo da memória com emojis (Falta adicionar responsividade).',
+            description: t('sections.projects.items.memoryGame.description'),
             linkProjeto: 'https://otaviomendessantos.github.io/Sites_Portifolio/projetos/dio/Jogo_da_Memoria/index.html',
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Sites_Portifolio/tree/main/projetos/dio/Jogo_da_Memoria',
             status: 'refatorando',
@@ -127,9 +129,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'Piano Virtual',
+            name: t('sections.projects.items.virtualPiano.name'),
             img: '/assets/images/piano_virtual.jpg',
-            descricao: 'Piano Virtual(Falta adicionar responsividade).',
+            description: t('sections.projects.items.virtualPiano.description'),
             linkProjeto: 'https://otaviomendessantos.github.io/Sites_Portifolio/projetos/dio/Piano_Virtual/index.html',
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Sites_Portifolio/tree/main/projetos/dio/Piano_Virtual',
             status: 'refatorando',
@@ -137,9 +139,9 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'Jogo Jo-Ken-Po Yu-Gi-Oh',
+            name: t('sections.projects.items.joKenPoYuGiOh.name'),
             img: '/assets/images/yu-gi-oh.jpg',
-            descricao: 'Jogo de Jo-Ken-Po na temática de Yu-Gi-Oh (Falta adicionar responsividade).',
+            description: t('sections.projects.items.joKenPoYuGiOh.description'),
             linkProjeto: 'https://otaviomendessantos.github.io/Sites_Portifolio/projetos/dio/Jogo_Cartas_Yu-Gi-Oh/index.html',
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Sites_Portifolio/tree/main/projetos/dio/Jogo_Cartas_Yu-Gi-Oh',
             status: 'refatorando',
@@ -147,21 +149,13 @@ const Projects = ({ className }: { className?: string }) => {
         },
         {
             id: uuidv4(),
-            nome: 'Breeze',
-            descricao: 'Aplicativo mobile feito para previsão do tempo - Estudando React Native e Expo. ',
+            name: t('sections.projects.items.breeze.name'),
+            description: t('sections.projects.items.breeze.description'),
             linkRepositorio: 'https://github.com/OtavioMendesSantos/Breeze',
             status: 'em_planejamento',
             stacks: ['expo', 'react'],
         },
-        // {
-        //     id: uuidv4(),
-        //     nome: 'Coffee Marketplace',
-        //     descricao: 'Marketplace de cafe para o mundo.',
-        //     linkRepositorio: '',
-        //     status: 'nao_iniciado',
-        //     stacks: ['node'],
-        // },
-    ]), []);
+    ]), [t]);
 
     const { isMobile } = useResponsive();
     const maxViewProjects = 3
@@ -174,7 +168,20 @@ const Projects = ({ className }: { className?: string }) => {
     const [filteredProjects, setFilteredProjects] = useState(projects)
 
     const renameStatus = (status: string) => {
-        return status.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())
+        switch (status) {
+            case 'concluido':
+                return t('sections.projects.status.completed');
+            case 'em_desenvolvimento':
+                return t('sections.projects.status.inDevelopment');
+            case 'nao_iniciado':
+                return t('sections.projects.status.notStarted');
+            case 'em_planejamento':
+                return t('sections.projects.status.inPlanning');
+            case 'refatorando':
+                return t('sections.projects.status.refactoring');
+            default:
+                return status;
+        }
     }
 
     const filteredStacks = useMemo(() => {
@@ -239,8 +246,6 @@ const Projects = ({ className }: { className?: string }) => {
                             <Chip
                                 size="small"
                                 label={renameStatus(value)}
-                            // onDelete={(value) => handleRemoveChip(value)}
-                            // deleteIcon={<ClearRoundedIcon />}
                             />
                         </motion.div>
                     ))}
@@ -270,18 +275,13 @@ const Projects = ({ className }: { className?: string }) => {
         }
     }, [filters, projects])
 
-    // const handleRemoveChip = (item: string) => {
-    //     console.log(item);
-    //     setFilters((prev) => ({ ...prev, stack: prev.stack.filter((stack) => stack !== item) }))
-    // }
-
     const projectStacks = (stacks: string[]): { name: string }[] => {
         return stacks.map((stack) => ({ name: stack }))
     }
 
     return (
-        <BoxSection title="Projetos" className={className}>
-            <Typography indicate variant="h1" sx={{ mb: 2 }}>Projetos</Typography>
+        <BoxSection title={t('sections.projects.title')} className={className}>
+            <Typography indicate variant="h1">{t('sections.projects.title')}</Typography>
             <StyledContainer>
                 <Card sx={{ width: '100%' }}>
                     <Stack
@@ -298,7 +298,7 @@ const Projects = ({ className }: { className?: string }) => {
                                     color: theme.palette.text.primary,
                                 })}
                             >
-                                Stack
+                                {t('sections.projects.filters.technologies')}
                             </InputLabel>
                             <Select
                                 fullWidth
@@ -322,7 +322,7 @@ const Projects = ({ className }: { className?: string }) => {
                                     color: theme.palette.text.primary,
                                 })}
                             >
-                                Status
+                                {t('sections.projects.filters.status')}
                             </InputLabel>
                             <Select
                                 fullWidth
@@ -332,9 +332,8 @@ const Projects = ({ className }: { className?: string }) => {
                                 value={filters.status}
                                 multiple
                                 renderValue={(selected) => (chipsSelect({ selected }))}
-
                             >
-                                <MenuItem value="" disabled>Selecione...</MenuItem>
+                                <MenuItem value="" disabled>{t('sections.projects.filters.select')}</MenuItem>
                                 {filteredStatus.map((project, index) => (
                                     <MenuItem value={project} key={index}>{renameStatus(project)}</MenuItem>
                                 ))}
@@ -373,13 +372,13 @@ const Projects = ({ className }: { className?: string }) => {
                                                     align='center'
                                                     sx={{ mb: 2, px: 2.5 }}
                                                 >
-                                                    {project.nome}
+                                                    {project.name}
                                                 </Typography>
                                                 <Stack direction="row" sx={{ width: '100%', flexGrow: 1 }}>
                                                     <Grid2 container spacing={2} sx={{ width: '100%', height: '100%', justifyContent: 'center' }}>
                                                         <Grid2 size={{ xs: 12, sm: 4 }}>
                                                             <ImgWithLoading
-                                                                alt={project.nome}
+                                                                alt={project.name}
                                                                 src={project.img || '/assets/images/no_image.png'}
                                                                 imgProps={{
                                                                     style: {
@@ -406,10 +405,10 @@ const Projects = ({ className }: { className?: string }) => {
                                                         >
                                                             <Box>
                                                                 <Typography>
-                                                                    {project.descricao}
+                                                                    {project.description}
                                                                 </Typography>
                                                             </Box>
-                                                            <Typography variant='subtitle1'>Tecnologias Utilizadas:</Typography>
+                                                            <Typography variant='subtitle1'>{t('sections.projects.technologiesUsed')}:</Typography>
                                                             <StacksList
                                                                 containerProps={{
                                                                     sx: {
@@ -433,7 +432,7 @@ const Projects = ({ className }: { className?: string }) => {
                                                                             variant="contained"
                                                                             sx={{ gap: 1 }}
                                                                         >
-                                                                            Veja o projeto <OpenInNewRoundedIcon />
+                                                                            {t('sections.projects.seeProject')} <OpenInNewRoundedIcon />
                                                                         </Button>
                                                                     </Link>}
                                                                 {project.linkRepositorio &&
@@ -447,7 +446,7 @@ const Projects = ({ className }: { className?: string }) => {
                                                                             variant="contained"
                                                                             sx={{ gap: 1 }}
                                                                         >
-                                                                            Veja o código
+                                                                            {t('sections.projects.seeCode')}
                                                                             <CodeRoundedIcon />
                                                                         </Button>
                                                                     </Link>
@@ -463,7 +462,7 @@ const Projects = ({ className }: { className?: string }) => {
                                 : null
                         ))
                         : <Box>
-                            <Loader /><Typography> Nenhum projeto encontrado</Typography>
+                            <Loader /><Typography> {t('sections.projects.noProjects')}</Typography>
                         </Box>
                     }
                 </AnimatePresence>
@@ -474,7 +473,7 @@ const Projects = ({ className }: { className?: string }) => {
                             variant="outlined"
                             onClick={() => setViewProjects((prev) => prev + maxViewProjects)}
                         >
-                            Ver mais
+                            {t('sections.projects.viewMore')}
                         </Button>
                     ) : (
                         <Button
@@ -482,7 +481,7 @@ const Projects = ({ className }: { className?: string }) => {
                             variant="outlined"
                             onClick={() => setViewProjects(maxViewProjects)}
                         >
-                            Ver menos
+                            {t('sections.projects.seeLess')}
                         </Button>
                     )}
                 </Box>

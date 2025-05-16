@@ -5,9 +5,11 @@ import StacksList from '../common/StacksList'
 import useResponsive from '../../hooks/useResponsive'
 import { motion } from 'framer-motion'
 import BoxSection from '../common/BoxSection'
+import { useTranslation } from 'react-i18next'
 
 const Presentation = ({ className }: { className?: string }) => {
     const { isMobile } = useResponsive()
+    const { t } = useTranslation()
 
     const stacksItens = [
         { name: 'react' },
@@ -87,27 +89,27 @@ const Presentation = ({ className }: { className?: string }) => {
                             display="flex"
                             flexDirection="column"
                         >
-                            <Typography variant="h1" indicate>Otávio Mendes Santos</Typography>
-                            <Typography variant="subtitle1">Dev. Front End</Typography>
-                            <Typography variant="body1" sx={{ mb: 2 }}>
-                                Apaixonado por tecnologia, sou um desenvolvedor web júnior em constante aprendizado. Sou um profissional comunicativo e colaborativo, que valoriza o trabalho em equipe e a troca de conhecimento.
-                            </Typography>
-                            <StacksList indicate title='Principais Stacks'
+                            <Typography variant="h1" indicate>{t('presentation.name')}</Typography>
+                            <Typography variant="subtitle1">{t('presentation.job')}</Typography>
+                            <Typography variant="body1" sx={{ mb: 2 }}>{t('presentation.description')}</Typography>
+                            <StacksList
+                                indicate
+                                title={t('presentation.dominateTechnologies')}
                                 itens={stacksItens}
                             />
-                            <StacksList indicate title='Contatos'
+                            <StacksList
+                                indicate
+                                title={t('presentation.contacts')}
                                 itens={contactsList}
                             />
                         </Grid2>
                     </Grid2>
                 </motion.div>
             </Grid2>
-            {/* <Slide in={true} direction="left" timeout={timeAnimation}>
-            </Slide> */}
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 2 }}>
                 <IconButton
-                    aria-label='go main page'
+                    aria-label={t('presentation.goMainPage')}
                     color="primary"
                     onClick={() => window.scroll({ top: window.innerHeight - 60, behavior: 'smooth' })}
                 >

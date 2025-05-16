@@ -1,0 +1,254 @@
+{
+  "presentation": {
+    "name": "Otávio Mendes Santos",
+    "job": "Front-end Web Developer",
+    "description": "Passionate about technology, I am a junior web developer in constant learning. I am a communicative and collaborative professional who values teamwork and knowledge sharing.",
+    "dominateTechnologies": "Technologies I dominate",
+    "contacts": "Contacts",
+    "goMainPage": "Go to main page"
+  },
+  "sections": {
+    "skills": {
+      "title": "Skills",
+      "basicKnowledge": "Basic or beginner knowledge",
+      "intermediateKnowledge": "Intermediate knowledge, able to use in small projects",
+      "advancedKnowledge": "Advanced knowledge, specific experience",
+      "expertKnowledge": "Expertise or mastery level",
+      "howEvaluate": "How do I evaluate myself?",
+      "current": "Current",
+      "target": "Target",
+      "technologies": {
+        "react": "React",
+        "typescript": "TypeScript",
+        "javascript": "JavaScript",
+        "materialUI": "Material UI",
+        "styledComponents": "Styled Components",
+        "html": "HTML",
+        "css": "CSS",
+        "redux": "Redux",
+        "reactQuery": "React Query",
+        "git": "Git",
+        "figma": "Figma",
+        "nodejs": "Node.js",
+        "express": "Express",
+        "mongodb": "MongoDB",
+        "jest": "Jest",
+        "python": "Python"
+      },
+      "legend": "Legend",
+      "seeMore": "See more",
+      "evaluationCriteria": "1. Self-assessment by Specific Criteria",
+      "evaluationCriteriaDescription": "I reflect on my past projects and evaluate my performance based on practical results: <br /> 1-3: Basic or beginner knowledge. <br /> 4-6: Intermediate knowledge, able to apply in small projects. <br /> 7-8: Advanced knowledge, with solid experience. <br /> 9-10: Expertise or mastery level.",
+      "externalFeedback": "2. External Feedback Assessment",
+      "externalFeedbackDescription": "I ask for feedback from colleagues, mentors, or leaders (managers, coworkers, teachers) to evaluate my current skills. This offers an external perspective and balances my self-assessment.",
+      "goals": "3. Short, Medium, and Long-term Goals",
+      "goalsDescription": "Short term (1-3 months): Skills I want to improve soon. <br /> Medium term (6 months - 1 year): Skills that require more practice or learning. <br /> Long term (1-2 years): More complex or advanced level skills.",
+      "smartMethod": "4. SMART Model for Desired Goals",
+      "smartMethodDescription": "Specific: I determine exactly which aspect of the skill I want to improve. <br /> Measurable: How can success be measured? For example, completing a project or obtaining a certification. <br /> Attainable: Is the skill realistic considering my current level and context? <br /> Relevant: How does this skill contribute to my career or personal goals? <br /> Time-bound: How long do I expect to reach this level?",
+      "marketBenchmarking": "5. Market Benchmarking",
+      "marketBenchmarkingDescription": "I research market expectations for the skills I want to develop, adjusting my assessments according to the requirements of my area of expertise."
+    },
+    "experience": {
+      "title": "Experience",
+      "position": "Front-end Developer",
+      "company": "Pick N Go | April 2023 - Present",
+      "responsibilities": "Responsibilities and duties",
+      "tasks": {
+        "systemRefactoring": {
+          "title": "System Refactoring",
+          "description": "Participated in refactoring the company's main system alongside the front-end team, making it more performant, modern, and intuitive, with new features and better user experience."
+        },
+        "challengeResolution": {
+          "title": "Challenge Resolution",
+          "description": "Solved technical challenges with creative and efficient approaches, contributing innovative solutions adopted as best practices by the team."
+        },
+        "componentDevelopment": {
+          "title": "Component Development",
+          "description": "Developed and maintained components such as dynamic forms, interactive maps, support for multiple brands (whitelabel), and global notification system (snackbar), focusing on modularity and usability."
+        },
+        "typescript": {
+          "title": "TypeScript Typing",
+          "description": "Created and maintained global types, interfaces, and DTOs in TypeScript, promoting consistency between application layers and reducing integration errors."
+        },
+        "bugFixing": {
+          "title": "Bug Resolution",
+          "description": "Worked on identifying and resolving bugs, collaborating with the back-end team to ensure system stability and improve communication between layers."
+        },
+        "libraryImplementation": {
+          "title": "Library Implementation",
+          "description": "Researched, tested, and implemented libraries that best fit the project's needs, focusing on performance, usability, and maintainability."
+        },
+        "stateManagement": {
+          "title": "State Management",
+          "description": "Implemented and maintained global state management, ensuring predictability, data consistency, and facilitating system scalability."
+        }
+      }
+    },
+    "training": {
+      "title": "Education",
+      "college": {
+        "title": "College",
+        "name": "Systems Analysis and Development",
+        "institution": "SENAC | 2022 - 2024",
+        "modalTitle": "Systems Analysis and Development",
+        "tableHeader": {
+          "order": "Order",
+          "curriculumUnit": "Curriculum Unit",
+          "workload": "Hours"
+        }
+      },
+      "inProgress": "In progress",
+      "completed": "Completed",
+      "viewSubjects": "View Subjects",
+      "coursesAndCertificates": "Courses and Certificates",
+      "certificates": {
+        "items": {
+          "react": {
+            "title": "React",
+            "description": "Intensive course on React, covering from basic syntax to advanced concepts like Hooks and Context API. Includes a final project where we developed a complete application (Dogs)."
+          },
+          "javascript": {
+            "title": "JavaScript",
+            "description": "Complete JavaScript training, covering from fundamentals to advanced techniques. The course includes the use of classes, objects, web APIs, design patterns, and DOM manipulation."
+          },
+          "typescript": {
+            "title": "TypeScript",
+            "description": "Intensive course on TypeScript, covering from basic syntax to advanced concepts like Interfaces and Data Typing."
+          },
+          "reactWithTypeScript": {
+            "title": "React with TypeScript",
+            "description": "Intensive course on React with TypeScript, covering from basic syntax to advanced concepts like Hooks and Context API."
+          },
+          "flexbox": {
+            "title": "FlexBox",
+            "description": "Course focused on CSS Flexbox, addressing properties such as flex, flexShrink, and flexGrow to create responsive and flexible layouts."
+          },
+          "gameDevJs": {
+            "title": "JavaScript Game Development",
+            "description": "Introduction to game development using JavaScript, addressing basic concepts of game programming and creating interactivity. Includes projects made during the course (Virtual Piano, Ralph Wreck-It Game, Memory Game, etc)."
+          },
+          "kotlinBackend": {
+            "title": "Kotlin Back End Development",
+            "description": "Introduction to backend development using Kotlin, covering language fundamentals and the creation of APIs and services."
+          }
+        }
+      },
+      "certificateModal": {
+        "title": "Certificate"
+      }
+    },
+    "projects": {
+      "title": "Projects",
+      "viewMore": "View more",
+      "loading": "Loading projects...",
+      "noProjects": "No projects found",
+      "noDescription": "No description",
+      "status": {
+        "completed": "Completed",
+        "inDevelopment": "In development",
+        "notStarted": "Not started",
+        "inPlanning": "In planning",
+        "refactoring": "Refactoring"
+      },
+      "filters": {
+        "status": "Status",
+        "technologies": "Technologies",
+        "select": "Select..."
+      },
+      "technologiesUsed": "Technologies Used",
+      "seeProject": "See project",
+      "seeCode": "See code",
+      "seeLess": "See less",
+      "items": {
+        "clearKanban": {
+          "name": "Clear Kanban",
+          "description": "A Kanban application designed to efficiently and collaboratively manage demands. It offers features such as user authentication, email password recovery, and real-time communication using WebSockets, ensuring instant updates and a smooth user experience."
+        },
+        "dogs": {
+          "name": "Dogs - Social Network for Dogs",
+          "description": "Social Network for Dogs. Complete with comments, posts, authentication, etc."
+        },
+        "fantasticAnimals": {
+          "name": "Fantastic Animals",
+          "description": "Website with functionalities made in JavaScript"
+        },
+        "flexBlog": {
+          "name": "FlexBlog",
+          "description": "Website created to explore flexbox display properties."
+        },
+        "pomodoro": {
+          "name": "Pomodoro",
+          "description": "Pomodoro website for studies, with task list, sound alerts and interactive menu."
+        },
+        "pokedex": {
+          "name": "Pokédex",
+          "description": "Pokédex with listing of Pokémon via pokeAPI."
+        },
+        "toDoList": {
+          "name": "To Do List",
+          "description": "Basic To Do List, with a task list and add and remove buttons."
+        },
+        "ticTacToe": {
+          "name": "Tic-Tac-Toe",
+          "description": "Tic-tac-toe, Player vs Computer."
+        },
+        "detonaRalph": {
+          "name": "Wreck-It Ralph Game",
+          "description": "Whack-a-mole game in the Wreck-It Ralph theme (Need to add responsiveness)."
+        },
+        "memoryGame": {
+          "name": "Memory Game",
+          "description": "Memory game with emojis (Need to add responsiveness)."
+        },
+        "pianoVirtual": {
+          "name": "Virtual Piano",
+          "description": "Virtual Piano (Need to add responsiveness)."
+        },
+        "joKenPoYuGiOh": {
+          "name": "Rock-Paper-Scissors Yu-Gi-Oh Game",
+          "description": "Rock-Paper-Scissors game with Yu-Gi-Oh theme (Need to add responsiveness)."
+        },
+        "breeze": {
+          "name": "Breeze",
+          "description": "Mobile app for weather forecast - Studying React Native and Expo."
+        }
+      }
+    },
+    "contact": {
+      "title": "Contact Me",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Name",
+          "error": "Name must have at least 3 letters."
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Email",
+          "error": "Invalid email"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Message"
+        },
+        "button": "Send",
+        "success": "Message sent successfully!",
+        "error": "An error occurred while sending your message. Please try again later."
+      }
+    },
+    "repositories": {
+      "title": "Repositories",
+      "noDescription": "No description",
+      "visitRepository": "Visit repository",
+      "loading": "Loading repositories...",
+      "viewMore": "View more"
+    }
+  },
+  "header": {
+    "changeLanguage": "Change language",
+    "switchDarkMode": "Switch Dark Mode"
+  },
+  "footer": {
+    "developedBy": "Developed by"
+  }
+}

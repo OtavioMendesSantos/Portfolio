@@ -8,18 +8,19 @@ import { applyOpacity } from '../../utils/utils'
 import { motion } from 'framer-motion'
 import useResponsive from '../../hooks/useResponsive'
 import BoxSection from '../common/BoxSection'
+import { useTranslation } from 'react-i18next'
 
 // interface Filters {
 //     owner: boolean;
 //     forked: boolean;
 // }
 
-
 const Repositories = ({ className }: { className?: string }) => {
     const username = 'OtavioMendesSantos'
     const { isMobile } = useResponsive()
     const [repos, setRepos] = useState<GitHubRepos[]>([])
     const theme = useTheme()
+    const { t } = useTranslation()
     const GITHUB_TOKEN: string = import.meta.env.VITE_GITHUB_TOKEN || ''
     const maxView = isMobile ? 6 : 9
     const [inView, setInView] = useState(maxView)
@@ -105,8 +106,8 @@ const Repositories = ({ className }: { className?: string }) => {
     }
 
     return (
-        <BoxSection title="Repositórios" className={className} sx={{ mb: 4}}>
-            <Typography variant="h1" indicate>Repositórios</Typography>
+        <BoxSection title={t('sections.repositories.title')} className={className} sx={{ mb: 4}}>
+            <Typography variant="h1" indicate>{t('sections.repositories.title')}</Typography>
             <Container
                 sx={{
                     display: 'flex',
@@ -181,7 +182,7 @@ const Repositories = ({ className }: { className?: string }) => {
                                             )}
                                         </Box>
                                         <Typography variant="body1" sx={{ mb: 2 }}>
-                                            {repo.description ? repo.description : 'Sem descrição'}
+                                            {repo.description ? repo.description : t('sections.repositories.noDescription')}
                                         </Typography>
                                         <Link
                                             href={repo.html_url}
@@ -190,7 +191,7 @@ const Repositories = ({ className }: { className?: string }) => {
                                             sx={{ textDecoration: 'none', mt: 'auto' }}
                                         >
                                             <Button sx={{ width: '100%' }} variant="contained" color="primary">
-                                                Visitar repositório <LaunchRoundedIcon fontSize="inherit" />
+                                                {t('sections.repositories.visitRepository')} <LaunchRoundedIcon fontSize="inherit" />
                                             </Button>
                                         </Link>
                                     </CardContent>
@@ -202,13 +203,13 @@ const Repositories = ({ className }: { className?: string }) => {
                 ) : (
                     <Box sx={{ display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column' }}>
                         <Loader />
-                        {loadingRepos && <Typography variant="body1">Carregando repositórios...</Typography>}
+                        {loadingRepos && <Typography variant="body1">{t('sections.repositories.loading')}</Typography>}
                     </Box>
                 )}
             </Container>
             {repos.length > inView && (
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-                    <Button variant="outlined" onClick={handleClick}>Ver mais</Button>
+                    <Button variant="outlined" onClick={handleClick}>{t('sections.repositories.viewMore')}</Button>
                 </Box>
             )}
         </BoxSection >

@@ -2,8 +2,10 @@ import { Box, Link, Stack, styled, Theme, Typography } from '@mui/material'
 import { LinkedIn } from '@mui/icons-material'
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <Box
       component="footer"
@@ -18,8 +20,8 @@ const Footer = () => {
         boxShadow: theme.shadows[24],
       })}
     >
-      <Typography align="center">
-        Desenvolvido por
+        <Typography align="center">
+          {t('footer.developedBy')}
         <Link
           href="https://github.com/OtavioMendesSantos"
           target="_blank" 

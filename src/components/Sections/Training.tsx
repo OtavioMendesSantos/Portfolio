@@ -11,6 +11,7 @@ import { CheckCircle } from '@mui/icons-material';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import CustomModal from '../common/Modal';
 import BoxSection from '../common/BoxSection';
+import { useTranslation } from 'react-i18next';
 
 interface Certificate {
     name: string;
@@ -56,6 +57,7 @@ const curriculumData: CurriculumItem[] = [
 
 const Training = ({ className }: { className?: string }) => {
     const theme = useTheme();
+    const { t } = useTranslation();
     const [activeImg, setActiveImg] = useState(1);
     const [prevAnimation, setPrevAnimation] = useState<'left' | 'right' | null>(null);
     const [autoClick, setAutoClick] = useState(true);
@@ -68,53 +70,53 @@ const Training = ({ className }: { className?: string }) => {
 
     const certificates: Certificate[] = [
         {
-            name: 'React',
+            name: t('sections.training.certificates.items.react.title'),
             organization: 'Origamid',
             src: '/assets/images/certificates/react-origamid.png',
             hours: 36,
-            description: 'Curso intensivo sobre React, abrangendo desde a sintaxe básica até conceitos avançados como Hooks e Context API. Inclui um projeto final de conclusão onde desenvolvemos um aplicativo completo (Dogs).'
+            description: t('sections.training.certificates.items.react.description')
         },
         {
-            name: 'JavaScript',
+            name: t('sections.training.certificates.items.javascript.title'),
             organization: 'Origamid',
             src: '/assets/images/certificates/javascript-origamid.jpg',
             hours: 74,
-            description: 'Formação completa em JavaScript, cobrindo desde os fundamentos até técnicas avançadas. O curso inclui o uso de classes, objetos, web APIs, padrões de projeto e a manipulação do DOM.'
+            description: t('sections.training.certificates.items.javascript.description')
         },
         {
-            name: 'TypeScript',
+            name: t('sections.training.certificates.items.typescript.title'),
             organization: 'Origamid',
             src: '/assets/images/certificates/typescript-origamid.jpg',
             hours: 22,
-            description: 'Curso intensivo sobre TypeScript, abrangendo desde a sintaxe básica até conceitos avançados como Interfaces e Tipagem de Dados.'
+            description: t('sections.training.certificates.items.typescript.description')
         },
         {
-            name: 'React com TypeScript',
+            name: t('sections.training.certificates.items.reactWithTypeScript.title'),
             organization: 'Origamid',
             src: '/assets/images/certificates/react_typescript-origamid.jpg',
             hours: 22,
-            description: 'Curso intensivo sobre React com TypeScript, abrangendo desde a sintaxe básica até conceitos avançados como Hooks e Context API.'
+            description: t('sections.training.certificates.items.reactWithTypeScript.description')
         },
         {
-            name: 'FlexBox',
+            name: t('sections.training.certificates.items.flexbox.title'),
             organization: 'Origamid',
             src: '/assets/images/certificates/flexbox-origamid.jpg',
             hours: 6,
-            description: 'Curso focado em CSS Flexbox, abordando propriedades como flex, flexShrink, e flexGrow para criar layouts responsivos e flexíveis.'
+            description: t('sections.training.certificates.items.flexbox.description')
         },
         {
-            name: 'Desenvolvimento de Jogos com JavaScript',
+            name: t('sections.training.certificates.items.gameDevJs.title'),
             organization: 'DIO',
             src: '/assets/images/certificates/desenvolvimento_de_jogos_com_js-dio.jpg',
             hours: 77,
-            description: 'Introdução ao desenvolvimento de jogos utilizando JavaScript, abordando conceitos básicos de programação de jogos e criação de interatividade. Inclui projetos feitos durante o curso (Piano Virtual, Jogo Detona Ralph, Jogo da Memória, etc).'
+            description: t('sections.training.certificates.items.gameDevJs.description')
         },
         {
-            name: 'Desenvolvimento Back End com Kotlin',
+            name: t('sections.training.certificates.items.kotlinBackend.title'),
             organization: 'DIO',
             src: '/assets/images/certificates/desenvolvimento_back_end_com_kotlin.jpg',
             hours: 52,
-            description: 'Introdução ao desenvolvimento back end utilizando Kotlin, cobrindo fundamentos da linguagem e a criação de APIs e serviços.'
+            description: t('sections.training.certificates.items.kotlinBackend.description')
         },
     ]
 
@@ -186,10 +188,10 @@ const Training = ({ className }: { className?: string }) => {
     };
 
     return (
-        <BoxSection title="Formação" className={className}>
-            <Typography indicate variant="h1" sx={{ mb: 2 }}>Formação</Typography>
+        <BoxSection title={t('sections.training.title')} className={className}>
+            <Typography indicate variant="h1" sx={{ mb: 2 }}>{t('sections.training.title')}</Typography>
             <Container>
-                <Typography variant="h2">Faculdade </Typography>
+                <Typography variant="h2">{t('sections.training.college.title')}</Typography>
                 <Card sx={{ width: 'fit-content', my: 2 }}>
                     <CardContent>
                         <Stack direction="row" gap={1}>
@@ -211,7 +213,7 @@ const Training = ({ className }: { className?: string }) => {
                     </CardContent>
                 </Card>
 
-                <Typography variant="h2" sx={{ mb: 2 }}>Cursos e Certificados</Typography>
+                <Typography variant="h2" sx={{ mb: 2 }}>{t('sections.training.coursesAndCertificates')}</Typography>
                 <Grid2 container sx={{ minHeight: '50vh' }} spacing={2}>
                     <Grid2 size={{ xs: 12, sm: 8, md: 6 }}>
                         <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -342,15 +344,15 @@ const Training = ({ className }: { className?: string }) => {
                 onClose={handleClose}
                 maxWidth='800px'
                 maxHeight='700px'
-                title='Análise e Desenvolvimento de Sistemas'
+                title={t('sections.training.college.modalTitle')}
             >
                 <TableContainer component={Paper}>
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell><Typography variant="h6">Ordem</Typography></TableCell>
-                                <TableCell><Typography variant="h6" align='center'>Unidade Curricular</Typography></TableCell>
-                                <TableCell><Typography variant="h6">CH</Typography></TableCell>
+                                <TableCell><Typography variant="h6">{t('sections.training.college.tableHeader.order')}</Typography></TableCell>
+                                <TableCell><Typography variant="h6">{t('sections.training.college.tableHeader.curriculumUnit')}</Typography></TableCell>
+                                <TableCell><Typography variant="h6">{t('sections.training.college.tableHeader.workload')}</Typography></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -368,15 +370,15 @@ const Training = ({ className }: { className?: string }) => {
             <CustomModal
                 open={modalImgOpen}
                 onClose={handleModalImgClose}
-                title='Certificado'
+                title={t('sections.training.certificateModal.title')}
             >
                 <ImgWithLoading
                     alt={certificates[activeImg - 1].name}
                     src={modalImg}
-                    imgProps={{ style: { borderRadius: '4px', maxWidth: '100%' } }} // Certifica-se de que a imagem seja responsiva
+                    imgProps={{ style: { borderRadius: '4px', maxWidth: '100%' } }}
                 />
             </CustomModal>
-        </BoxSection >
+        </BoxSection>
     )
 }
 

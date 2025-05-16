@@ -1,0 +1,255 @@
+{
+  "presentation": {
+    "name": "Otávio Mendes Santos",
+    "job": "Desenvolvedor Web Front-end",
+    "description": "Apaixonado por tecnologia, sou um desenvolvedor web júnior em constante aprendizado. Sou um profissional comunicativo e colaborativo, que valoriza o trabalho em equipe e a troca de conhecimento.",
+    "dominateTechnologies": "Tecnologias que domino",
+    "contacts": "Contatos",
+    "goMainPage": "Ir para a página principal"
+  },
+  "sections": {
+    "skills": {
+      "title": "Habilidades",
+      "basicKnowledge": "Conhecimento básico ou iniciante",
+      "intermediateKnowledge": "Conhecimento intermediário, capaz de usar em projetos pequenos",
+      "advancedKnowledge": "Conhecimento avançado, experiência específica",
+      "expertKnowledge": "Expertise ou nível de domínio",
+      "howEvaluate": "Como me autoavalio?",
+      "current": "Atual",
+      "target": "Meta",
+      "technologies": {
+        "react": "React",
+        "typescript": "TypeScript",
+        "javascript": "JavaScript",
+        "materialUI": "Material UI",
+        "styledComponents": "Styled Components",
+        "html": "HTML",
+        "css": "CSS",
+        "redux": "Redux",
+        "reactQuery": "React Query",
+        "git": "Git",
+        "figma": "Figma",
+        "nodejs": "Node.js",
+        "express": "Express",
+        "mongodb": "MongoDB",
+        "jest": "Jest",
+        "python": "Python"
+      },
+      "legend": "Legenda",
+      "seeMore": "Ver mais",
+      "evaluationCriteria": "1. Autoavaliação por Critérios Específicos",
+      "evaluationCriteriaDescription": "Reflito sobre meus projetos passados e avalio meu desempenho com base nos resultados práticos: <br /> 1-3: Conhecimento básico ou iniciante. <br /> 4-6: Conhecimento intermediário, capaz de aplicar em projetos pequenos. <br /> 7-8: Conhecimento avançado, com experiência sólida. <br /> 9-10: Expertise ou nível de domínio.",
+      "externalFeedback": "2. Avaliação de Feedback Externo",
+      "externalFeedbackDescription": "Peço feedback a colegas, mentores ou líderes (gerentes, colegas de trabalho, professores) para avaliar minhas habilidades atuais. Isso oferece uma perspectiva externa e equilibra minha autoavaliação.",
+      "goals": "3. Objetivos de Curto, Médio e Longo Prazo",
+      "goalsDescription": "Curto prazo (1-3 meses): Habilidades que desejo melhorar em breve. \n Médio prazo (6 meses - 1 ano): Habilidades que exigem mais prática ou aprendizado. <br /> Longo prazo (1-2 anos): Habilidades mais complexas ou de nível avançado.",
+      "smartMethod": "4. Modelo SMART para Metas Almejadas",
+      "smartMethodDescription": "Specific (Específico): Determino exatamente qual aspecto da habilidade desejo melhorar. <br /> Measurable (Mensurável): Como o sucesso pode ser medido? Por exemplo, concluir um projeto ou obter uma certificação. <br /> Attainable (Atingível): A habilidade é realista considerando meu nível atual e contexto? <br /> Relevant (Relevante): Como essa habilidade contribui para meus objetivos de carreira ou pessoais? <br /> Time-bound (Temporal): Em quanto tempo espero atingir esse nível?",
+      "marketBenchmarking": "5. Benchmarking com o Mercado",
+      "marketBenchmarkingDescription": "Pesquiso as expectativas do mercado para as habilidades que desejo desenvolver, ajustando minhas avaliações de acordo com as exigências da minha área de atuação."
+    },
+    "experience": {
+      "title": "Experiência",
+      "position": "Dev. Front End",
+      "company": "Pick N Go | Abril 2023 - Atualmente",
+      "responsibilities": "Atribuições e responsabilidades",
+      "tasks": {
+        "systemRefactoring": {
+          "title": "Refatoração do Sistema",
+          "description": "Participei da refatoração do sistema principal da empresa ao lado da equipe de front-end, tornando-o mais performático, moderno e intuitivo, com novas funcionalidades e melhor experiência do usuário."
+        },
+        "challengeResolution": {
+          "title": "Resolução de Desafios",
+          "description": "Resolvi desafios técnicos com abordagens criativas e eficientes, contribuindo com soluções inovadoras adotadas como boas práticas pela equipe."
+        },
+        "componentDevelopment": {
+          "title": "Desenvolvimento de Componentes",
+          "description": "Desenvolvi e mantive componentes como formulários dinâmicos, mapas interativos, suporte a múltiplas marcas (whitelabel) e sistema global de notificações (snackbar), com foco em modularidade e usabilidade."
+        },
+        "typescript": {
+          "title": "Tipagem TypeScript",
+          "description": "Criei e mantive types, interfaces e DTOs globais em TypeScript, promovendo consistência entre as camadas da aplicação e reduzindo erros de integração."
+        },
+        "bugFixing": {
+          "title": "Resolução de Bugs",
+          "description": "Atuei na identificação e resolução de bugs, trabalhando em conjunto com a equipe de back-end para garantir a estabilidade do sistema e melhorar a comunicação entre as camadas."
+        },
+        "libraryImplementation": {
+          "title": "Implementação de Bibliotecas",
+          "description": "Pesquisei, testei e implementei bibliotecas que melhor se encaixavam nas necessidades do projeto, focando em performance, usabilidade e manutenibilidade."
+        },
+        "stateManagement": {
+          "title": "Gerenciamento de Estado",
+          "description": "Implementei e mantive o gerenciamento de estado global, garantindo previsibilidade, consistência de dados e facilitando a escalabilidade do sistema."
+        }
+      }
+    },
+    "training": {
+      "title": "Formação",
+      "college": {
+        "title": "Faculdade",
+        "name": "Análise e Desenvolvimento de Sistemas",
+        "institution": "SENAC | 2022 - 2024",
+        "modalTitle": "Análise e Desenvolvimento de Sistemas",
+        "tableHeader": {
+          "order": "Ordem",
+          "curriculumUnit": "Unidade Curricular",
+          "workload": "CH"
+        }
+      },
+      "inProgress": "Em andamento",
+      "completed": "Concluído",
+      "viewSubjects": "Ver Matérias",
+      "coursesAndCertificates": "Cursos e Certificados",
+      "certificates": {
+        "items": {
+          "react": {
+            "title": "React",
+            "description": "Curso intensivo sobre React, abrangendo desde a sintaxe básica até conceitos avançados como Hooks e Context API. Inclui um projeto final de conclusão onde desenvolvemos um aplicativo completo (Dogs)."
+          },
+          "javascript": {
+            "title": "JavaScript",
+            "description": "Formação completa em JavaScript, cobrindo desde os fundamentos até técnicas avançadas. O curso inclui o uso de classes, objetos, web APIs, padrões de projeto e a manipulação do DOM."
+          },
+          "typescript": {
+            "title": "TypeScript",
+            "description": "Curso intensivo sobre TypeScript, abrangendo desde a sintaxe básica até conceitos avançados como Interfaces e Tipagem de Dados."
+          },
+          "reactWithTypeScript": {
+            "title": "React com TypeScript",
+            "description": "Curso intensivo sobre React com TypeScript, abrangendo desde a sintaxe básica até conceitos avançados como Hooks e Context API."
+          },
+          "flexbox": {
+            "title": "FlexBox",
+            "description": "Curso focado em CSS Flexbox, abordando propriedades como flex, flexShrink, e flexGrow para criar layouts responsivos e flexíveis."
+          },
+          "gameDevJs": {
+            "title": "Desenvolvimento de Jogos com JavaScript",
+            "description": "Introdução ao desenvolvimento de jogos utilizando JavaScript, abordando conceitos básicos de programação de jogos e criação de interatividade. Inclui projetos feitos durante o curso (Piano Virtual, Jogo Detona Ralph, Jogo da Memória, etc)."
+          },
+          "kotlinBackend": {
+            "title": "Desenvolvimento Back End com Kotlin",
+            "description": "Introdução ao desenvolvimento back end utilizando Kotlin, cobrindo fundamentos da linguagem e a criação de APIs e serviços."
+          }
+        }
+      },
+      "certificateModal": {
+        "title": "Certificado"
+      }
+    },
+    "projects": {
+      "title": "Projetos",
+      "viewMore": "Ver mais",
+      "loading": "Carregando projetos...",
+      "noProjects": "Nenhum projeto encontrado",
+      "noDescription": "Sem descrição",
+      "visitRepository": "Visitar repositório",
+      "status": {
+        "completed": "Concluído",
+        "inDevelopment": "Em desenvolvimento",
+        "notStarted": "Não iniciado",
+        "inPlanning": "Em planejamento",
+        "refactoring": "Refatorando"
+      },
+      "filters": {
+        "status": "Status",
+        "technologies": "Tecnologias",
+        "select": "Selecione..."
+      },
+      "technologiesUsed": "Tecnologias Utilizadas",
+      "seeProject": "Veja o projeto",
+      "seeCode": "Veja o código",
+      "seeLess": "Ver menos",
+      "items": {
+        "clearKanban": {
+          "name": "Clear Kanban",
+          "description": "Uma aplicação Kanban projetada para gerenciar demandas de forma eficiente e colaborativa. Oferece recursos como autenticação de usuário, recuperação de senha via e-mail, e comunicação em tempo real utilizando WebSockets, garantindo atualizações instantâneas e uma experiência de uso fluida."
+        },
+        "dogs": {
+          "name": "Dogs - Rede Social Para Cachorros",
+          "description": "Rede Social Para Cachorros. Completo, com comentários, posts, autenticação, etc."
+        },
+        "fantasticAnimals": {
+          "name": "Animais Fantásticos",
+          "description": "Site com funcionalidades feitas em JavaScript"
+        },
+        "flexBlog": {
+          "name": "FlexBlog",
+          "description": "Site feito para explorar as propriedades do display flexbox."
+        },
+        "pomodoro": {
+          "name": "Pomodoro",
+          "description": "Site pomodoro para estudos, com lista de tarefas, avisos sonoros e menu interativo."
+        },
+        "pokedex": {
+          "name": "Pokédex",
+          "description": "Pokédex com listagem de Pokémons via pokeAPI."
+        },
+        "toDoList": {
+          "name": "To Do List",
+          "description": "To Do List Básica, com uma lista de tarefas e botões de adição e remoção."
+        },
+        "ticTacToe": {
+          "name": "Jogo da Velha",
+          "description": "Jogo da velha, Player vs Computador."
+        },
+        "detonaRalph": {
+          "name": "Jogo Detona Ralph",
+          "description": "Jogo de acertar a toupeira na temática Detona Ralph (Falta adicionar responsividade)."
+        },
+        "memoryGame": {
+          "name": "Jogo da Memória",
+          "description": "Jogo da memória com emojis (Falta adicionar responsividade)."
+        },
+        "virtualPiano": {
+          "name": "Piano Virtual",
+          "description": "Piano Virtual (Falta adicionar responsividade)."
+        },
+        "joKenPoYuGiOh": {
+          "name": "Jogo Jo-Ken-Po Yu-Gi-Oh",
+          "description": "Jogo de Jo-Ken-Po na temática de Yu-Gi-Oh (Falta adicionar responsividade)."
+        },
+        "breeze": {
+          "name": "Breeze",
+          "description": "Aplicativo mobile feito para previsão do tempo - Estudando React Native e Expo."
+        }
+      }
+    },
+    "contact": {
+      "title": "Fale Comigo",
+      "form": {
+        "name": {
+          "label": "Nome",
+          "placeholder": "Nome",
+          "error": "O nome deve ter pelo menos 3 letras."
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Email",
+          "error": "Email inválido"
+        },
+        "message": {
+          "label": "Mensagem",
+          "placeholder": "Mensagem"
+        },
+        "button": "Enviar",
+        "success": "Mensagem enviada com sucesso!",
+        "error": "Ocorreu um erro ao enviar sua mensagem. Tente novamente mais tarde."
+      }
+    },
+    "repositories": {
+      "title": "Repositórios",
+      "noDescription": "Sem descrição",
+      "visitRepository": "Visitar repositório",
+      "loading": "Carregando repositórios...",
+      "viewMore": "Ver mais"
+    }
+  },
+  "header": {
+    "changeLanguage": "Mudar idioma",
+    "switchDarkMode": "Alternar Dark Mode"
+  },
+  "footer": {
+    "developedBy": "Desenvolvido por"
+  }
+}

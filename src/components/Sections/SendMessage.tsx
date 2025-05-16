@@ -5,7 +5,7 @@ import emailjs from 'emailjs-com';
 import BoxSection from "../common/BoxSection";
 import useSnackbar from "../../hooks/useSnackbar";
 import SnackbarAlert from "../common/SnackbarAlert";
-
+import { useTranslation } from "react-i18next";
 
 const SendMessage = ({ className }: { className?: string }) => {
     const VITE_EMAILJS_USER_ID = import.meta.env.VITE_EMAILJS_USER_ID
@@ -13,6 +13,7 @@ const SendMessage = ({ className }: { className?: string }) => {
     const VITE_EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
     const [loading, setLoading] = useState(false)
     const messageSnackbar = useSnackbar({ duration: 6000 })
+    const { t } = useTranslation();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -34,7 +35,7 @@ const SendMessage = ({ className }: { className?: string }) => {
 
     const validateName = (name: string) => {
         if (name.length < 3) {
-            return "O nome deve ter pelo menos 3 letras.";
+            return t('sections.contact.form.name.error');
         }
         return "";
     }
@@ -42,7 +43,7 @@ const SendMessage = ({ className }: { className?: string }) => {
     const validateEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            return "Email inválido";
+            return t('sections.contact.form.email.error');
         }
         return "";
     }
@@ -100,10 +101,10 @@ const SendMessage = ({ className }: { className?: string }) => {
         setLoading(true)
         emailjs.sendForm(serviceID, templateID, formRef.current, userID)
             .then((_response) => {
-                messageSnackbar.showSuccess('Mensagem enviada com sucesso!', 6000)
+                messageSnackbar.showSuccess(t('sections.contact.form.success'), 6000)
             })
             .catch((err) => {
-                messageSnackbar.showError('Ocorreu um erro ao enviar sua mensagem. Tente novamente mais tarde.', 6000)
+                messageSnackbar.showError(t('sections.contact.form.error'), 6000)
                 console.log('Erro ao enviar o email', err);
             })
             .finally(() => {
@@ -126,52 +127,52 @@ const SendMessage = ({ className }: { className?: string }) => {
 
     return (
         <>
-            <BoxSection title="Fale Comigo" className={className} sx={{}}>
-                <StyledTypography variant="h1" indicate>Fale Comigo</StyledTypography>
+            <BoxSection title={t('sections.contact.title')} className={className} sx={{}}>
+                <StyledTypography variant="h1" indicate>{t('sections.contact.title')}</StyledTypography>
                 <Container maxWidth="sm" sx={{ my: 4 }}>
                     <form onSubmit={handleSubmit} ref={formRef} >
                         <Stack gap={2}>
                             <TextField
                                 size="small"
-                                label="Nome"
+                                label={t('sections.contact.form.name.label')}
                                 value={formData.name}
                                 name="name"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 type="text"
-                                placeholder="Nome"
+                                placeholder={t('sections.contact.form.name.placeholder')}
                                 error={!!errors.name}
                                 helperText={errors.name}
                             />
                             <TextField
                                 size="small"
-                                label="Email"
+                                label={t('sections.contact.form.email.label')}
                                 value={formData.email}
                                 name="email"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 type="text"
-                                placeholder="Email"
+                                placeholder={t('sections.contact.form.email.placeholder')}
                                 error={!!errors.email}
                                 helperText={errors.email}
                             />
                             <TextField
                                 size="small"
-                                label="Mensagem"
+                                label={t('sections.contact.form.message.label')}
                                 value={formData.message}
                                 onChange={handleChange}
                                 name="message"
                                 id="message"
                                 multiline
                                 rows={6}
-                                placeholder="Mensagem"
+                                placeholder={t('sections.contact.form.message.placeholder')}
                             />
                             <Button
                                 disabled={(formData.name === "" || formData.email === "" || formData.message === "" || !!errors.name || !!errors.email) || loading}
                                 variant="contained"
                                 type="submit"
                             >
-                                {loading ? <CircularProgress size={20} /> : "Enviar"}
+                                {loading ? <CircularProgress size={20} /> : t('sections.contact.form.button')}
                             </Button>
                         </Stack>
                     </form>
