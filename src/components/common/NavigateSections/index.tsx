@@ -3,6 +3,7 @@ import { handleOpacityColor } from '../../../utils/utils'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import useResponsive from '../../../hooks/useResponsive'
+import { useTranslation } from 'react-i18next'
 
 interface NavigateSectionProps {
   elements: NodeListOf<Element> | null
@@ -11,6 +12,7 @@ interface NavigateSectionProps {
 const NavigateSection = ({ elements }: NavigateSectionProps) => {
   const [active, setActive] = useState<string>('')
   const { isMobile } = useResponsive()
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (!elements) return
@@ -30,7 +32,7 @@ const NavigateSection = ({ elements }: NavigateSectionProps) => {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [elements])
+  }, [elements, t])
 
   const handleClick = (element: Element) => {
     const elementRect = element.getBoundingClientRect()

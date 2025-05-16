@@ -1,4 +1,3 @@
-  import { useNavigate } from 'react-router-dom'
 import Logo from '/assets/svgs/logo_outlined.svg'
 import { AppBar, Box, Stack, useTheme, Tooltip } from '@mui/material'
 import { useEffect, useState } from 'react'
